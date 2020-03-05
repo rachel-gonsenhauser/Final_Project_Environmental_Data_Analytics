@@ -1,0 +1,26 @@
+---
+title: "Coding Session: Data Wrangling"
+author: "Environmental Data Analytics | Rachel Gonsenhauser"
+date: "Spring 2020"
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+setwd("/Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics")
+getwd()
+library(tidyverse)
+
+Arsenic <- read.csv("./Data/Raw/Arsenic/data_113417.csv")
+Income <- read.csv("./Data/Raw/MHI/data_122206.csv")
+PFAS <- read.csv("./Data/Raw/PFAS/data_112028.csv")
+Trihalomethane <- read.csv("./Data/Raw/Trihalomethane/data_122753.csv")
+Uranium <- read.csv("./Data/Raw/Uranium/data_113719.csv")
+
+
+
+```
+
+

@@ -7,7 +7,7 @@ output:
 geometry: margin=2.54cm
 title: "Insert title of project here"
 subtitle: "Web address for GitHub repository"
-author: "Name"
+author: "Rachel Gonsenhauser"
 fontsize: 12pt
 mainfont: Times New Roman
 
@@ -25,6 +25,7 @@ mainfont: Times New Roman
 # Set your working directory
 
 # Load your packages
+
 
 # Set your ggplot theme
 
