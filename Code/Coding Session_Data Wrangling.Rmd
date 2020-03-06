@@ -17,11 +17,11 @@ getwd()
 library(tidyverse)
 
 # Loading in datasets
-Arsenic <- read.csv("./Data/Raw/Arsenic/data_113417.csv")
-Income <- read.csv("./Data/Raw/MHI/data_122206.csv")
-PFAS <- read.csv("./Data/Raw/PFAS/data_112028.csv")
-Trihalomethane <- read.csv("./Data/Raw/Trihalomethane/data_122753.csv")
-Uranium <- read.csv("./Data/Raw/Uranium/data_113719.csv")
+Arsenic <- read.csv("../Data/Raw/Arsenic/data_113417.csv")
+Income <- read.csv("../Data/Raw/MHI/data_122206.csv")
+PFAS <- read.csv("../Data/Raw/PFAS/data_112028.csv")
+Trihalomethane <- read.csv("../Data/Raw/Trihalomethane/data_122753.csv")
+Uranium <- read.csv("../Data/Raw/Uranium/data_113718.csv")
 ```
 
 
