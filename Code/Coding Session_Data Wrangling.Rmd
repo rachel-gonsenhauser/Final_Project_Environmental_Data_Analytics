@@ -14,7 +14,9 @@ knitr::opts_chunk$set(echo = TRUE)
 # Setting up session
 setwd("/Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics")
 getwd()
+library(dplyr)
 library(tidyverse)
+library(lubridate)
 
 # Loading in datasets
 Arsenic <- read.csv("../Data/Raw/Arsenic/data_113417.csv")
@@ -22,6 +24,14 @@ Income <- read.csv("../Data/Raw/MHI/data_122206.csv")
 PFAS <- read.csv("../Data/Raw/PFAS/data_112028.csv")
 Trihalomethane <- read.csv("../Data/Raw/Trihalomethane/data_122753.csv")
 Uranium <- read.csv("../Data/Raw/Uranium/data_113718.csv")
+
+colnames(Arsenic)
+head(Arsenic)
+summary(Arsenic)
+colnames(Arsenic)[6] <-c("Mean arsenic concentration (ug/L)") 
+
+colnames(Income)
+head(Arsenic)
 ```
 
 
