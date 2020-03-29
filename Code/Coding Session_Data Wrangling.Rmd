@@ -8,9 +8,7 @@ geometry: margin=2.54cm
 
 **Session Set-up**
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
+```{r}
 # Setting up session
 setwd("/Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics")
 getwd()
@@ -19,19 +17,74 @@ library(tidyverse)
 library(lubridate)
 
 # Loading in datasets
-Arsenic <- read.csv("../Data/Raw/Arsenic/data_113417.csv")
-Income <- read.csv("../Data/Raw/MHI/data_122206.csv")
-PFAS <- read.csv("../Data/Raw/PFAS/data_112028.csv")
-Trihalomethane <- read.csv("../Data/Raw/Trihalomethane/data_122753.csv")
-Uranium <- read.csv("../Data/Raw/Uranium/data_113718.csv")
+Arsenic <- read.csv("./Data/Raw/Arsenic/data_113417.csv")
+Income <- read.csv("./Data/Raw/MHI/data_122206.csv")
+PFAS <- read.csv("./Data/Raw/PFAS/data_112028.csv")
+Trihalomethane <- read.csv("./Data/Raw/Trihalomethane/data_122753.csv")
+Uranium <- read.csv("./Data/Raw/Uranium/data_113718.csv")
+```
 
+```{r}
+#Changing column headings
 colnames(Arsenic)
 head(Arsenic)
 summary(Arsenic)
 colnames(Arsenic)[6] <-c("Mean arsenic concentration (ug/L)") 
 
 colnames(Income)
-head(Arsenic)
+head(Income)
+summary(Income)
+colnames(Income)[6] <-c("Median household income")
+
+colnames(PFAS)
+head(PFAS)
+summary(PFAS)
+colnames(PFAS)[6] <-c("Mean PFAS concentration (ug/L)")
+
+colnames(Trihalomethane)
+head(Trihalomethane)
+summary(Trihalomethane)
+colnames(Trihalomethane)[6] <-c("Mean trihalomethane concentration (ug/L)")
+
+colnames(Uranium)
+head(Uranium)
+summary(Uranium)
+colnames(Uranium)[6] <-c("Mean uranium concentration (ug/L)")
 ```
 
+```{r}
+# Changing classes of variables before joining
+class(Arsenic$Year)
+Arsenic$Year <- as.numeric(Arsenic$Year)
 
+class(Income$Year)
+Income$Year <- as.numeric(Income$Year)
+
+class(PFAS$Year)
+# Dates for PFAS given as a range of 2013-2015, so I am changing them all to 2014 so I can integrate into dataset for possible analysis
+PFAS$Year <- ((2013+2015)/2)
+class(PFAS$Year)
+
+class(Trihalomethane$Year)
+Trihalomethane$Year <- as.numeric(Trihalomethane$Year)
+
+class(Uranium$Year)
+Uranium$Year <-as.numeric(Uranium$Year)
+```
+
+``` {r}
+# Joining datasets
+Arsenic.Income <- left_join(Arsenic, Income)
+Arsenic.Income.PFAS <- left_join(Arsenic.Income, PFAS)
+Arsenic.Income.PFAS.Trihalomethane <- left_join(Arsenic.Income.PFAS, Trihalomethane)
+Arsenic.Income.PFAS.Trihalomethane.Uranium <- left_join(Arsenic.Income.PFAS.Trihalomethane, Uranium)
+```
+```{r}
+# Filtering dataset down to just necessary columns
+Water.Quality.And.Income.Processed <- 
+  Arsenic.Income.PFAS.Trihalomethane.Uranium %>%
+  select(stateFIPS:`Mean arsenic concentration (ug/L)`, PWS.ID:Population.Served, `Median household income`, `Mean PFAS concentration (ug/L)`, `Mean trihalomethane concentration (ug/L)`, `Mean uranium concentration (ug/L)`)
+
+# Saving processed dataset for next session
+write.csv(Water.Quality.And.Income.Processed, row.names = FALSE, file = "./Data/Processed/Water_Quality_And_Income_Processed.csv")
+```
