@@ -13,7 +13,7 @@ Does a high concentration of one contaminant correlate with that of another?
 Does the size of the CWS or the geographic location of the system correlate with the occurennce of these contaminants?
 Do the concentrations of these contaminants vary in one particular location over time?
 
-## Investigators
+## Investigator
 
 Rachel Gonsenhauser
 Duke University
@@ -37,9 +37,24 @@ Separate datasets from this source were combined by the data assembler into one 
 
 <describe the folders contained in the repository, including what type of files they contain>
 
+The repository 
+
+
 <describe the formats of files for the various purposes contained in the repository>
 
 <describe your file naming conventions>
+
+Files are named according to the following naming convention: `databasename_datatype_details_stage.format`, where: 
+
+**databasename** refers to the database from where the data originated
+
+**datatype** is a description of data 
+
+**details** are additional descriptive details, particularly important for processed data 
+
+**stage**refers to the stage in data management pipelines (e.g., raw, cleaned, or processed)
+
+**format** is a non-proprietary file format (e.g., .csv, .txt)
 
 ## Metadata
 
