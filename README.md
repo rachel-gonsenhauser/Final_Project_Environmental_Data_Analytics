@@ -15,7 +15,7 @@ Do the concentrations of these contaminants vary in one particular location over
 
 ## Investigator
 
-Rachel Gonsenhauser
+**Rachel Gonsenhauser**
 Duke University
 Email: rachel.gonsenhauser@duke.edu
 Role: Data assembler
@@ -37,14 +37,23 @@ Separate datasets from this source were combined by the data assembler into one 
 
 <describe the folders contained in the repository, including what type of files they contain>
 
-The repository 
+The repository includes the following folders of files:
 
+**Code**: files include coding sessions including cleaning/wrangling, visualization, and analysis of the data.
+**Data**: files include data from the CDC database discussed above. Data file types include Raw and Processed.
+**Output**
+**Project Files**
 
 <describe the formats of files for the various purposes contained in the repository>
 
+File formats for the files contained in the repository include:
+`.md`: text file, such as this README file
+`.Rmd`: R markdown file, the format for all coding sessions
+`.csv`: delimited text file, the format for all data files
+
 <describe your file naming conventions>
 
-Files are named according to the following naming convention: `databasename_datatype_details_stage.format`, where: 
+Data files are named according to the following naming convention: `databasename_datatype_details_stage.format`, where: 
 
 **databasename** refers to the database from where the data originated
 
