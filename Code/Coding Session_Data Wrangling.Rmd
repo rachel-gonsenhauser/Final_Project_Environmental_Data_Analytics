@@ -86,5 +86,5 @@ Water.Quality.And.Income.Processed <-
   select(stateFIPS:`Mean arsenic concentration (ug/L)`, PWS.ID:Population.Served, `Median household income`, `Mean PFAS concentration (ug/L)`, `Mean trihalomethane concentration (ug/L)`, `Mean uranium concentration (ug/L)`)
 
 # Saving processed dataset for next session
-write.csv(Water.Quality.And.Income.Processed, row.names = FALSE, file = "./Data/Processed/Water_Quality_And_Income_Processed.csv")
+write.csv(Water.Quality.And.Income.Processed, row.names = FALSE, file = "./Data/Processed/CDC_WaterQualityAndIncome_Processed.csv")
 ```
