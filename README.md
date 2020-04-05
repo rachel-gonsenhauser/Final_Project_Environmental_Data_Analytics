@@ -83,7 +83,36 @@ Coding files are named according to the following naming convention:
 
 <For each data file in the repository, describe the data contained in each column. Include the column name, a description of the information, the class of data, and any units associated with the data. Create a list or table for each data file.> 
 
-most important to have this done for processed data files, if just pulling and joining from raw to processed, the one used for analysis is the key one youu put column names for in the metadata
+1. 
+File name: data_113417.csv
+Link to footnotes: file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/Arsenic/footnotes_113417.htm
+
+`Columns`
+**stateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
+**State**: state measurement was taken in 
+**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
+**County**: county measurement was taken in
+**Year**: year measurement was taken in 
+**Value**: mean concentration of Arsenic (micrograms per liter) by year
+**Data Comment**: additional information about data
+**Maximum Contaminant Level**: whether arsenic value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL (1), Less than or Equal to MCL (2), and Not Detected (3))
+**PWS ID**: Public Water System Identification Number
+**CWS Name**: Community Water System Name
+**Population Served**: number of people served by CWS
+**Maximum Contaminant Level**:  whether arsenic value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL, Less than or Equal to MCL, and Not Detected)
+
+2. 
+File name: data_122206.csv
+Link to footnotes:  file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/MHI/footnotes_122206.htm
+
+`Columns`
+**stateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
+**State**: state measurement was taken in 
+**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
+**County**: county measurement was taken in
+**Year**: year measurement was taken in 
+**Value**: Median household income ($)
+**Data Comment**: additional information about data
 
 **especially when I decided to go from 2013-2015 to 2014 for PFAS data, to bring to a common unit of analysis, this substantially changed the meaning of the data but my rationale is x 
 
