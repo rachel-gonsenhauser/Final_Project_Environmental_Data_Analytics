@@ -65,13 +65,23 @@ Data files are named according to the following naming convention: `databasename
 
 **format** is a non-proprietary file format (e.g., .csv, .txt)
 
+*if just a few files for wrangling, etc., may not need to go a lot into naming convention...act like uyou're showing somebody who is coming in with no knowledge and telling them what they need to know
+
 ## Metadata
 
 <For each data file in the repository, describe the data contained in each column. Include the column name, a description of the information, the class of data, and any units associated with the data. Create a list or table for each data file.> 
 
+most important to have this done for processed data files, if just pulling and joining from raw to processed, the one used for analysis is the key one youu put column names for in the metadata
+
+**especially when I decided to go from 2013-2015 to 2014 for PFAS data, to bring to a common unit of analysis, this substantially changed the meaning of the data but my rationale is x 
+
+for this seciton, provide links to metadata from cdc 
+
 ## Scripts and code
 
 <list any software scripts/code contained in the repository and a description of their purpose.>
+
+list of the scripts that you've created for the projects and noting what is in these, so names of the files and a description of what each file is doing e.g. "this is where i took raw data and processed it doing x, y, z...", say things like that
 
 ## Quality assurance/quality control
 
