@@ -83,6 +83,8 @@ Coding files are named according to the following naming convention:
 
 <For each data file in the repository, describe the data contained in each column. Include the column name, a description of the information, the class of data, and any units associated with the data. Create a list or table for each data file.> 
 
+Metadata for **raw** datasets is provided below:
+
 1. 
 File name: data_113417.csv
 Link to footnotes: file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/Arsenic/footnotes_113417.htm
@@ -114,9 +116,84 @@ Link to footnotes:  file:///Users/rachelgonsenhauser/Documents/Final_Project_Env
 **Value**: Median household income ($)
 **Data Comment**: additional information about data
 
+3.
+File name: data_112028.csv
+Link to footnotes: file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/PFAS/footnotes_112028.htm
+
+`Columns`
+**StateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
+**State**: state measurement was taken in
+**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
+**County**: county measurement was taken in
+**Year**: year measurement was taken in (in this case, data was collected only from January 2013 to December 2015) 
+**Value**: concentration of PFOS, PFAS, PFNA, PFBS, PFHxS, PFHpA (ppt/parts per trillion)
+**Data Comment**: additional information about data
+**Status**: whether chemical was detected in water system
+**PWS ID**: Public Water System Identification Number
+**CWS Name**: Community Water System Name
+**Population served**: number of people served by CWS
+**Contaminant**: type of poly- or perfluoroalkyl substance detected (e.g. PFOA, PFOS, etc.)
+
+4.
+File name: data_122753.csv
+Link to footnontes: file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/Trihalomethane/footnotes_122754.htm
+
+`Columns`
+**stateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
+**State**: state measurement was taken in 
+**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
+**County**: county measurement was taken in
+**Year**: year measurement was taken in 
+**Value**: mean concentration of trihalomethanes (micrograms per liter) by year
+**Data Comment**: additional information about data
+**Maximum Contaminant Level**: whetherthe trihalomethane value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL (1), Less than or Equal to MCL (2), and Not Detected (3))
+**PWS ID**: Public Water System Identification Number
+**CWS Name**: Community Water System Name
+**Population Served**: number of people served by CWS
+**Maximum Contaminant Level**:  whether arsenic value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL, Less than or Equal to MCL, and Not Detected)
+
+5.
+File name: data_113718.csv
+Link to footnotes:file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/Uranium/footnotes_113719.htm
+
+`Columns`
+**stateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
+**State**: state measurement was taken in 
+**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
+**County**: county measurement was taken in
+**Year**: year measurement was taken in 
+**Value**: mean concentration of uranium (micrograms per liter) by year
+**Data Comment**: additional information about data
+**Maximum Contaminant Level**: whether arsenic value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL (1), Less than or Equal to MCL (2), and Not Detected (3))
+**PWS ID**: Public Water System Identification Number
+**CWS Name**: Community Water System Name
+**Population Served**: number of people served by CWS
+**Maximum Contaminant Level**:  whether uranium value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL, Less than or Equal to MCL, and Not Detected)
+
+Metadata for **processed** datasets is provided below:
+
+1. File name: CDC_WaterQualityAndIncome_Processed.csv
+
+`Columns`
+**stateFIPS**
+**State**
+**countyFIPS**
+**County**
+**Year**
+**Mean arsenic concentration (ug/L)**
+**PWS.ID**
+**CWS.Name**
+**Population.Served**
+**Median household income**
+**PFAS conncentration (ppt)**
+**Mean trihalomethane concentration (ug/L)**
+**Mean uranium concentration (ug/L**)
+
+
+
+
 **especially when I decided to go from 2013-2015 to 2014 for PFAS data, to bring to a common unit of analysis, this substantially changed the meaning of the data but my rationale is x 
 
-for this seciton, provide links to metadata from cdc 
 
 ## Scripts and code
 

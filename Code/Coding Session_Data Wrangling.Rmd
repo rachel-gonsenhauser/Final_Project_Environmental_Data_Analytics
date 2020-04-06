@@ -39,7 +39,7 @@ colnames(Income)[6] <-c("Median household income")
 colnames(PFAS)
 head(PFAS)
 summary(PFAS)
-colnames(PFAS)[6] <-c("Mean PFAS concentration (ug/L)")
+colnames(PFAS)[6] <-c("Mean PFAS concentration (ppt)")
 
 colnames(Trihalomethane)
 head(Trihalomethane)
