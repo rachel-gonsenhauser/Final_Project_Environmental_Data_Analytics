@@ -15,11 +15,11 @@ library(tidyverse)
 library(lubridate)
 
 # Loading in raw datasets
-Arsenic <- read.csv("./Data/Raw/Arsenic/data_113417.csv")
-Income <- read.csv("./Data/Raw/MHI/data_122206.csv")
-PFAS <- read.csv("./Data/Raw/PFAS/data_112028.csv")
-Trihalomethane <- read.csv("./Data/Raw/Trihalomethane/data_122753.csv")
-Uranium <- read.csv("./Data/Raw/Uranium/data_113718.csv")
+Arsenic <- read.csv("../Data/Raw/Arsenic/data_113417.csv")
+Income <- read.csv("../Data/Raw/MHI/data_122206.csv")
+PFAS <- read.csv("../Data/Raw/PFAS/data_112028.csv")
+Trihalomethane <- read.csv("../Data/Raw/Trihalomethane/data_122753.csv")
+Uranium <- read.csv("../Data/Raw/Uranium/data_113718.csv")
 ```
 
 ```{r}
@@ -85,5 +85,5 @@ Water.Quality.And.Income.Processed <-
   select(stateFIPS:Arsenic_ugL, PWS.ID:Population.Served, MHI, PFAS_ppt, TTHM_ugL, Uranium_ugL)
 
 # Saving processed dataset for next session
-write.csv(Water.Quality.And.Income.Processed, row.names = FALSE, file = "./Data/Processed/CDC_WaterQualityAndIncome_Processed.csv")
+write.csv(Water.Quality.And.Income.Processed, row.names = FALSE, file = "../Data/Processed/CDC_WaterQualityAndIncome_Processed.csv")
 ```

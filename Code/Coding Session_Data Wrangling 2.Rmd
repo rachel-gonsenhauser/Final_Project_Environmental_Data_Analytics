@@ -15,5 +15,50 @@ library(dplyr)
 library(tidyverse)
 library(lubridate)
 
-Water.Quality.And.Income.Processed <- read.csv("./Data/Processed/CDC_WaterQualityAndincome_Processed.csv")
+# Pulling in processed dataset
+Water.Quality.And.Income.Processed <- read.csv("../Data/Processed/CDC_WaterQualityAndincome_Processed.csv")
 ```
+
+```{r}
+# Data exploration of processed dataset
+colnames(Water.Quality.And.Income.Processed)
+dim(Water.Quality.And.Income.Processed)
+str(Water.Quality.And.Income.Processed)
+class(Water.Quality.And.Income.Processed$Year)
+class(Water.Quality.And.Income.Processed$State)
+class(Water.Quality.And.Income.Processed$PWS.ID)
+
+# Changing FIPs codes to factor variables 
+class(Water.Quality.And.Income.Processed$countyFIPS)
+Water.Quality.And.Income.Processed$countyFIPS <- as.factor(Water.Quality.And.Income.Processed$countyFIPS)
+class(Water.Quality.And.Income.Processed$countyFIPS)
+
+class(Water.Quality.And.Income.Processed$stateFIPS)
+Water.Quality.And.Income.Processed$stateFIPS <- as.factor(Water.Quality.And.Income.Processed$stateFIPS)
+class(Water.Quality.And.Income.Processed$stateFIPS)
+
+# Filtering to 2014 to explore PFAS data (only available in this one year)
+
+# drop_na only drops rows where NAs are present in a specified column of data whereas na.exclude and na.omit take away all rows in whole dataset where there is an NA (so using drop_NA here to just only have complete rows to compare)
+
+PFAS.data <- filter(Water.Quality.And.Income.Processed, Year == "2014") %>%
+  drop_na()
+
+# Not enough data once dropping NAs to compare PFAS to all other variables, will explore data to see if enough data to justify comparing to some only some variables for analysis later
+
+PFAS.data2 <- Water.Quality.And.Income.Processed %>%
+  filter(Year == "2014") %>%
+  select(MHI, PFAS_ppt, PWS.ID, Population.Served) %>%
+  drop_na()
+
+PFAS.data3 <- Water.Quality.And.Income.Processed  %>%
+  filter(Year == "2014") %>%
+  select(PFAS_ppt) %>%
+  drop_na()
+
+# After dropping NAs, there is not enough complete data to justify completing analysis with PFAS data (only 89 observations), so filtering for analysis without PFAS
+
+
+
+```
+
