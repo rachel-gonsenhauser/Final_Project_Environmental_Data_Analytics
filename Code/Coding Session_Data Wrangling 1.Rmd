@@ -1,14 +1,12 @@
 ---
-title: "Coding Session: Data Wrangling"
+title: "Coding Session: Data Wrangling 1"
 author: "Environmental Data Analytics | Rachel Gonsenhauser"
 date: "Spring 2020"
 output: pdf_document
 geometry: margin=2.54cm
 ---
 
-**Session Set-up**
-
-```{r}
+```{r setup, include=FALSE}
 # Setting up session
 setwd("/Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics")
 getwd()
@@ -16,7 +14,7 @@ library(dplyr)
 library(tidyverse)
 library(lubridate)
 
-# Loading in datasets
+# Loading in raw datasets
 Arsenic <- read.csv("./Data/Raw/Arsenic/data_113417.csv")
 Income <- read.csv("./Data/Raw/MHI/data_122206.csv")
 PFAS <- read.csv("./Data/Raw/PFAS/data_112028.csv")
@@ -29,27 +27,27 @@ Uranium <- read.csv("./Data/Raw/Uranium/data_113718.csv")
 colnames(Arsenic)
 head(Arsenic)
 summary(Arsenic)
-colnames(Arsenic)[6] <-c("Mean arsenic concentration (ug/L)") 
+colnames(Arsenic)[6] <-c("Arsenic_ugL") 
 
 colnames(Income)
 head(Income)
 summary(Income)
-colnames(Income)[6] <-c("Median household income")
+colnames(Income)[6] <-c("MHI")
 
 colnames(PFAS)
 head(PFAS)
 summary(PFAS)
-colnames(PFAS)[6] <-c("Mean PFAS concentration (ppt)")
+colnames(PFAS)[6] <-c("PFAS_ppt")
 
 colnames(Trihalomethane)
 head(Trihalomethane)
 summary(Trihalomethane)
-colnames(Trihalomethane)[6] <-c("Mean trihalomethane concentration (ug/L)")
+colnames(Trihalomethane)[6] <-c("TTHM_ugL")
 
 colnames(Uranium)
 head(Uranium)
 summary(Uranium)
-colnames(Uranium)[6] <-c("Mean uranium concentration (ug/L)")
+colnames(Uranium)[6] <-c("Uranium_ugL")
 ```
 
 ```{r}
@@ -79,11 +77,12 @@ Arsenic.Income.PFAS <- left_join(Arsenic.Income, PFAS)
 Arsenic.Income.PFAS.Trihalomethane <- left_join(Arsenic.Income.PFAS, Trihalomethane)
 Arsenic.Income.PFAS.Trihalomethane.Uranium <- left_join(Arsenic.Income.PFAS.Trihalomethane, Uranium)
 ```
-```{r}
+
+```{r, message}
 # Filtering dataset down to just necessary columns
 Water.Quality.And.Income.Processed <- 
   Arsenic.Income.PFAS.Trihalomethane.Uranium %>%
-  select(stateFIPS:`Mean arsenic concentration (ug/L)`, PWS.ID:Population.Served, `Median household income`, `Mean PFAS concentration (ug/L)`, `Mean trihalomethane concentration (ug/L)`, `Mean uranium concentration (ug/L)`)
+  select(stateFIPS:Arsenic_ugL, PWS.ID:Population.Served, MHI, PFAS_ppt, TTHM_ugL, Uranium_ugL)
 
 # Saving processed dataset for next session
 write.csv(Water.Quality.And.Income.Processed, row.names = FALSE, file = "./Data/Processed/CDC_WaterQualityAndIncome_Processed.csv")

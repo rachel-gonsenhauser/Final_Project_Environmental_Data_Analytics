@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 # Repository Title: Final_Project_Environmental_Data_Analytics
 

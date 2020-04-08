@@ -1,0 +1,19 @@
+---
+title: "Coding Session: Data Wrangling 1"
+author: "Environmental Data Analytics | Rachel Gonsenhauser"
+date: "Spring 2020"
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+
+```{r setup, include=FALSE}
+# Setting up session
+setwd("/Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics")
+getwd()
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+
+Water.Quality.And.Income.Processed <- read.csv("./Data/Processed/CDC_WaterQualityAndincome_Processed.csv")
+```
