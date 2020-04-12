@@ -19,10 +19,10 @@ Do the concentrations of these contaminants vary in one particular location over
 
 ## Investigator
 
-Name: **Rachel Gonsenhauser**
-Institution: Duke University
-Email: rachel.gonsenhauser@duke.edu
-Role: Data assembler
+*Name*:              Rachel Gonsenhauser  
+*Institution*:       Duke University
+*Email*:             rachel.gonsenhauser@duke.edu
+*Role*:              Data assembler
 
 ## Keywords
 
