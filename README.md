@@ -189,7 +189,7 @@ Metadata for **processed** datasets is provided below:
 
 **Column heading**          | **Description of data**                                   |   **Class of data**
 ----------------------------|-----------------------------------------------------------|----------------------------
-stateFIPS                   |Federal Information Processing Standard state code         |  factor
+stateFIPS                   | Federal Information Processing Standard state code        |  factor
 State                       | state measurement was taken in                            |  character
 countyFIPS                  | Federal Information Processing Standard county code       |  factor
 County                      | county measurement was taken in                           |  character
@@ -202,6 +202,9 @@ MHI                         | median household income ($)                       
 PFAS_ppt                    | PFAS conncentration (parts per trillion)                  |  numeric
 TTHM_ugl                    | mean trihalomethane concentration (micrograms per liter)  |  numeric
 Uranium_ugL                 | mean uranium concentration (micrograms per liter)         |  numeric
+MCL_TTM                     | whether MCL for trihalomethanes is exceeded               |  factor
+MCL_Uranium                 | whether MCL for uranium is exceeded                       |  factor
+MCL_Arsenic                 | whether MCL for arsenic is exceeded                       |  factor
 
 
 **Metadata note**: data on PFAS (originally from `data_112028.csv`) was provided for the years "2013-2015". In order to join datasets for the processed dataset, the year category "2013-2015" was converted to 2014 to bring data to a common annual unit of analysis. 
