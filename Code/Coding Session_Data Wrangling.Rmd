@@ -28,7 +28,7 @@ colnames(Arsenic)
 head(Arsenic)
 summary(Arsenic)
 colnames(Arsenic)[6] <-c("Arsenic_ugL") 
-colnames(Arsenic[8]) <-c("ArsenicMCL")
+colnames(Arsenic)[8] <-c("MCL_Arsenic")
 colnames(Arsenic)
 
 colnames(Income)
@@ -45,13 +45,13 @@ colnames(Trihalomethane)
 head(Trihalomethane)
 summary(Trihalomethane)
 colnames(Trihalomethane)[6] <-c("TTHM_ugL")
-colnames(Trihalomethane[8]) <-c("TrihalomethaneMCL")
+colnames(Trihalomethane)[8] <-c("MCL_TTHM")
 
 colnames(Uranium)
 head(Uranium)
 summary(Uranium)
 colnames(Uranium)[6] <-c("Uranium_ugL")
-colnames(Uranium[8]) <-c("UraniumMCL")
+colnames(Uranium)[8] <-c("MCL_Uranium")
 ```
 
 ```{r}
@@ -86,8 +86,8 @@ Arsenic.Income.PFAS.Trihalomethane.Uranium <- left_join(Arsenic.Income.PFAS.Trih
 # Filtering dataset down to just necessary columns
 Water.Quality.And.Income.Processed <- 
   Arsenic.Income.PFAS.Trihalomethane.Uranium %>%
-  select(stateFIPS:Arsenic_ugL, PWS.ID:Population.Served, MHI, PFAS_ppt, TTHM_ugL, Uranium_ugL)
+  select(stateFIPS:Arsenic_ugL, PWS.ID:Population.Served, MHI, PFAS_ppt, TTHM_ugL, Uranium_ugL, MCL_TTHM, MCL_Uranium, MCL_Arsenic)
 
 # Saving processed dataset for next session
-write.csv(Water.Quality.And.Income.Processed, row.names = FALSE, file = "../Data/Processed/CDC_WaterQualityAndIncome_Processed.csv")
+write.csv(Water.Quality.And.Income.Processed, row.names = FALSE, file = "./Data/Processed/CDC_WaterQualityAndIncome_Processed.csv")
 ```
