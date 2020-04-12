@@ -2,6 +2,7 @@
 output:
   pdf_document: default
   html_document: default
+  geometry: margin=2.54cm
 ---
 
 # Repository Title: Final_Project_Environmental_Data_Analytics
@@ -75,7 +76,7 @@ Processed data files are named according to the following naming convention: `da
 
 **details** are additional descriptive details, particularly important for processed data 
 
-**stage**refers to the stage in data management pipelines (e.g., raw, cleaned, or processed)
+**stage** refers to the stage in data management pipelines (e.g., raw, cleaned, or processed)
 
 **format** is a non-proprietary file format (e.g., .csv, .txt)
 
@@ -86,7 +87,6 @@ Coding files are named according to the following naming convention:
 
 ## Metadata
 
-<For each data file in the repository, describe the data contained in each column. Include the column name, a description of the information, the class of data, and any units associated with the data. Create a list or table for each data file.> 
 
 Metadata for **raw** datasets is provided below:
 
@@ -94,123 +94,132 @@ Metadata for **raw** datasets is provided below:
 File name: data_113417.csv
 Link to footnotes: file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/Arsenic/footnotes_113417.htm
 
-`Columns`
-**stateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
-**State**: state measurement was taken in 
-**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
-**County**: county measurement was taken in
-**Year**: year measurement was taken in 
-**Value**: mean concentration of Arsenic (micrograms per liter) by year
-**Data Comment**: additional information about data
-**Maximum Contaminant Level**: whether arsenic value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL (1), Less than or Equal to MCL (2), and Not Detected (3))
-**PWS ID**: Public Water System Identification Number
-**CWS Name**: Community Water System Name
-**Population Served**: number of people served by CWS
-**Maximum Contaminant Level**:  whether arsenic value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL, Less than or Equal to MCL, and Not Detected)
+**Column heading**          | **Description of data**
+----------------------------|--------------------------------------
+stateFIPS                   |Federal Information Processing Standard state code 
+State                       |   state measurement was taken in  
+countyFIPS                  | Federal Information Processing Standard county code 
+County                      | county measurement was taken in
+Year                        | year measurement was taken in 
+Value                       | mean concentration of arsenic (micrograms per liter) by year
+Data Comment                | additional information about data
+Maximum Contaminnant Level  | whether value exceeds MCL set by the US EPA
+PWS ID                      | Public Water System Identification Number
+CWS Name                    | Community Water System Name
+Population Served           | number of people served by CWS
+Maximum Contaminnant Level  | whether value exceeds MCL set by the US EPA
+
 
 2. 
 File name: data_122206.csv
 Link to footnotes:  file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/MHI/footnotes_122206.htm
 
-`Columns`
-**stateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
-**State**: state measurement was taken in 
-**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
-**County**: county measurement was taken in
-**Year**: year measurement was taken in 
-**Value**: Median household income ($)
-**Data Comment**: additional information about data
+**Column heading**          | **Description of data**
+----------------------------|--------------------------------------
+stateFIPS                   |Federal Information Processing Standard state code 
+State                       |   state measurement was taken in  
+countyFIPS                  | Federal Information Processing Standard county code 
+County                      | county measurement was taken in
+Year                        | year measurement was taken in 
+Value                       | median household income ($)
+Data Comment                | additional information about data
 
 3.
 File name: data_112028.csv
 Link to footnotes: file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/PFAS/footnotes_112028.htm
 
-`Columns`
-**StateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
-**State**: state measurement was taken in
-**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
-**County**: county measurement was taken in
-**Year**: year measurement was taken in (in this case, data was collected only from January 2013 to December 2015) 
-**Value**: concentration of PFOS, PFAS, PFNA, PFBS, PFHxS, PFHpA (ppt/parts per trillion)
-**Data Comment**: additional information about data
-**Status**: whether chemical was detected in water system
-**PWS ID**: Public Water System Identification Number
-**CWS Name**: Community Water System Name
-**Population served**: number of people served by CWS
-**Contaminant**: type of poly- or perfluoroalkyl substance detected (e.g. PFOA, PFOS, etc.)
+**Column Heading**          | **Description of data**
+----------------------------|--------------------------------------
+stateFIPS                   |Federal Information Processing Standard state code 
+State                       |   state measurement was taken in  
+countyFIPS                  | Federal Information Processing Standard county code 
+County                      | county measurement was taken in
+Year                        | year measurement was taken in 
+Value                       | concentration of PFOS, PFAS, PFNA, PFBS, PFHxS, PFHpA (ppt/parts per trillion)
+Data Comment                | additional information about data
+Status                      | whether chemical was detected in water system
+PWS ID                      | Public Water System Identification Number
+CWS Name                    | Community Water System Name
+Population Served           | number of people served by CWS
+Contaminant                 | type of poly- or perfluoroalkyl substance detected (e.g. PFOA, PFOS, etc.)
+
 
 4.
 File name: data_122753.csv
 Link to footnontes: file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/Trihalomethane/footnotes_122754.htm
 
-`Columns`
-**stateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
-**State**: state measurement was taken in 
-**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
-**County**: county measurement was taken in
-**Year**: year measurement was taken in 
-**Value**: mean concentration of trihalomethanes (micrograms per liter) by year
-**Data Comment**: additional information about data
-**Maximum Contaminant Level**: whetherthe trihalomethane value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL (1), Less than or Equal to MCL (2), and Not Detected (3))
-**PWS ID**: Public Water System Identification Number
-**CWS Name**: Community Water System Name
-**Population Served**: number of people served by CWS
-**Maximum Contaminant Level**:  whether arsenic value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL, Less than or Equal to MCL, and Not Detected)
+**Column heading**          | **Description of data**
+----------------------------|--------------------------------------
+stateFIPS                   |Federal Information Processing Standard state code 
+State                       |   state measurement was taken in  
+countyFIPS                  | Federal Information Processing Standard county code 
+County                      | county measurement was taken in
+Year                        | year measurement was taken in 
+Value                       | mean concentration of trihalomethanes (micrograms per liter) by year
+Data Comment                | additional information about data
+Maximum Contaminnant Level  | whether value exceeds MCL set by the US EPA
+PWS ID                      | Public Water System Identification Number
+CWS Name                    | Community Water System Name
+Population Served           | number of people served by CWS
+Maximum Contaminnant Level  | whether value exceeds MCL set by the US EPA
 
 5.
 File name: data_113718.csv
 Link to footnotes:file:///Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Data/Raw/Uranium/footnotes_113719.htm
 
-`Columns`
-**stateFIPS**: Federal Information Processing Standard state code of state measurement was taken in
-**State**: state measurement was taken in 
-**countyFIPS**: Federal Information Processing Standard county code of county measurement was taken in 
-**County**: county measurement was taken in
-**Year**: year measurement was taken in 
-**Value**: mean concentration of uranium (micrograms per liter) by year
-**Data Comment**: additional information about data
-**Maximum Contaminant Level**: whether arsenic value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL (1), Less than or Equal to MCL (2), and Not Detected (3))
-**PWS ID**: Public Water System Identification Number
-**CWS Name**: Community Water System Name
-**Population Served**: number of people served by CWS
-**Maximum Contaminant Level**:  whether uranium value collected exceeds the Maximum Contaminant Level (MCL) set by the US EPA (categories include: Greater than MCL, Less than or Equal to MCL, and Not Detected)
+**Column heading**          | **Description of data**
+----------------------------|--------------------------------------
+stateFIPS                   |Federal Information Processing Standard state code 
+State                       |   state measurement was taken in  
+countyFIPS                  | Federal Information Processing Standard county code 
+County                      | county measurement was taken in
+Year                        | year measurement was taken in 
+Value                       | mean concentration of uranium (micrograms per liter) by year
+Data Comment                | additional information about data
+Maximum Contaminnant Level  | whether value exceeds MCL set by the US EPA                                   
+PWS ID                      | Public Water System Identification Number
+CWS Name                    | Community Water System Name
+Population Served           | number of people served by CWS
+Maximum Contaminnant Level  | whether value exceeds MCL set by the US EPA
+
 
 Metadata for **processed** datasets is provided below:
 
 1. File name: CDC_WaterQualityAndIncome_Processed.csv
 
-`Columns`
-**stateFIPS**
-**State**
-**countyFIPS**
-**County**
-**Year**
-**Mean arsenic concentration (ug/L)**
-**PWS.ID**
-**CWS.Name**
-**Population.Served**
-**Median household income**
-**PFAS conncentration (ppt)**
-**Mean trihalomethane concentration (ug/L)**
-**Mean uranium concentration (ug/L**)
+**Column heading**          | **Description of data**                                   |   **Class of data**
+----------------------------|-----------------------------------------------------------|----------------------------
+stateFIPS                   |Federal Information Processing Standard state code         |  factor
+State                       | state measurement was taken in                            |  character
+countyFIPS                  | Federal Information Processing Standard county code       |  factor
+County                      | county measurement was taken in                           |  character
+Year                        | year measurement was taken in                             |  numeric
+Arsenic_ugL                 | mean arsenic concentration (micrograms per liter)         |  numeric
+PWS.ID                      | Public Water System Identification Number                 |  character
+CWS.Name                    | Community Water System Name                               |  character
+Population.Served           | number of people served by CWS                            |  integer
+MHI                         | median household income ($)                               |  numeric
+PFAS_ppt                    | PFAS conncentration (parts per trillion)                  |  numeric
+TTHM_ugl                    | mean trihalomethane concentration (micrograms per liter)  |  numeric
+Uranium_ugL                 | mean uranium concentration (micrograms per liter)         |  numeric
 
 
-
-
-**especially when I decided to go from 2013-2015 to 2014 for PFAS data, to bring to a common unit of analysis, this substantially changed the meaning of the data but my rationale is x 
+**Metadata note**: data on PFAS (originally from `data_112028.csv`) was provided for the years "2013-2015". In order to join datasets for the processed dataset, the year category "2013-2015" was converted to 2014 to bring data to a common annual unit of analysis. 
 
 
 ## Scripts and code
 
-<list any software scripts/code contained in the repository and a description of their purpose.>
+Coding files for this project all exist in the R Markdown (.Rmd) format in the repository. Project coding files include the following:
 
-list of the scripts that you've created for the projects and noting what is in these, so names of the files and a description of what each file is doing e.g. "this is where i took raw data and processed it doing x, y, z...", say things like that
+**File name**                             | **Purpose**
+------------------------------------------|-----------------------------------------------------------------------
+Coding Session_Data Wrangling.Rmd         |  Wrangling data in raw datasets and joining into processed dataset 
+Coding Session_Data Exploration.Rmd       |  Exploring and wrangling data in processed dataset to prepare for analysis
+Coding Session_Visualization and Analysis | Will include statistical tests and plots to analyze data relationships
+
 
 ## Quality assurance/quality control
 
-<describe any relevant QA/QC procedures taken with your data. Some ideas can be found here:>
-<https://www.dataone.org/best-practices/develop-quality-assurance-and-quality-control-plan>
-<https://www.dataone.org/best-practices/ensure-basic-quality-control>
-<https://www.dataone.org/best-practices/communicate-data-quality>
-<https://www.dataone.org/best-practices/identify-outliers>
-<https://www.dataone.org/best-practices/identify-values-are-estimated>
+To perform quality assurance and qualitry control, measures will be taken during the data exploration phase to ensure that data ranges will be examined to make sure observations collected make sense given the unit of analysis. For instance, ranges for median household income, population served, and all drinking water contaminants should be above 0. 
+
+Additionally, during the data exploration phase, data will be visualized to attempt to detect extreme outliers that may be subject to removal. A "data flagging" column will be added to the dataset which will denote any observations the dataset that seem erroneous.
