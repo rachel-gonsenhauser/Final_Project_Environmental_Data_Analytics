@@ -28,6 +28,8 @@ colnames(Arsenic)
 head(Arsenic)
 summary(Arsenic)
 colnames(Arsenic)[6] <-c("Arsenic_ugL") 
+colnames(Arsenic[8]) <-c("ArsenicMCL")
+colnames(Arsenic)
 
 colnames(Income)
 head(Income)
@@ -43,11 +45,13 @@ colnames(Trihalomethane)
 head(Trihalomethane)
 summary(Trihalomethane)
 colnames(Trihalomethane)[6] <-c("TTHM_ugL")
+colnames(Trihalomethane[8]) <-c("TrihalomethaneMCL")
 
 colnames(Uranium)
 head(Uranium)
 summary(Uranium)
 colnames(Uranium)[6] <-c("Uranium_ugL")
+colnames(Uranium[8]) <-c("UraniumMCL")
 ```
 
 ```{r}
