@@ -57,6 +57,9 @@ Water.Quality.And.Income.Processed$stateFIPS <- as.factor(Water.Quality.And.Inco
 class(Water.Quality.And.Income.Processed$stateFIPS)
 
 # Changing contaminant and MHI variables to numeric variables
+Water.Quality.And.Income.Processed$MHI <-
+  str_replace(Water.Quality.And.Income.Processed$MHI,
+              pattern = "([,])", replacement = "")
 class(Water.Quality.And.Income.Processed$MHI)
 Water.Quality.And.Income.Processed$MHI <- as.numeric(Water.Quality.And.Income.Processed$MHI)
 class(Water.Quality.And.Income.Processed$MHI)
@@ -87,6 +90,8 @@ summary(Water.Quality.And.Income.Processed$Arsenic_ugL)
 
 ggplot(Water.Quality.And.Income.Processed) +
   geom_histogram(aes(x = Arsenic_ugL))
+
+# Arsenic levels seem high, check back to original data
 
 mean(Water.Quality.And.Income.Processed$MHI)
 sd(Water.Quality.And.Income.Processed$MHI)
