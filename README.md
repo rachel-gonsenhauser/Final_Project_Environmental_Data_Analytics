@@ -49,8 +49,6 @@ In the Raw Data folder, further descriptive subfolders are provided that charact
 
 **Project Files**: files include project instructions, a project rubric, and a template for the final project output.
 
-//
-
 File formats for the files contained in the repository include:
 `.md`: text file, such as this README file
 `.Rmd`: R markdown file, the format for all coding and output files
@@ -59,7 +57,6 @@ File formats for the files contained in the repository include:
 `.pdf`: portable document format, the format for General Information documents that accompany each individual CDC dataset
 `.htm`: HTML webpage, the format of the footnotes (metadata) documents that accompany each individual CDC dataset
 
-//
 
 Downloads from the CDC's Environmental Public Health Tracking Network included the following files named according to the following name convention in parentheses:
 `A General Information document (General_Information.pdf)`
