@@ -8,8 +8,110 @@ geometry: margin=2.54cm
 
 ##Setup 
 
-```{r}
+```{r setup, include=FALSE}
+# Setting up session
+getwd()
+library(dplyr)
+library(tidyverse)
+library(lubridate)
 
+# Pulling in processed dataset
+Water.Quality.And.Income.Processed <- read.csv("../Data/Processed/CDC_WaterQualityAndincome_Processed.csv")
+
+mytheme <- theme_classic() +
+  theme(axis.text = element_text(color = "black"), 
+        legend.position = "top")
+theme_set(mytheme)
 ```
- 
- 
+
+## Analysis using ANOVA
+
+```{r}
+Arsenic.anova <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State + Year)
+summary(Arsenic.anova)
+# Is this the right way to do this? What test should be run on this? Should be be including assumptionos test in final report?
+
+Arsenic.anova <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State + Year)
+summary(Arsenic.anova)
+
+Uranium.anova <- lm(data = Water.Quality.And.Income.Processed, Uranium_ugL ~ State + Year)
+summary(Uranium.anova)
+
+TTHM.anova <- lm(data = Water.Quality.And.Income.Processed, TTHM_ugL ~ State + Year)
+summary(TTHM.anova)
+
+PFAS.anova <- lm(data = Water.Quality.And.Income.Processed, PFAS_ppt ~ State + Year)
+summary(PFAS.anova)
+```
+
+## Massachusetts: analysis using multiple linear regression 
+
+```{r}
+# MLR for arsenic
+
+Mass.arsenic.regression <- lm(data = subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), Arsenic_ugL ~ MHI + Uranium_ugL + Population.Served)
+summary(Mass.arsenic.regression)
+
+# Preliminary plot
+
+install.packages("viridis")
+install.packages("RColorBrewer")
+install.packages("colormap")
+library(viridis)
+library(RColorBrewer)
+library(colormap)
+
+Mass.arsenic.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), 
+                 aes(x = Population.Served, y = Arsenic_ugL, color = County)) +
+  geom_point() +
+  xlim(0, 2550000) +
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
+print(Mass.arsenic.plot)
+
+summary(Massachusetts.data$Population.Served)
+
+# MLR for pop served
+
+Mass.pop.regression <- lm(data = subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), Population.Served ~ MHI + Uranium_ugL + Arsenic_ugL)
+summary(Mass.pop.regression)
+
+# Preliminary plot 
+Mass.pop.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), 
+                 aes(x = Population.Served, y = Uranium_ugL, color = County)) +
+  geom_point() +
+  xlim(0, 2550000)
+print(Mass.pop.plot)
+```
+
+##PFAS MLR analysis
+
+```{r}
+PFAS.regression <- lm(data = PFAS.data, PFAS_ppt ~ MHI + Population.Served)
+summary(PFAS.regression)
+
+PFAS.plot <- ggplot(PFAS.data, aes(x = MHI, y = PFAS_ppt, color = State)) +
+  geom_point() +
+  xlim(39860, 98312) +
+  
+print(PFAS.plot)
+
+summary(PFAS.data$MHI)
+```
+
+## Correlation plots
+
+```{r}
+install.packages("corrplot")
+library(corrplot)
+
+WaterQuality <- 
+  Water.Quality.And.Income.Processed %>%
+  select(Arsenic_ugL, PFAS_ppt, Uranium_ugL, TTHM_ugL, Population.Served) %>%
+  na.omit()
+
+WaterQualityCorr <- cor(WaterQuality) 
+corrplot(WaterQualityCorr, method = "ellipse")
+corrplot.mixed(WaterQualityCorr, upper = "ellipse")
+```
+
