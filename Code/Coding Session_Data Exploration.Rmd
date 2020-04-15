@@ -18,6 +18,11 @@ library(lubridate)
 
 # Pulling in processed dataset
 Water.Quality.And.Income.Processed <- read.csv("../Data/Processed/CDC_WaterQualityAndincome_Processed.csv")
+
+mytheme <- theme_classic() +
+  theme(axis.text = element_text(color = "black"), 
+        legend.position = "top")
+theme_set(mytheme)
 ```
 
 ## Preliminary data exploration of processed dataset
@@ -81,7 +86,7 @@ Water.Quality.And.Income.Processed$Uranium_ugL <- as.numeric(Water.Quality.And.I
 class(Water.Quality.And.Income.Processed$Uranium_ugL)
 ```
 
-## Some visualizations to explore distribution of variables 
+## Data exploration of variables in full dataset 
 
 ```{r}
 # Exploring data distributions 
@@ -156,8 +161,12 @@ Water.Quality.And.Income.Processed$Year <- as.factor(Water.Quality.And.Income.Pr
               draw_quantiles = c(0.25, 0.5, 0.75),
               scale = "count")
   #MHI seems to have a slight upward trend over time
- 
-  Massachusetts.data <- filter(Water.Quality.And.Income.Processed, State == "Massachusetts") 
+```
+
+## Massachusetts data exploration
+
+```{r}
+Massachusetts.data <- filter(Water.Quality.And.Income.Processed, State == "Massachusetts") 
   
   ggplot(Massachusetts.data) +
   geom_violin(aes(x = Year, y = Arsenic_ugL), 
@@ -182,27 +191,88 @@ ggplot(Massachusetts.data) +
 
 ggplot(Massachusetts.data) +
   geom_point(aes(x = Arsenic_ugL, y = Uranium_ugL))
+
+summary(Massachusetts.data$Arsenic_ugL)
+
+install.packages("viridis")
+install.packages("RColorBrewer")
+install.packages("colormap")
+library(viridis)
+library(RColorBrewer)
+library(colormap)
+
+Mass.arsenic.plot <-
+  ggplot(Massachusetts.data, aes(x = Year, y = Arsenic_ugL, color = MCL_Arsenic)) +
+  geom_point(alpha = 0.8, size = 2.0) +
+   labs(x = expression(Year), y = expression(Arsenic ~ (mu*g / L)),
+       color = "Maximum contaminant level", shape = "") + 
+    scale_color_brewer(palette = "Paired") +
+  theme(legend.position = "bottom",
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
+print(Mass.arsenic.plot)
+# How is it that all the "exceed MCL" values aren't at the top arsenic concentrations? Ask Kateri about this
+
+Mass.uranium.plot <-
+  ggplot(Massachusetts.data, aes(x = Year, y = Uranium_ugL, color = MCL_Uranium)) +
+    #geom_hline(yintercept = 30, lty = 1) +
+  geom_point(alpha = 0.8, size = 2.0) +
+   labs(x = expression(Year), y = expression(Uranium ~ (mu*g / L)),
+       color = "Maximum contaminant level", shape = "") + 
+    scale_color_brewer(palette = "Paired") +
+  theme(legend.position = "bottom",
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
+print(Mass.uranium.plot)
+# Is there a way to label the line? And a way to get the font in the legend cleaner?
+
+
 ```
 
-## Filtering down data to explore PFAS data
+## Northeast states data exploration
+
+```{r}
+Northeast.States.data <- 
+  filter(Water.Quality.And.Income.Processed, State == "Massachusetts" | State == "Rhode Island" | State == "New York" | State == "Connecticut" | State == "Delaware" | State == "Maine" | State == "Vermont" | State == "New Hampshire" | State == "New Jersey" | State == "Pennsylvania") 
+
+ggplot(Northeast.States.data) +
+  geom_violin(aes(x = State, y = MHI), 
+              draw_quantiles = c(0.25, 0.5, 0.75),
+              scale = "count")
+  
+ggplot(Northeast.States.data) +
+  geom_violin(aes(x = State, y = PFAS_ppt), 
+              draw_quantiles = c(0.25, 0.5, 0.75),
+              scale = "count") 
+     
+ggplot(Northeast.States.data) +
+  geom_freqpoly(aes(x = Population.Served, color = State), bins = 50) +
+  scale_x_continuous(limits = c(0, 10000)) +
+  theme(legend.position = "top")
+
+ggplot(Northeast.States.data) +
+  geom_freqpoly(aes(x = Arsenic_ugL, color = State), bins = 50) +
+  scale_x_continuous(limits = c(0, 10000)) +
+  theme(legend.position = "right")
+```
+
+
+## PFAS data exploration
 
 ```{r}
 # Filtering to 2013-2015 to explore PFAS data (data only collected over this period for PFAS)
 
 # drop_na only drops rows where NAs are present in a specified column of data whereas na.exclude and na.omit take away all rows in whole dataset where there is an NA (so using drop_NA here to just only have complete rows to compare)
 
-PFAS.data <- filter(Water.Quality.And.Income.Processed, Year == "2014") %>%
-  drop_na()
-
-# Not enough data once dropping NAs to compare PFAS to all other variables in dataset, will explore data to see if enough data to justify comparing to some only some variables for analysis later
-
-PFAS.data2 <- Water.Quality.And.Income.Processed %>%
-  filter(Year == "2014") %>%
-  select(MHI, PFAS_ppt, PWS.ID, Population.Served) %>%
+PFAS.data <- filter(Water.Quality.And.Income.Processed, Year == "2014" | Year == "2013" | Year == "2015") %>%
+  select(PFAS_ppt, Population.Served, Year, State, MHI, County, CWS.Name) %>%
   drop_na()
 
 
-# Only 89 complete observations with PFAS, so will do some analyses including and some excluding PFAS data
+ggplot(PFAS.data) +
+  geom_violin(aes(x = State, y = PFAS_ppt), 
+              draw_quantiles = c(0.25, 0.5, 0.75),
+              scale = "count") 
+
+
 
 ```
 
