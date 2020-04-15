@@ -1,0 +1,15 @@
+---
+title: "Coding Session: Data Visualization and Analysis"
+author: "Environmental Data Analytics | Rachel Gonsenhauser"
+date: "Spring 2020"
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+##Setup 
+
+```{r}
+
+```
+ 
+ 
