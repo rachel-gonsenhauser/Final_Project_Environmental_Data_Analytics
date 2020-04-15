@@ -81,6 +81,7 @@ Water.Quality.And.Income.Processed$Uranium_ugL <- as.numeric(Water.Quality.And.I
 class(Water.Quality.And.Income.Processed$Uranium_ugL)
 ```
 
+## Some visualizations to explore distribution of variables 
 
 ```{r}
 # Exploring data distributions 
@@ -91,17 +92,96 @@ summary(Water.Quality.And.Income.Processed$Arsenic_ugL)
 ggplot(Water.Quality.And.Income.Processed) +
   geom_histogram(aes(x = Arsenic_ugL))
 
-# Arsenic levels seem high, check back to original data
-
+# Arsenic levels seem high, check back to original data - this is correct, checked original data
 mean(Water.Quality.And.Income.Processed$MHI)
 sd(Water.Quality.And.Income.Processed$MHI)
 summary(Water.Quality.And.Income.Processed$MHI)
 
-  ggplot(Water.Quality.And.Income.Processed, aes(x = MHI)) +
+summary(Water.Quality.And.Income.Processed$Arsenic_ugL)
+
+# Looking at distribution of some continuous variables
+ ggplot(Water.Quality.And.Income.Processed, aes(x = MHI)) +
   geom_histogram(binwidth = 10000) + 
   scale_x_continuous(limits = c(0, 100000))
+ 
+ ggplot(Water.Quality.And.Income.Processed, aes(x = Arsenic_ugL)) +
+   geom_histogram(binwidth = 100) +
+   scale_x_continuous(limits = c(0,3000))
 
-# Something is wrong with the MHI data, when convert variables from one class to another, somehow values changed, now way too small
+# Looking at distribution of some categorial variables
+ggplot(Water.Quality.And.Income.Processed, aes(x = MCL_Arsenic)) +
+  geom_bar()
+
+ggplot(Water.Quality.And.Income.Processed, aes(x = MCL_Uranium)) +
+  geom_bar()
+
+ggplot(Water.Quality.And.Income.Processed, aes(x = MCL_TTHM)) +
+  geom_bar()
+# Lots of NAs for TTHM and Uranium MCLs
+
+# Frequency polygons for multiple continuous variables
+ggplot(Water.Quality.And.Income.Processed) +
+  geom_freqpoly(aes(x = Arsenic_ugL), bins = 50, color = "pink") +
+  geom_freqpoly(aes(x = Uranium_ugL), bins = 50, color = "royalblue") +
+  geom_freqpoly(aes(x = PFAS_ppt), bins = 50,  lty = 2, color = "orange") +
+    geom_freqpoly(aes(x = TTHM_ugL), bins = 50,  lty = 2, color = "green") +
+  scale_x_continuous(limits = c(0, 10000)) +
+   theme(legend.position = "top")
+
+ggplot(Water.Quality.And.Income.Processed) +
+  geom_freqpoly(aes(x = Uranium_ugL, color = State), bins = 50) +
+  scale_x_continuous(limits = c(0, 10000)) +
+  theme(legend.position = "top")
+
+# Box plots 
+ggplot(Water.Quality.And.Income.Processed) +
+  geom_boxplot(aes(x = Year, y = Arsenic_ugL))
+
+ggplot(Water.Quality.And.Income.Processed) +
+  geom_boxplot(aes(x = Year, y = TTHM_ugL))
+
+# Changing class of Year to factor variable
+class(Water.Quality.And.Income.Processed$Year)
+Water.Quality.And.Income.Processed$Year <- as.factor(Water.Quality.And.Income.Processed$Year)
+
+# Violin plots
+ ggplot(Water.Quality.And.Income.Processed) +
+  geom_violin(aes(x = Year, y = Arsenic_ugL), 
+              draw_quantiles = c(0.25, 0.5, 0.75),
+              scale = "count")
+ # Violin plots show similar distribution each year, median around the same place and some large value outliers every year, not much annual variation
+ 
+  ggplot(Water.Quality.And.Income.Processed) +
+  geom_violin(aes(x = Year, y = MHI), 
+              draw_quantiles = c(0.25, 0.5, 0.75),
+              scale = "count")
+  #MHI seems to have a slight upward trend over time
+ 
+  Massachusetts.data <- filter(Water.Quality.And.Income.Processed, State == "Massachusetts") 
+  
+  ggplot(Massachusetts.data) +
+  geom_violin(aes(x = Year, y = Arsenic_ugL), 
+              draw_quantiles = c(0.25, 0.5, 0.75),
+              scale = "count")
+ #Interested in looking at arsenic in Massachusetts since lots of arsenic hot spots from underlying geology, not much variation from year to year, 2003 looks interesting though
+  
+    ggplot(Massachusetts.data) +
+  geom_violin(aes(x = MCL_Arsenic, y = Population.Served), 
+              draw_quantiles = c(0.25, 0.5, 0.75),
+              scale = "count")
+  
+ # Scatterplots (relationships between continuous variables)
+ggplot(Massachusetts.data) +
+  geom_point(aes(x = MHI, y = Arsenic_ugL))
+             
+ggplot(Massachusetts.data) +
+  geom_point(aes(x = PFAS_ppt, y = Arsenic_ugL))
+             
+ggplot(Massachusetts.data) +
+  geom_point(aes(x = TTHM_ugL, y = Arsenic_ugL)) 
+
+ggplot(Massachusetts.data) +
+  geom_point(aes(x = Arsenic_ugL, y = Uranium_ugL))
 ```
 
 ## Filtering down data to explore PFAS data
