@@ -1,5 +1,5 @@
 ---
-title: "Coding Session: Data Wrangling 1"
+title: "Coding Session: Data Exploration"
 author: "Environmental Data Analytics | Rachel Gonsenhauser"
 date: "Spring 2020"
 output: pdf_document
