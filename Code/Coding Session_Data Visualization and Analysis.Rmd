@@ -30,6 +30,10 @@ theme_set(mytheme)
 Arsenic.anova <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State + Year)
 summary(Arsenic.anova)
 # Is this the right way to do this? What test should be run on this? Should be be including assumptionos test in final report?
+#format as aov to do tukey post hoc, include this in report
+#also look at interaction effect
+#Results, each p value for state means significantly different from intercept which is the first state alphabetically
+#for each in crease in year, decrease response variable by 3.15 uints, sig decrease
 
 Arsenic.anova <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State + Year)
 summary(Arsenic.anova)
@@ -92,7 +96,7 @@ summary(PFAS.regression)
 
 PFAS.plot <- ggplot(PFAS.data, aes(x = MHI, y = PFAS_ppt, color = State)) +
   geom_point() +
-  xlim(39860, 98312) +
+  xlim(39860, 98312) 
   
 print(PFAS.plot)
 

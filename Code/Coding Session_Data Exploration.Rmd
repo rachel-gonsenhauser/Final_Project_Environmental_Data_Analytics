@@ -223,6 +223,8 @@ Mass.uranium.plot <-
        legend.text = element_text(size = 12), legend.title = element_text(size = 12))
 print(Mass.uranium.plot)
 # Is there a way to label the line? And a way to get the font in the legend cleaner?
+#geom_text or annotate for label for the line for MCL
+#Adjust the factor levels for these mCL values i the dataframe itself before feeding into ggplot
 
 
 ```
