@@ -28,7 +28,6 @@ theme_set(mytheme)
 ## Preliminary data exploration of processed dataset
 
 ```{r}
-
 # Data exploration of processed dataset
 colnames(Water.Quality.And.Income.Processed)
 dim(Water.Quality.And.Income.Processed)
@@ -93,6 +92,7 @@ class(Water.Quality.And.Income.Processed$Uranium_ugL)
 ## Changing MCL column data for clearer visualiation later
 
 ```{r}
+### THIS ISN'T WORKING COME BACK LATER!
 
 #Arsenic
 levels(Water.Quality.And.Income.Processed$MCL_Arsenic) <- c(levels(Water.Quality.And.Income.Processed$MCL_Arsenic), "Greater than MCL")
@@ -112,7 +112,7 @@ levels(Water.Quality.And.Income.Processed$MCL_TTHM) <- c(levels(Water.Quality.An
 Water.Quality.And.Income.Processed$MCL_TTHM[Water.Quality.And.Income.Processed$MCL_TTHM == 'Less than or Equal to MCL (2)	'] <- 'Less than or equal to MCL'
 
 levels(Water.Quality.And.Income.Processed$MCL_TTHM) <- c(levels(Water.Quality.And.Income.Processed$MCL_TTHM), "Not detected")
-Water.Quality.And.Income.Processed$MCL_TTHM[Water.Quality.And.Income.Processed$MCL_TTHM == 'Not Detected (3)	'] <- 'Not detected'
+Water.Quality.And.Income.Processed$MCL_TTHM[Water.Quality.And.Income.Processed$MCL_TTHM == 'Not Detected (3)'] <- 'Not detected'
 
 #Uranium
 levels(Water.Quality.And.Income.Processed$MCL_Uranium) <- c(levels(Water.Quality.And.Income.Processed$MCL_Uranium), "Greater than MCL")
@@ -123,7 +123,6 @@ Water.Quality.And.Income.Processed$MCL_Uranium[Water.Quality.And.Income.Processe
 
 levels(Water.Quality.And.Income.Processed$MCL_Uranium) <- c(levels(Water.Quality.And.Income.Processed$MCL_Uranium), "Not detected")
 Water.Quality.And.Income.Processed$MCL_Uranium[Water.Quality.And.Income.Processed$MCL_Uranium == 'Not Detected (3)	'] <- 'Not detected'
-
 ```
 
 ## Data exploration of variables in full dataset 
@@ -254,7 +253,7 @@ print(Mass.arsenic.plot)
 
 Mass.uranium.plot <-
   ggplot(Massachusetts.data, aes(x = Year, y = Uranium_ugL, color = MCL_Uranium)) +
-    #geom_hline(yintercept = 30, lty = 1) +
+    geom_hline(yintercept = 30, lty = 1) +
   geom_point(alpha = 0.8, size = 2.0) +
    labs(x = expression(Year), y = expression(Uranium ~ (mu*g / L)),
        color = "Maximum contaminant level", shape = "") + 
