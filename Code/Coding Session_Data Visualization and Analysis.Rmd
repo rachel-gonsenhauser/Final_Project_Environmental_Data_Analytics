@@ -19,38 +19,147 @@ library(lubridate)
 Water.Quality.And.Income.Processed <- read.csv("../Data/Processed/CDC_WaterQualityAndincome_Processed.csv")
 
 mytheme <- theme_classic() +
-  theme(axis.text = element_text(color = "black"), 
+ theme(axis.text = element_text(color = "black"), 
         legend.position = "top")
 theme_set(mytheme)
 ```
 
-## Analysis using ANOVA
+## Southeast states
 
 ```{r}
-Arsenic.anova <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State + Year)
-summary(Arsenic.anova)
-# Is this the right way to do this? What test should be run on this? Should be be including assumptionos test in final report? no
+Water.Quality.And.Income.Processed$Year <- as.character(Water.Quality.And.Income.Processed$Year) 
+Water.Quality.And.Income.Processed$State <- as.character(Water.Quality.And.Income.Processed$State) 
+Water.Quality.And.Income.Processed$Arsenic_ugL <- as.numeric(Water.Quality.And.Income.Processed$Arsenic_ugL) 
+
+# Southeast data 
+Southeast.States.data <- 
+  filter(Water.Quality.And.Income.Processed, State == "North Carolina" | State == "South Carolina" | State == "Florida" | State == "Georgia" | State == "Virginia" | State == "Alabama" | State == "Tennessee" | State == "West Virginia" | State == "Mississippi" | State == "Kentucky" | State == "Louisiana") 
+
+
+# ANOVA
+Southeast.arsenic.anova <- lm(data = Southeast.States.data, Arsenic_ugL ~ State + Year)
+summary(Southeast.arsenic.anova)
+
+##Result: 
 #format as aov to do tukey post hoc, include this in report
 #also look at interaction effect
 #Results, each p value for state means significantly different from intercept which is the first state alphabetically
 #for each increase in year, decrease response variable by 3.15 uints, sig decrease
-
-Arsenic.anova <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State + Year)
-summary(Arsenic.anova)
-Arsenic.anova2 <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State * Year)
-summary(Arsenic.anova2)
-
-Uranium.anova <- lm(data = Water.Quality.And.Income.Processed, Uranium_ugL ~ State + Year)
-summary(Uranium.anova)
-
-TTHM.anova <- lm(data = Water.Quality.And.Income.Processed, TTHM_ugL ~ State + Year)
-summary(TTHM.anova)
-
-PFAS.anova <- lm(data = Water.Quality.And.Income.Processed, PFAS_ppt ~ State + Year)
-summary(PFAS.anova)
+##come back later
 ```
 
-## Massachusetts: analysis using multiple linear regression 
+```{r}
+# MLR
+class(Southeast.States.data$MHI) <- as.numeric(Southeast.States.data$MHI)
+
+Southeast.arsenic.regression <- lm(data = Southeast.States.data, Arsenic_ugL ~ MHI + Population.Served + Uranium_ugL + TTHM_ugL)
+summary(Southeast.arsenic.regression)
+
+# Result: in southeast states, only trihalomethane concentrations significantly predict arsenic concentrationns, with higher TTHM correlated with lower arsenic for this specific model (MLR: F-statistic=10.24, p<0.0001, DF=4 and 558)
+
+Southeast.Pop.regression <- lm(data = Southeast.States.data, Population.Served ~ Uranium_ugL + Arsenic_ugL + MHI + TTHM_ugL)
+summary(Southeast.Pop.regression)
+
+# Result: in southeast states, again only TTHM predicts size of the CWS signinficantly in this specific model, with increasing TTHM predicting increased size of the water system pop (MLR: F=2.618, DF=4 and 558, p-value=0.03431)
+
+# Will always have issues of omitted variable bias, really small R2 (0.01138 here)
+
+Southeast.MHI.regression <- lm(data = Southeast.States.data, MHI ~ Uranium_ugL + Arsenic_ugL + Population.Served)
+summary(Southeast.MHI.regression)
+
+#Result: in southeast states, uranium, arsenic, and size of CWS pop are all significant predictors of MHI. oddly enough, increasing uranium and arsenic correlate with increasing MHI....not surprisingly, increasing CWS pop served correlates with increased MHI (MLR: F-statistic=8.141, DF=3 and 1783, p<0.0001)
+
+#consider doing aic tests here
+```
+
+```{r}
+# Southeast plots
+install.packages("viridis")
+install.packages("RColorBrewer")
+install.packages("colormap")
+library(viridis)
+library(RColorBrewer)
+library(colormap)
+
+summary(Southeast.States.data$Population.Served)
+
+Southeast.arsenic.plot <- ggplot(Southeast.States.data, 
+                 aes(x = Population.Served, y = Arsenic_ugL)) +
+   geom_hline(yintercept = 10, lty = 1) +
+   geom_text(x = 2000000, y = 150, label = "Maximum contaminant level", hjust = 1) +
+  geom_point(aes(color = State)) +
+  xlim(0, 2300000) +
+     scale_color_brewer(palette = "Paired") +
+   labs(x = expression("Population served"), y = expression(Arsenic ~ (mu*g / L)),
+       color = "State", shape = "") + 
+  #scale_y_continuous(labels = waiver()) +
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+print(Southeast.arsenic.plot)
+```
+
+## Northeast states
+
+```{r}
+#Northeast data
+
+Northeast.States.data <- 
+  filter(Water.Quality.And.Income.Processed, State == "Massachusetts" | State == "Rhode Island" | State == "New York" | State == "Connecticut" | State == "Delaware" | State == "Maine" | State == "Vermont" | State == "New Hampshire" | State == "New Jersey" | State == "Pennsylvania") 
+
+class(Northeast.States.data$MHI) <- as.numeric(Northeast.States.data$MHI)
+
+#ANOVA
+
+Northeast.arsenic.anova <- lm(data = Northeast.States.data, Arsenic_ugL ~ State + Year)
+summary(Northeast.arsenic.anova)
+```
+
+```{r}
+#MLR 
+Northeast.arsenic.regression <- lm(data = Northeast.States.data, Arsenic_ugL ~ MHI + Population.Served + Uranium_ugL + TTHM_ugL)
+summary(Northeast.arsenic.regression)
+
+#Result: in northeast states, population served, uranium, and TTHM all significant predictors of arsenic concentration. increasing uranium and TTHM correalte with increasing arsenic, while increasing pop served correlates with decreased arsenic values meainng smaller utilities face more serious issues of arsenic contamination in the northeast (MLR: F-statistic=12.1, DF=4 and 505, p-value<0.0001)
+
+Northeast.Pop.regression <- lm(data = Northeast.States.data, Population.Served ~ Uranium_ugL + Arsenic_ugL + MHI + TTHM_ugL)
+summary(Northeast.Pop.regression)
+
+#Result: in northeast states, arsenic and TTHM are significant predictors of pop served by utility. increasing arsenic concentration correlates with decreasing size of CWS and surprisingly increasing TTHM correlates with larger CWS (MLR: F-statistic=19.23, DF=4 and 505, p<0.0001)
+
+Northeast.MHI.regression <- lm(data = Northeast.States.data, MHI ~ Uranium_ugL + Arsenic_ugL + Population.Served)
+summary(Northeast.MHI.regression)
+
+#Result: in northeast states, uranium and arsenic significanntly predict MHI, again surprisingly are positively correlated (MLR: F-statistic=31.33, DF=3 and 3452, p<0.0001)
+```
+
+
+```{r}
+#Northeast plots
+install.packages("viridis")
+install.packages("RColorBrewer")
+install.packages("colormap")
+library(viridis)
+library(RColorBrewer)
+library(colormap)
+
+summary(Northeast.States.data$Population.Served)
+
+Northeast.arsenic.plot <- ggplot(Northeast.States.data, 
+                 aes(x = Population.Served, y = Arsenic_ugL)) +
+   geom_hline(yintercept = 10, lty = 1) +
+   geom_text(x = 5e+06, y = 150, label = "Maximum contaminant level", hjust = 1) +
+  geom_point(aes(color = State)) +
+  xlim(0, 8271000) +
+     scale_color_brewer(palette = "Paired") +
+   labs(x = expression("Population served"), y = expression(Arsenic ~ (mu*g / L)),
+       color = "State", shape = "") + 
+  #scale_y_continuous(labels = waiver()) +
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+print(Northeast.arsenic.plot)
+```
+
+## Massachusetts 
 
 ```{r}
 # MLR for arsenic
@@ -58,14 +167,11 @@ summary(PFAS.anova)
 Mass.arsenic.regression <- lm(data = subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), Arsenic_ugL ~ MHI + Uranium_ugL + Population.Served)
 summary(Mass.arsenic.regression)
 
-# Preliminary plot
+```
 
-install.packages("viridis")
-install.packages("RColorBrewer")
-install.packages("colormap")
-library(viridis)
-library(RColorBrewer)
-library(colormap)
+```{r, echo=FALSE,error=FALSE, message=FALSE, warning=FALSE, fig.cap="Arsenic concentration in Massachusetts by size of community water system and county"}
+
+# Preliminary plot
 
 Mass.arsenic.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), 
                  aes(x = Population.Served, y = Arsenic_ugL, color = County)) +
@@ -76,9 +182,10 @@ Mass.arsenic.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == 
 print(Mass.arsenic.plot)
 
 summary(Massachusetts.data$Population.Served)
+```
 
+```{r}
 # MLR for pop served
-
 Mass.pop.regression <- lm(data = subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), Population.Served ~ MHI + Uranium_ugL + Arsenic_ugL)
 summary(Mass.pop.regression)
 
@@ -103,21 +210,5 @@ PFAS.plot <- ggplot(PFAS.data, aes(x = MHI, y = PFAS_ppt, color = State)) +
 print(PFAS.plot)
 
 summary(PFAS.data$MHI)
-```
-
-## Correlation plots
-
-```{r}
-install.packages("corrplot")
-library(corrplot)
-
-WaterQuality <- 
-  Water.Quality.And.Income.Processed %>%
-  select(Arsenic_ugL, PFAS_ppt, Uranium_ugL, TTHM_ugL, Population.Served) %>%
-  na.omit()
-
-WaterQualityCorr <- cor(WaterQuality) 
-corrplot(WaterQualityCorr, method = "ellipse")
-corrplot.mixed(WaterQualityCorr, upper = "ellipse")
 ```
 
