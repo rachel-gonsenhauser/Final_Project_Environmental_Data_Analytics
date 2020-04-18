@@ -29,14 +29,16 @@ theme_set(mytheme)
 ```{r}
 Arsenic.anova <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State + Year)
 summary(Arsenic.anova)
-# Is this the right way to do this? What test should be run on this? Should be be including assumptionos test in final report?
+# Is this the right way to do this? What test should be run on this? Should be be including assumptionos test in final report? no
 #format as aov to do tukey post hoc, include this in report
 #also look at interaction effect
 #Results, each p value for state means significantly different from intercept which is the first state alphabetically
-#for each in crease in year, decrease response variable by 3.15 uints, sig decrease
+#for each increase in year, decrease response variable by 3.15 uints, sig decrease
 
 Arsenic.anova <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State + Year)
 summary(Arsenic.anova)
+Arsenic.anova2 <- lm(data = Water.Quality.And.Income.Processed, Arsenic_ugL ~ State * Year)
+summary(Arsenic.anova2)
 
 Uranium.anova <- lm(data = Water.Quality.And.Income.Processed, Uranium_ugL ~ State + Year)
 summary(Uranium.anova)
