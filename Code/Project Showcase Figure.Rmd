@@ -1,0 +1,59 @@
+---
+title: "Project Showcase Figure"
+author: "Rachel Gonsenhauser"
+geometry: margin=2.54cm
+output:
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    number_sections: yes
+  html_document:
+    df_print: paged
+  word_document: default
+mainfont: Times New Roman
+subtitle: 
+fontsize: 12pt
+---
+
+```{r setup, include=FALSE}
+# Setting up session
+getwd()
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+
+# Pulling in processed dataset
+Water.Quality.And.Income.Processed <- read.csv("../Data/Processed/CDC_WaterQualityAndincome_Processed.csv")
+
+mytheme <- theme_classic() +
+  theme(axis.text = element_text(color = "black"), 
+        legend.position = "top")
+theme_set(mytheme)
+
+Water.Quality.And.Income.Processed$Year <- as.character(Water.Quality.And.Income.Processed$Year) 
+Water.Quality.And.Income.Processed$State <- as.character(Water.Quality.And.Income.Processed$State) 
+Water.Quality.And.Income.Processed$Arsenic_ugL <- as.numeric(Water.Quality.And.Income.Processed$Arsenic_ugL) 
+
+# Southeast data 
+Southeast.States.data <- 
+  filter(Water.Quality.And.Income.Processed, State == "North Carolina" | State == "South Carolina" | State == "Florida" | State == "Georgia" | State == "Virginia" | State == "Alabama" | State == "Tennessee" | State == "West Virginia" | State == "Mississippi" | State == "Kentucky" | State == "Louisiana") 
+
+```
+
+```{r figs, echo = FALSE, fig.height = 4, fig.width = 10, fig.cap="Mean annual arsenic concentration by size of population served by community water system (CWS) in southeastern states."}
+
+Southeast.arsenic.plot <- ggplot(Southeast.States.data, 
+                 aes(x = Population.Served, y = Arsenic_ugL)) +
+   geom_hline(yintercept = 10, lty = 1) +
+   geom_text(x = 2000000, y = 150, label = "Maximum contaminant level", hjust = 1) +
+  geom_point(aes(color = State)) +
+  xlim(0, 2300000) +
+     scale_color_brewer(palette = "Paired") +
+   labs(x = expression("Population served"), y = expression(Arsenic ~ (mu*g / L)),
+       color = "State", shape = "") + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+print(Southeast.arsenic.plot)
+```
+
+>There is a lot of variation in the mean annual concentration of arsenic in drinking water detected in small CWSs. As the amount of people served by a water system increases, the concentration of arsenic in water is less variable and is closer to the maximum contaminant level (MCL) threshold. It seems that this trend holds for most southeastern states and that Florida, North Carolina, and Kentucky are the only states with water systems that served over 1 million people (Figure 1).

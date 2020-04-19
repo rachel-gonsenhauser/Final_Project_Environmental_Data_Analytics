@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.8)  18 APR 2020 14:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.8)  19 APR 2020 11:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -459,30 +459,6 @@ Package: geometry 2018/04/16 v5.8 Page Geometry
 \Gm@layouthoffset=\dimen123
 \Gm@layoutvoffset=\dimen124
 \Gm@dimlist=\toks24
-) (/usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
-(/usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 147.
-(/usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
-)) (/usr/local/texlive/2019basic/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2019/01/15
-Style option: `fancyvrb' v3.2a <2019/01/15> (tvz)
-\FV@CodeLineNo=\count116
-\FV@InFile=\read1
-\FV@TabBox=\box29
-\c@FancyVerbLine=\count117
-\FV@StepNumber=\count118
-\FV@OutFile=\write3
-) (/Users/rachelgonsenhauser/Library/texmf/tex/latex/framed/framed.sty
-Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip48
-\fb@frw=\dimen125
-\fb@frh=\dimen126
-\FrameRule=\dimen127
-\FrameSep=\dimen128
 ) (/usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics/graphics.sty
@@ -493,9 +469,11 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
-)
-\Gin@req@height=\dimen129
-\Gin@req@width=\dimen130
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen125
+\Gin@req@width=\dimen126
 ) (/usr/local/texlive/2019basic/texmf-dist/tex/latex/oberdiek/grffile.sty
 Package: grffile 2017/06/30 v1.18 Extended file name support for graphics (HO)
 Package grffile Info: Option `multidot' is set to `true'.
@@ -505,35 +483,35 @@ Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 494.
 ) (./Project-Showcase-Figure.aux)
 \openout1 = `Project-Showcase-Figure.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 7
+8.
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 12
-0.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 78
+.
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 120.
+LaTeX Info: Redefining \microtypecontext on input line 78.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -551,8 +529,8 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-\AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 120.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring OFF on input line 78.
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -560,14 +538,14 @@ Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 y
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count119
+\c@section@level=\count116
 )
-LaTeX Info: Redefining \ref on input line 120.
-LaTeX Info: Redefining \pageref on input line 120.
-LaTeX Info: Redefining \nameref on input line 120.
+LaTeX Info: Redefining \ref on input line 78.
+LaTeX Info: Redefining \pageref on input line 78.
+LaTeX Info: Redefining \nameref on input line 78.
 (./Project-Showcase-Figure.out) (./Project-Showcase-Figure.out)
-\@outlinefile=\write4
-\openout4 = `Project-Showcase-Figure.out'.
+\@outlinefile=\write3
+\openout3 = `Project-Showcase-Figure.out'.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -605,16 +583,16 @@ LaTeX Info: Redefining \nameref on input line 120.
 
 (/usr/local/texlive/2019basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count120
-\scratchdimen=\dimen131
-\scratchbox=\box31
-\nofMPsegments=\count121
-\nofMParguments=\count122
+\scratchcounter=\count117
+\scratchdimen=\dimen127
+\scratchbox=\box30
+\nofMPsegments=\count118
+\nofMParguments=\count119
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count123
-\MPscratchDim=\dimen132
-\MPnumerator=\count124
-\makeMPintoPDFobject=\count125
+\MPscratchCnt=\count120
+\MPscratchDim=\dimen128
+\MPnumerator=\count121
+\makeMPintoPDFobject=\count122
 \everyMPtoPDFconversion=\toks26
 ) (/usr/local/texlive/2019basic/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -632,82 +610,82 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-22.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8
+0.
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-22.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8
+0.
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-122.
+80.
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-122.
+80.
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 122.
+(Font)              <14.4> on input line 80.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 122.
+(Font)              <10> on input line 80.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 122.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 122
-.
+(Font)              <7> on input line 80.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 80.
+
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2019basic/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 122
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 80.
+
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019basic/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-24.
-(/usr/local/texlive/2019basic/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 125.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 139.
+<"Project-Showcase-Figure_files/figure-latex/""figs-1".pdf, id=4, 722.7pt x 289
+.08pt>
+File: "Project-Showcase-Figure_files/figure-latex/""figs-1".pdf Graphic file (t
+ype pdf)
+<use "Project-Showcase-Figure_files/figure-latex/""figs-1".pdf>
+Package pdftex.def Info: "Project-Showcase-Figure_files/figure-latex/""figs-1".
+pdf  used on input line 83.
+(pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 98.
 [1
 
-{/usr/local/texlive/2019basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 139.
+{/usr/local/texlive/2019basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./
+Project-Showcase-Figure_files/figure-latex/figs-1.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 98.
 (./Project-Showcase-Figure.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 139.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 139.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 98.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 98.
 Package rerunfilecheck Info: File `Project-Showcase-Figure.out' has not changed
 .
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 13039 strings out of 493610
- 190622 string characters out of 6159294
- 295351 words of memory out of 5000000
- 17013 multiletter control sequences out of 15000+600000
- 27328 words of font info for 45 fonts, out of 8000000 for 9000
+ 12491 strings out of 493610
+ 182454 string characters out of 6159294
+ 284461 words of memory out of 5000000
+ 16480 multiletter control sequences out of 15000+600000
+ 26783 words of font info for 44 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 39i,6n,42p,831b,328s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,6n,42p,831b,327s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/l
 ocal/texlive/2019basic/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/t
-exlive/2019basic/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive
-/2019basic/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2019
-basic/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on Project-Showcase-Figure.pdf (1 page, 98480 bytes).
+exlive/2019basic/texmf-dist/fonts/type1/public/lm/lmr17.pfb>
+Output written on Project-Showcase-Figure.pdf (1 page, 662312 bytes).
 PDF statistics:
  30 PDF objects out of 1000 (max. 8388607)
  22 compressed objects within 1 object stream
- 2 named destinations out of 1000 (max. 500000)
- 8193 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3 named destinations out of 1000 (max. 500000)
+ 8198 words of extra memory for PDF output out of 10000 (max. 10000000)
 
