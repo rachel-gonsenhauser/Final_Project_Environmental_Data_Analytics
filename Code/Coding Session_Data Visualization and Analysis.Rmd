@@ -172,13 +172,6 @@ summary(Northeast.MHI.regression)
 
 ```{r}
 #Northeast plots
-install.packages("viridis")
-install.packages("RColorBrewer")
-install.packages("colormap")
-library(viridis)
-library(RColorBrewer)
-library(colormap)
-
 summary(Northeast.States.data$Population.Served)
 
 Northeast.arsenic.plot <- ggplot(Northeast.States.data, 
