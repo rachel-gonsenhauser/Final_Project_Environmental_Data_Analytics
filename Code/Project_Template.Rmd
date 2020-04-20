@@ -1,0 +1,106 @@
+---
+title: Analysis of drinking water water contaminant occurrence in the Northeast and
+  Southeast United States
+author: "Rachel Gonsenhauser"
+geometry: margin=2.54cm
+output:
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    number_sections: yes
+  word_document: default
+mainfont: Times New Roman
+subtitle: https://github.com/rachel-gonsenhauser/Final_Project_Environmental_Data_Analytics
+fontsize: 12pt
+---
+\newpage
+\abstract
+
+>
+
+\newpage
+\tableofcontents 
+\newpage
+\listoftables 
+\newpage
+\listoffigures 
+\newpage
+
+```{r setup, include=FALSE}
+# Set your working directory
+setwd("/Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Code")
+getwd()
+
+# Load your packages
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+#install.packages("nlme")
+#install.packages("piecewiseSEM")
+library(nlme) 
+library(agricolae)
+library(piecewiseSEM)
+#install.packages("viridis")
+#install.packages("RColorBrewer")
+#install.packages("colormap")
+library(viridis)
+library(RColorBrewer)
+library(colormap)
+library(cowplot)
+
+# Set your ggplot theme
+mytheme <- theme_classic() +
+ theme(axis.text = element_text(color = "black"), 
+        legend.position = "top")
+theme_set(mytheme)
+
+# Load your datasets
+Water.Quality.And.Income.Processed <- read.csv("../Data/Processed/CDC_WaterQualityAndincome_Processed.csv")
+```
+
+
+# Rationale and Research Questions
+
+>While the EPA establishes standards for 90 drinking water contaminants by means of the federal Safe Drinking Water Act (SDWA) and its regulations, public water systems still often struggle to remain in compliance with such policies (USEPA, 2020). This issue of compliance with the SDWA can stem from myriad causes, for instance financial capacity of the water system. This is especially concerning in areas where geologic conditions and/or anthropogenic activities frequently introduce contaminants into drinking water supplies. Additionally, some known contaminants still have yet to be regulated by the EPA, such as poly- and perfluoroaklyl substances (PFAS), which introduces even more complexity to the issue of water quality monitoring of drinking water sources. 
+
+>This analysis seeks to investigate the co-occurrence of water quality indicators including arsenic, trihalomethane, and uranium, and PFAS, which originate from both geogenic and anthropogenic sources. Additionally, given pervasive questions related to environmental justice and how socioeconomic factors may be related to water quality indicators, this analysis seeks to examine trends between water quality indicators and county-level median household income (MHI) and size of the population served by a given community water system (CWS), which is often a proxy for how rural an area is and the financial capacity of a CWS. Additionally, questions regarding how contaminant occurrence differs across time and between states are explored. 
+
+>To narrow the scope of this project, most analyses are targeted to southeastern region states and northeastern region states. Additionally, individual case studies of Massachusetts and North Carolina are explored in further depth. Due to issues of PFAS data limitations, discussed in more detail in the subsequent section, analyses using PFAS data are limited.
+ 
+>The dataset used for this analysis a processed dataset which combined individual drinking water contaminant and MHI data available from the Centers for Disease Control adn Prevention (CDC)'s National Environmental Public Health Tracking Network. 
+
+\newpage
+
+# Dataset Information
+
+
+
+\newpage
+
+# Exploratory Analysis 
+
+
+
+\newpage
+
+# Analysis
+
+
+
+## Question 1: <insert specific question here and add additional subsections for additional questions below, if needed>
+
+## Question 2: 
+
+
+
+
+\newpage
+
+# Summary and Conclusions
+
+
+\newpage
+
+# References
+>United States Environmental Protection Agency (USEPA). 2020. Safe Drinking Water Act (SDWA). Retrieved from: https://www.epa.gov/sdwa.
