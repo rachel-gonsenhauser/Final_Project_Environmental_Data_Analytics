@@ -1,0 +1,58 @@
+---
+output: 
+  pdf_document:
+    keep_tex: yes
+    fig_caption: yes
+    number_sections: yes
+geometry: margin=2.54cm
+title: "Analysis of water quality indicators"
+subtitle: "input later"
+author: "Rachel Gonsenhauser"
+fontsize: 12pt
+mainfont: Times New Roman
+
+---
+
+```{r setup, include=FALSE}
+getwd()
+library(tidyverse)
+library(knitr)
+
+Water.Quality.And.Income.Processed <- read.csv("./Data/Processed/CDC_WaterQualityAndincome_Processed.csv")
+
+mytheme <- theme_classic() +
+  theme(axis.text = element_text(color = "black"), 
+        legend.position = "top")
+theme_set(mytheme)
+```
+
+```{r, include=FALSE}
+Southeast.States.data <- 
+  filter(Water.Quality.And.Income.Processed, State == "North Carolina" | State == "South Carolina" | State == "Florida" | State == "Georgia" | State == "Virginia" | State == "Alabama" | State == "Tennessee" | State == "West Virginia" | State == "Mississippi" | State == "Kentucky" | State == "Louisiana") 
+
+#install.packages("viridis")
+#install.packages("RColorBrewer")
+#install.packages("colormap")
+library(viridis)
+library(RColorBrewer)
+library(colormap)
+library(scales)
+
+Southeast.States.data$State <- as.factor(Southeast.States.data$State)
+```
+
+```{r figs, fig.height = 4, fig.width = 10, fig.cap="Mean arsenic concentrations by population served by community water system (CWS) for southeastern states."}
+
+Southeast.arsenic.plot <- ggplot(Southeast.States.data, 
+                 aes(x = Population.Served, y = Arsenic_ugL)) +
+   geom_hline(yintercept = 10, lty = 1) +
+   geom_text(x = 2000000, y = 150, label = "Maximum contaminant level", hjust = 1) +
+  geom_point(aes(color = State)) +
+  xlim(0, 2300000) +
+     scale_color_brewer(palette = "Paired") +
+   labs(x = expression("Population served"), y = expression(Arsenic ~ (mu*g / L)),
+       color = "State", shape = "") + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+print(Southeast.arsenic.plot)
+```
