@@ -89,41 +89,6 @@ Water.Quality.And.Income.Processed$Uranium_ugL <- as.numeric(Water.Quality.And.I
 class(Water.Quality.And.Income.Processed$Uranium_ugL)
 ```
 
-## Changing MCL column data for clearer visualiation later
-
-```{r}
-### THIS ISN'T WORKING COME BACK LATER!
-
-#Arsenic
-levels(Water.Quality.And.Income.Processed$MCL_Arsenic) <- c(levels(Water.Quality.And.Income.Processed$MCL_Arsenic), "Greater than MCL")
-Water.Quality.And.Income.Processed$MCL_Arsenic[Water.Quality.And.Income.Processed$MCL_Arsenic == 'Greater than MCL (1)'] <- 'Greater than MCL'
-
-levels(Water.Quality.And.Income.Processed$MCL_Arsenic) <- c(levels(Water.Quality.And.Income.Processed$MCL_Arsenic), "Less than or equal to MCL")
-Water.Quality.And.Income.Processed$MCL_Arsenic[Water.Quality.And.Income.Processed$MCL_Arsenic == 'Less than or Equal to MCL (2)	'] <- 'Less than or equal to MCL'
-
-levels(Water.Quality.And.Income.Processed$MCL_Arsenic) <- c(levels(Water.Quality.And.Income.Processed$MCL_Arsenic), "Not detected")
-Water.Quality.And.Income.Processed$MCL_Arsenic[Water.Quality.And.Income.Processed$MCL_Arsenic == 'Not Detected (3)	'] <- 'Not detected'
-
-#TTHM
-levels(Water.Quality.And.Income.Processed$MCL_TTHM) <- c(levels(Water.Quality.And.Income.Processed$MCL_TTHM), "Greater than MCL")
-Water.Quality.And.Income.Processed$MCL_TTHM[Water.Quality.And.Income.Processed$MCL_TTHM == 'Greater than MCL (1)'] <- 'Greater than MCL'
-
-levels(Water.Quality.And.Income.Processed$MCL_TTHM) <- c(levels(Water.Quality.And.Income.Processed$MCL_TTHM), "Less than or equal to MCL")
-Water.Quality.And.Income.Processed$MCL_TTHM[Water.Quality.And.Income.Processed$MCL_TTHM == 'Less than or Equal to MCL (2)	'] <- 'Less than or equal to MCL'
-
-levels(Water.Quality.And.Income.Processed$MCL_TTHM) <- c(levels(Water.Quality.And.Income.Processed$MCL_TTHM), "Not detected")
-Water.Quality.And.Income.Processed$MCL_TTHM[Water.Quality.And.Income.Processed$MCL_TTHM == 'Not Detected (3)'] <- 'Not detected'
-
-#Uranium
-levels(Water.Quality.And.Income.Processed$MCL_Uranium) <- c(levels(Water.Quality.And.Income.Processed$MCL_Uranium), "Greater than MCL")
-Water.Quality.And.Income.Processed$MCL_Uranium[Water.Quality.And.Income.Processed$MCL_Uranium == 'Greater than MCL (1)'] <- 'Greater than MCL'
-
-levels(Water.Quality.And.Income.Processed$MCL_Uranium) <- c(levels(Water.Quality.And.Income.Processed$MCL_Uranium), "Less than or equal to MCL")
-Water.Quality.And.Income.Processed$MCL_Uranium[Water.Quality.And.Income.Processed$MCL_Uranium == 'Less than or Equal to MCL (2)	'] <- 'Less than or equal to MCL'
-
-levels(Water.Quality.And.Income.Processed$MCL_Uranium) <- c(levels(Water.Quality.And.Income.Processed$MCL_Uranium), "Not detected")
-Water.Quality.And.Income.Processed$MCL_Uranium[Water.Quality.And.Income.Processed$MCL_Uranium == 'Not Detected (3)	'] <- 'Not detected'
-```
 
 ## Data exploration of variables in full dataset 
 
@@ -232,7 +197,9 @@ ggplot(Massachusetts.data) +
   geom_point(aes(x = Arsenic_ugL, y = Uranium_ugL))
 
 summary(Massachusetts.data$Arsenic_ugL)
+```
 
+```{r}
 install.packages("viridis")
 install.packages("RColorBrewer")
 install.packages("colormap")
@@ -241,31 +208,49 @@ library(RColorBrewer)
 library(colormap)
 
 Mass.arsenic.plot <-
-  ggplot(Massachusetts.data, aes(x = Year, y = Arsenic_ugL, color = MCL_Arsenic)) +
-  geom_point(alpha = 0.8, size = 2.0) +
+  ggplot(Massachusetts.data, aes(x = Year, y = Arsenic_ugL)) +
+    geom_hline(yintercept = 10, lty = 1) +
+   geom_text(x = 2014, y = 50, label = "Maximum contaminant level", hjust = 1) +
+ geom_point(aes(color = MCL_Arsenic))  +
    labs(x = expression(Year), y = expression(Arsenic ~ (mu*g / L)),
        color = "Maximum contaminant level", shape = "") + 
     scale_color_brewer(palette = "Paired") +
   theme(legend.position = "bottom",
-       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
 print(Mass.arsenic.plot)
 # How is it that all the "exceed MCL" values aren't at the top arsenic concentrations? Ask Kateri about this, she said this looks strange, just put in the MCL as a line rather than coloring by OR could show with color to show problem I had with this in exploratory part of report
 
-Mass.uranium.plot <-
-  ggplot(Massachusetts.data, aes(x = Year, y = Uranium_ugL, color = MCL_Uranium)) +
-    geom_hline(yintercept = 30, lty = 1) +
-  geom_point(alpha = 0.8, size = 2.0) +
-   labs(x = expression(Year), y = expression(Uranium ~ (mu*g / L)),
-       color = "Maximum contaminant level", shape = "") + 
-    scale_color_brewer(palette = "Paired") +
-  theme(legend.position = "bottom",
-       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
-print(Mass.uranium.plot)
-# Is there a way to label the line? And a way to get the font in the legend cleaner?
-#geom_text or annotate for label for the line for MCL
-#Adjust the factor levels for these mCL values i the dataframe itself before feeding into ggplot
 
+# comparison of diff water contaminants over time in Massachusetts, do this for one southeastern state to for comparison
+  Arsenic.compare.plot <-
+  ggplot(Massachusetts.data, aes(x = Year, y = as.numeric(Arsenic_ugL))) +
+  geom_point(alpha = 0.7, color = "purple") +
+    geom_smooth(method = "lm", se = FALSE, color = "black") +
+   labs(x = expression("Year"), y = expression(Arsenic ~ (mu*g / L))) +
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+print(Arsenic.compare.plot)
 
+ Uranium.compare.plot <-
+  ggplot(Massachusetts.data, aes(x = Year, y = Uranium_ugL)) +
+  geom_point(alpha = 0.7, color = "dark green") +
+      geom_smooth(method = "lm", se = FALSE, color = "black") +
+   labs(x = expression("Year"), y = expression(Uranium ~ (mu*g / L))) + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+print(Uranium.compare.plot)
+
+ TTHM.compare.plot <-
+  ggplot(Massachusetts.data, aes(x = Year, y = TTHM_ugL)) +
+  geom_point(alpha = 0.7, color = "dodgerblue") +
+    geom_smooth(method = "lm", se = FALSE, color = "black") +
+   labs(x = expression("Year"), y = expression(Trihalomethane ~ (mu*g / L))) + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+print(TTHM.compare.plot)
+
+  library(cowplot)
+plot_grid(Massachusetts.data, Arsenic.compare.plot, Uranium.compare.plot, TTHM.compare.plot, ncol = 2, align = 'h', rel_heights = c(1, 1))
 ```
 
 ## Northeast states data exploration
@@ -293,6 +278,66 @@ ggplot(Northeast.States.data) +
   geom_freqpoly(aes(x = Arsenic_ugL, color = State), bins = 50) +
   scale_x_continuous(limits = c(0, 10000)) +
   theme(legend.position = "right")
+
+# Northeast states comparison of arsenic plot -- this won't run...come back!
+
+Northeast.arsenic.plot <- ggplot(Northeast.States.data, aes(x = Year, y = Arsenic_ugL, fill = State)) +
+  geom_point(shape = 21, size = 2, alpha = 0.8) + 
+       scale_color_brewer(palette = "Paired") +
+    labs(x = expression("Year"), y = expression(Arsenic ~ (mu*g / L))) + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+print(Northeast.arsenic.plot)
+```
+
+## Southeast states data exploration
+
+```{r}
+Southeast.States.data <- 
+  filter(Water.Quality.And.Income.Processed, State == "North Carolina" | State == "South Carolina" | State == "Florida" | State == "Georgia" | State == "Virginia" | State == "Alabama" | State == "Tennessee" | State == "West Virginia" | State == "Mississippi" | State == "Kentucky" | State == "Louisiana") 
+
+Southeast.arsenic.plot <- ggplot(Southeast.States.data, aes(x = Year, y = Arsenic_ugL, fill = State)) +
+  geom_point(shape = 21, size = 2, alpha = 0.8) +
+       scale_color_brewer(palette = "Paired") +
+    labs(x = expression("Year"), y = expression(Arsenic ~ (mu*g / L))) + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+print(Southeast.arsenic.plot)
+```
+## North Carolina exploration 
+
+```{r}
+
+NC.data <- filter(Water.Quality.And.Income.Processed, State == "North Carolina") 
+  
+  Arsenic.compare.plot2 <-
+  ggplot(NC.data, aes(x = Year, y = as.numeric(Arsenic_ugL))) +
+  geom_point(alpha = 0.7, color = "purple") +
+    geom_smooth(method = "lm", se = FALSE, color = "black") +
+   labs(x = expression("Year"), y = expression(Arsenic ~ (mu*g / L))) +
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+print(Arsenic.compare.plot2)
+
+ Uranium.compare.plot2 <-
+  ggplot(NC.data, aes(x = Year, y = Uranium_ugL)) +
+  geom_point(alpha = 0.7, color = "dark green") +
+      geom_smooth(method = "lm", se = FALSE, color = "black") +
+   labs(x = expression("Year"), y = expression(Uranium ~ (mu*g / L))) + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+print(Uranium.compare.plot2)
+
+ TTHM.compare.plot2 <-
+  ggplot(NC.data, aes(x = Year, y = TTHM_ugL)) +
+  geom_point(alpha = 0.7, color = "dodgerblue") +
+    geom_smooth(method = "lm", se = FALSE, color = "black") +
+   labs(x = expression("Year"), y = expression(Trihalomethane ~ (mu*g / L))) + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+print(TTHM.compare.plot2)
+
+plot_grid(NC.data, Arsenic.compare.plot2, Uranium.compare.plot2, TTHM.compare.plot2, ncol = 2, align = 'h', rel_heights = c(1, 1))
 ```
 
 
@@ -300,22 +345,29 @@ ggplot(Northeast.States.data) +
 
 ```{r}
 # Filtering to 2013-2015 to explore PFAS data (data only collected over this period for PFAS)
-
-# drop_na only drops rows where NAs are present in a specified column of data whereas na.exclude and na.omit take away all rows in whole dataset where there is an NA (so using drop_NA here to just only have complete rows to compare)
+#deciding to leave NAs in for whole dataset, no reason to drop them
 
 PFAS.data <- filter(Water.Quality.And.Income.Processed, Year == "2014" | Year == "2013" | Year == "2015") %>%
-  select(PFAS_ppt, Population.Served, Year, State, MHI, County, CWS.Name) %>%
-  drop_na()
+  select(PFAS_ppt, Population.Served, Year, State, MHI, County, CWS.Name)
 
 
-ggplot(PFAS.data) +
-  geom_violin(aes(x = State, y = PFAS_ppt), 
-              draw_quantiles = c(0.25, 0.5, 0.75),
-              scale = "count") 
+Southeast.PFAS.plot <- 
+  ggplot(subset(PFAS.data, State == "North Carolina" | State == "South Carolina" | State == "Florida" | State == "Georgia" | State == "Virginia" | State == "Alabama" | State == "Tennessee" | State == "West Virginia" | State == "Mississippi" | State == "Kentucky" | State == "Louisiana"),
+aes(x = MHI, y = PFAS_ppt, fill = State)) +
+  geom_point(shape = 21, size = 2, alpha = 0.8) +
+       scale_color_brewer(palette = "Paired") +
+    labs(x = expression("Median household income ($ per year)"), y = expression("PFAS (ppt)")) + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+print(Southeast.PFAS.plot)
 
-
-
+Northeast.PFAS.plot <- 
+  ggplot(subset(PFAS.data, State == "Massachusetts" | State == "Rhode Island" | State == "New York" | State == "Connecticut" | State == "Delaware" | State == "Maine" | State == "Vermont" | State == "New Hampshire" | State == "New Jersey" | State == "Pennsylvania"),
+aes(x = MHI, y = PFAS_ppt, fill = State)) +
+  geom_point(shape = 21, size = 2, alpha = 0.8) +
+       scale_color_brewer(palette = "Paired") +
+    labs(x = expression("Median household income ($ per year)"), y = expression("PFAS (ppt)")) + 
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+print(Northeast.PFAS.plot)
 ```
-
-
-

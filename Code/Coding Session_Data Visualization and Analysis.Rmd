@@ -37,15 +37,26 @@ Southeast.States.data <-
 
 
 # ANOVA
-Southeast.arsenic.anova <- lm(data = Southeast.States.data, Arsenic_ugL ~ State + Year)
+install.packages("nlme")
+install.packages("piecewiseSEM")
+library(nlme) 
+library(agricolae)
+library(piecewiseSEM)
+
+Southeast.arsenic.anova <- 
+  aov(data = Southeast.States.data, Arsenic_ugL ~ State * Year)
 summary(Southeast.arsenic.anova)
 
-##Result: 
-#format as aov to do tukey post hoc, include this in report
-#also look at interaction effect
-#Results, each p value for state means significantly different from intercept which is the first state alphabetically
-#for each increase in year, decrease response variable by 3.15 uints, sig decrease
-##come back later
+#In southeastern states, arsenic concentration differs significantly from year to year over the period of 1999-2018 (two-way ANOVA with interaction effects, F,19=142.31, p<0.0001). Arsenic concentration also differs significantly from state to state (two-way ANOVA with interaction effects, F,5=3346.86, p<0.0001). Additionally, there is a significant interaction between year and state on arsenic concentration (two-way ANOVA with interaction effects, F,72=24.18, p<0.0001).
+
+plot(Southeast.arsenic.anova)
+TukeyHSD(Southeast.arsenic.anova)
+
+Southeast.arsenic.groupings <- HSD.test(Southeast.arsenic.anova, 
+                         "State", group = TRUE)
+Southeast.arsenic.groupings
+
+#Post-hoc Tukey test exhibited that NC and SC were not significantly different but were significantly different from FL and LA, from KY, and from WV. Additionally, FL and LA were not significantly different but were significantly different from the rest w/r/t mean annual arsenic concentration.
 ```
 
 ```{r}
@@ -106,12 +117,38 @@ print(Southeast.arsenic.plot)
 Northeast.States.data <- 
   filter(Water.Quality.And.Income.Processed, State == "Massachusetts" | State == "Rhode Island" | State == "New York" | State == "Connecticut" | State == "Delaware" | State == "Maine" | State == "Vermont" | State == "New Hampshire" | State == "New Jersey" | State == "Pennsylvania") 
 
-class(Northeast.States.data$MHI) <- as.numeric(Northeast.States.data$MHI)
-
 #ANOVA
 
-Northeast.arsenic.anova <- lm(data = Northeast.States.data, Arsenic_ugL ~ State + Year)
+Northeast.States.data$State <- as.factor(Northeast.States.data$State)
+Northeast.States.data$Year <- as.factor(Northeast.States.data$Year)
+Northeast.States.data$Arsenic_ugL <- as.numeric(Northeast.States.data$Arsenic_ugL)
+
+Northeast.arsenic.anova <- 
+  aov(data = Northeast.States.data, Arsenic_ugL ~ State * Year)
 summary(Northeast.arsenic.anova)
+
+#In northeast states, arsenic concentration differs signficantly between states (two-way ANOVA with interaction effects, F,8: 676.69, p<0.0001). Arsenic concentration also differs significantly from year to year from 1999-2018 (two-way ANOVA with interaction effects, F,19: 89.72, p<0.0001). Additionally, there is a significant interaction effect between state and year onn arsenic concentration (two-way ANOVA with interaction effects, F,147: 13.83, p<0.0001).
+
+plot(Northeast.arsenic.anova)
+TukeyHSD(Northeast.arsenic.anova)
+
+Northeast.arsenic.groupings <- HSD.test(Northeast.arsenic.anova, 
+                         "State", group = TRUE)
+Northeast.arsenic.groupings
+
+#Post-hoc Tukey test exhibits differences between the following states (show on plot with a, b, c written out)
+
+#might be hard to do plot across so many years and states...
+#Arsenic_ugL groups
+#New Hampshire    720.1171      a
+#Massachusetts    699.9178      a
+#Connecticut      488.6614      b
+#Rhode Island     449.5769     bc
+#Maine            411.6514      c
+#Pennsylvania     304.9685      d
+#New Jersey       259.9066      e
+#New York         230.4317      f
+#Vermont          202.3668      f
 ```
 
 ```{r}
@@ -197,18 +234,65 @@ Mass.pop.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == "Mas
 print(Mass.pop.plot)
 ```
 
+## North Carolina analysis
+
+```{r}
+Water.Quality.And.Income.Processed$Arsenic_ugL <- as.numeric(Water.Quality.And.Income.Processed$Arsenic_ugL)
+Water.Quality.And.Income.Processed$MHI <- as.numeric(Water.Quality.And.Income.Processed$MHI)
+Water.Quality.And.Income.Processed$Population.Served <- as.numeric(Water.Quality.And.Income.Processed$Population.Served)
+Water.Quality.And.Income.Processed$Uranium_ugL <- as.numeric(Water.Quality.And.Income.Processed$Uranium_ugL)
+
+NC.arsenic.regression <- lm(data = subset(Water.Quality.And.Income.Processed, State == "North Carolina"), Arsenic_ugL ~ MHI + Uranium_ugL + Population.Served)
+summary(NC.arsenic.regression)
+
+#Results: Arsenic concentration in NC is significantly predicted by uranium concentration, with higher uranium correlated with higher arsenic (multiple linear regression: F=50.4, DF=3 and 599, p<0.0001). Small R2 here (0.1976) meaning that could be lots of omitted variables that also explain variation in arsenic in NC and also that relationship might be better described by a non-linear relationship...
+```
+
+```{r, echo=FALSE,error=FALSE, message=FALSE, warning=FALSE, fig.cap="Arsenic concentration in North Carolina by size of community water system and county"}
+
+# Preliminary plot, not a great plot...maybe not worth showing...? something else
+
+NC.arsenic.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == "North Carolina"), 
+                 aes(x = Population.Served, y = Arsenic_ugL)) +
+  geom_point() +
+  xlim(0, 818005) +
+    theme(legend.position = "bottom",
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
+print(NC.arsenic.plot)
+
+summary(NC.data$Population.Served)
+```
+
 ##PFAS MLR analysis
 
 ```{r}
+PFAS.data$PFAS_ppt <- as.numeric(PFAS.data$PFAS_ppt)
+PFAS.data$MHI <- as.numeric(PFAS.data$MHI)
+PFAS.data$Population.Served <- as.numeric(PFAS.data$Population.Served)
+
 PFAS.regression <- lm(data = PFAS.data, PFAS_ppt ~ MHI + Population.Served)
 summary(PFAS.regression)
 
-PFAS.plot <- ggplot(PFAS.data, aes(x = MHI, y = PFAS_ppt, color = State)) +
+#MHI and pop served by CWS are not significant predictors of PFAS for data collected (multiple linear regression: F=0.5696, DF=2 and 86, p=0.5679). Again tiny R2.
+
+PFAS.plot <- ggplot(PFAS.data, aes(x = Population.Served, y = PFAS_ppt, color = State)) +
   geom_point() +
   xlim(39860, 98312) 
-  
 print(PFAS.plot)
 
-summary(PFAS.data$MHI)
+# Try ANOVA for PFAS?
+
+PFAS.anova <- 
+  aov(data = PFAS.data, PFAS_ppt ~ State)
+summary(PFAS.anova)
+
+#PFAS does not vary significantly across states (one-way ANOVA: F=0.619, DF=17, p=0.866). Huge issue of missing data here (25,938 observations deleted due to missingness) so can't perform a robust analysis here. 
+
+plot(PFAS.anova)
+TukeyHSD(PFAS.anova)
+
+PFAS.groupings <- HSD.test(PFAS.anova, 
+                         "State", group = TRUE)
+PFAS.groupings
 ```
 
