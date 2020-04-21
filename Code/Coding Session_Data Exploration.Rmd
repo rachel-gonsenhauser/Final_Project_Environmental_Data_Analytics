@@ -42,27 +42,17 @@ class(Water.Quality.And.Income.Processed$County)
 class(Water.Quality.And.Income.Processed$PWS.ID)
 class(Water.Quality.And.Income.Processed$CWS.Name)
 
-#Changing population variable to numeric variable
+#Changing class of variables to be appropriate for analysis
+
 class(Water.Quality.And.Income.Processed$Population.Served)
 class(Water.Quality.And.Income.Processed$Population.Served) <- as.numeric(Water.Quality.And.Income.Processed$Population.Served)
-
-class(Water.Quality.And.Income.Processed$MHI)
-class(Water.Quality.And.Income.Processed$Arsenic_ugL)
-class(Water.Quality.And.Income.Processed$PFAS_ppt)
-class(Water.Quality.And.Income.Processed$TTHM_ugL)
-class(Water.Quality.And.Income.Processed$Uranium_ugL)
-class(Water.Quality.And.Income.Processed$MCL_Arsenic)
-class(Water.Quality.And.Income.Processed$MCL_TTHM)
-class(Water.Quality.And.Income.Processed$MCL_Uranium)
 
 # Changing FIPs codes to factor variables 
 class(Water.Quality.And.Income.Processed$countyFIPS)
 Water.Quality.And.Income.Processed$countyFIPS <- as.factor(Water.Quality.And.Income.Processed$countyFIPS)
-class(Water.Quality.And.Income.Processed$countyFIPS)
 
 class(Water.Quality.And.Income.Processed$stateFIPS)
 Water.Quality.And.Income.Processed$stateFIPS <- as.factor(Water.Quality.And.Income.Processed$stateFIPS)
-class(Water.Quality.And.Income.Processed$stateFIPS)
 
 # Changing contaminant and MHI variables to numeric variables
 Water.Quality.And.Income.Processed$MHI <-
@@ -70,29 +60,29 @@ Water.Quality.And.Income.Processed$MHI <-
               pattern = "([,])", replacement = "")
 class(Water.Quality.And.Income.Processed$MHI)
 Water.Quality.And.Income.Processed$MHI <- as.numeric(Water.Quality.And.Income.Processed$MHI)
-class(Water.Quality.And.Income.Processed$MHI)
 
 class(Water.Quality.And.Income.Processed$Arsenic_ugL)
 Water.Quality.And.Income.Processed$Arsenic_ugL <- as.numeric(Water.Quality.And.Income.Processed$Arsenic_ugL)
-class(Water.Quality.And.Income.Processed$Arsenic_ugL)
 
 class(Water.Quality.And.Income.Processed$PFAS_ppt)
 Water.Quality.And.Income.Processed$PFAS_ppt <- as.numeric(Water.Quality.And.Income.Processed$PFAS_ppt)
-class(Water.Quality.And.Income.Processed$PFAS_ppt)
 
 class(Water.Quality.And.Income.Processed$TTHM_ugL)
 Water.Quality.And.Income.Processed$TTHM_ugL <- as.numeric(Water.Quality.And.Income.Processed$TTHM_ugL)
-class(Water.Quality.And.Income.Processed$TTHM_ugL)
 
 class(Water.Quality.And.Income.Processed$Uranium_ugL)
 Water.Quality.And.Income.Processed$Uranium_ugL <- as.numeric(Water.Quality.And.Income.Processed$Uranium_ugL)
-class(Water.Quality.And.Income.Processed$Uranium_ugL)
 ```
 
 
 ## Data exploration of variables in full dataset 
 
 ```{r}
+#Summary info for dataset
+head(Water.Quality.And.Income.Processed$State)
+head(Water.Quality.And.Income.Processed$CWS.Name)
+summary(Water.Quality.And.Income.Processed$Year)
+
 # Exploring data distributions 
 mean(Water.Quality.And.Income.Processed$Arsenic_ugL)
 sd(Water.Quality.And.Income.Processed$Arsenic_ugL)
@@ -107,6 +97,10 @@ sd(Water.Quality.And.Income.Processed$MHI)
 summary(Water.Quality.And.Income.Processed$MHI)
 
 summary(Water.Quality.And.Income.Processed$Arsenic_ugL)
+summary(Water.Quality.And.Income.Processed$Uranium_ugL)
+summary(Water.Quality.And.Income.Processed$TTHM_ugL)
+summary(Water.Quality.And.Income.Processed$Population.Served)
+summary(Water.Quality.And.Income.Processed$PFAS_ppt)
 
 # Looking at distribution of some continuous variables
  ggplot(Water.Quality.And.Income.Processed, aes(x = MHI)) +
