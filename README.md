@@ -190,14 +190,14 @@ Metadata for **processed** datasets is provided below:
 **Column heading**          | **Description of data**                                   |   **Class of data**
 ----------------------------|-----------------------------------------------------------|----------------------------
 stateFIPS                   | Federal Information Processing Standard state code        |  factor
-State                       | state measurement was taken in                            |  character
+State                       | state measurement was taken in                            |  factor
 countyFIPS                  | Federal Information Processing Standard county code       |  factor
-County                      | county measurement was taken in                           |  character
+County                      | county measurement was taken in                           |  factor
 Year                        | year measurement was taken in                             |  numeric
 Arsenic_ugL                 | mean arsenic concentration (micrograms per liter)         |  numeric
-PWS.ID                      | Public Water System Identification Number                 |  character
-CWS.Name                    | Community Water System Name                               |  character
-Population.Served           | number of people served by CWS                            |  integer
+PWS.ID                      | Public Water System Identification Number                 |  factor
+CWS.Name                    | Community Water System Name                               |  factor
+Population.Served           | number of people served by CWS                            |  numeric
 MHI                         | median household income ($)                               |  numeric
 PFAS_ppt                    | PFAS conncentration (parts per trillion)                  |  numeric
 TTHM_ugl                    | mean trihalomethane concentration (micrograms per liter)  |  numeric
