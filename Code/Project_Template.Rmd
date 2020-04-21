@@ -82,7 +82,7 @@ options(scipen = 10)
 
 >Data used for this analysis was downloaded from the Centers for Disease Control and Prevention (CDC)'s National Environmental Public Health Tracking Network at Centers for Disease Control and Prevention (CDC)'s National Environmental Public Health Tracking Network https://ephtracking.cdc.gov/DataExplorer/#/. Output from this online tool containing geographic and CWS data associated with individual variables was combined into the final processed dataset used for this analysis.
 
->
+>The wrangling process entailed taking individual datasets containing data for arsenic, PFAS, uranium, trihalomethane, and MHI and joining them into the final processed dataset. Each of these variables had accompanying data inncluding the year, state, county, and CWS in which the data was collected for each parameter. As unique county Federal Information Processing Standards (FIPS) codes were standard across all individual datasets, this variable was used to join datasets into the final processed dataset. 
 
 
 Figure 1: Summary information for processed dataset 
@@ -117,11 +117,17 @@ MCL_Uranium                 | whether MCL for uranium is exceeded               
 MCL_Arsenic                 | whether MCL for arsenic is exceeded                       |  N/A
 
 
->It should be noted that PFAS data was only available for 2013-2015. For ease of analysis, this date range was changed to 2014 during the raw dataset wrangling process to create a common annual unit of analysis for all variables. 
+>Figure 1 provides a high level summary of the data provided in the processed dataset. It should be noted that PFAS data was only available for 2013-2015. For ease of analysis, this date range was changed to 2014 during the raw dataset wrangling process to create a common annual unit of analysis for all variables. Figure 2 provides descriptions of all variables included in the processed dataset with data ranges provided for continuous variables. 
 
 \newpage
 
 # Exploratory Analysis 
+
+## Data exploration for...
+
+```{r}
+
+```
 
 
 
@@ -129,9 +135,12 @@ MCL_Arsenic                 | whether MCL for arsenic is exceeded               
 
 # Analysis
 
-
-
 ## Question 1: <insert specific question here and add additional subsections for additional questions below, if needed>
+
+```{r}
+
+```
+
 
 ## Question 2: 
 
