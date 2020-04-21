@@ -30,7 +30,7 @@
 }
 \usepackage{hyperref}
 \hypersetup{
-            pdftitle={Analysis of drinking water water contaminant occurrence in the Northeast and Southeast United States},
+            pdftitle={Analysis of drinking water water contaminant occurrence in the northeastern and southeastern United States},
             pdfauthor={Rachel Gonsenhauser},
             pdfborder={0 0 0},
             breaklinks=true}
@@ -74,8 +74,8 @@
 }
 \makeatother
 
-\title{Analysis of drinking water water contaminant occurrence in the Northeast
-and Southeast United States}
+\title{Analysis of drinking water water contaminant occurrence in the
+northeastern and southeastern United States}
 \providecommand{\subtitle}[1]{}
 \subtitle{\url{https://github.com/rachel-gonsenhauser/Final_Project_Environmental_Data_Analytics}}
 \author{Rachel Gonsenhauser}
@@ -147,14 +147,14 @@ section, analyses using PFAS data are limited.
 Specifically, the following questions are explored in this analysis: 1.
 Do arsenic concentrations vary significantly across time and from state
 to state in northeastern and southeastern states? 2. Do socioeconomic
-factors or the presence of other conntaminants predict arsenic
+factors or the presence of other contaminants predict arsenic
 concentrations in northeastern and southeastern states? Do these same
 relationships hold in the case studies explored (Massachusetts and North
 Carolina)? 3. Do MHI and the presence of drinking water contaminants
 predict the population served by a CWS in northeastern and southeastern
 states? Do these same relationships hold in the case studies explored
 (Massachusetts and North Carolina)? 4. Do PFAS concentrations vary
-signinficantly across time and from state to state in the United States?
+signficantly across time and from state to state in the United States?
 Are socioeconomic factors significant predictors of PFAS concentrations?
 \end{quote}
 
@@ -174,6 +174,19 @@ individual variables was combined into the final processed dataset used
 for this analysis.
 \end{quote}
 
+\begin{quote}
+The wrangling process entailed taking individual datasets containing
+data for arsenic, PFAS, uranium, trihalomethane, and MHI and joining
+them into the final processed dataset. Each of these variables had
+accompanying data inncluding the year, state, county, and CWS in which
+the data was collected for each parameter. As unique county Federal
+Information Processing Standards (FIPS) codes were standard across all
+individual datasets, this variable was used to join datasets into the
+final processed dataset.
+\end{quote}
+
+Figure 1: Summary information for processed dataset
+
 \begin{longtable}[]{@{}ll@{}}
 \toprule
 \textbf{Parameter} & \textbf{Summary}\tabularnewline
@@ -188,14 +201,16 @@ Data collection time span & 1999-2018\tabularnewline
 \bottomrule
 \end{longtable}
 
+Figure 2: Description of Variables Used in Analyses
+
 \begin{longtable}[]{@{}lll@{}}
 \toprule
 \begin{minipage}[b]{0.22\columnwidth}\raggedright
-\textbf{Column heading}\strut
+\textbf{Column Heading}\strut
 \end{minipage} & \begin{minipage}[b]{0.46\columnwidth}\raggedright
-\textbf{Variable description}\strut
+\textbf{Variable Description}\strut
 \end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright
-\textbf{Data range}\strut
+\textbf{Data Range}\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
@@ -315,16 +330,208 @@ N/A\strut
 \end{longtable}
 
 \begin{quote}
-It should be noted that PFAS data was only available for 2013-2015. For
-ease of analysis, this date range was changed to 2014 during the raw
-dataset wrangling process to create a common annual unit of analysis for
-all variables.
+Figure 1 provides a high level summary of the data provided in the
+processed dataset. It should be noted that PFAS data was only available
+for 2013-2015. For ease of analysis, this date range was changed to 2014
+during the raw dataset wrangling process to create a common annual unit
+of analysis for all variables. Figure 2 provides descriptions of all
+variables included in the processed dataset with data ranges provided
+for continuous variables.
 \end{quote}
 
 \newpage
 
 \hypertarget{exploratory-analysis}{%
 \section{Exploratory Analysis}\label{exploratory-analysis}}
+
+\hypertarget{data-exploration-for-southeastern-states}{%
+\subsection{Data Exploration for Southeastern
+States}\label{data-exploration-for-southeastern-states}}
+
+Table 3: Summary Statistics for Southeastern State Variables
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Mean} & \textbf{Data Range}\tabularnewline
+\midrule
+\endhead
+MHI & \$40,848 & \$16,435-\$92,097\tabularnewline
+Population served by CWS & 14,893 people & 0-2,300,000
+people\tabularnewline
+Arsenic & 410.6 micrograms/liter & 1.0-2,395.0
+micrograms/liter\tabularnewline
+Uranium & 0.681 micrograms/liter & 0-23.84
+micrograms/liter\tabularnewline
+PFAS & 31.71 ppt & 7.0-59.00 ppt\tabularnewline
+Trihalomethane & 17.47 micrograms/liter & 0-80.00
+micrograms/liter\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+Southeastern states examined include counties with a large range of
+income levels and water system sizes; additionally, arsenic
+concentrations vary more than any other contaminant examined (Table 3).
+\end{quote}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs-1.pdf}
+\caption{Frequency of Arsenic Concentration Data in Southeastern
+states.}
+\end{figure}
+
+\begin{verbatim}
+## Warning: Removed 26290 rows containing non-finite values (stat_bin).
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs2-1.pdf}
+\caption{Frequency of PFAS Concentration Data in Southeastern states.}
+\end{figure}
+
+\begin{quote}
+Insert text here explaining what these exploratory plots
+say!!!!**********
+\end{quote}
+
+\newpage
+
+\hypertarget{data-exploration-for-northeastern-states}{%
+\subsection{Data Exploration for Northeastern
+States}\label{data-exploration-for-northeastern-states}}
+
+Table 3: Summary Statistics for Northeastern State Variables
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Mean} & \textbf{Data Range}\tabularnewline
+\midrule
+\endhead
+MHI & \$54,513 & \$26,323-\$113,336\tabularnewline
+Population served by CWS & 13,791 people & 0-8271000
+people\tabularnewline
+Arsenic & 359.2 micrograms/liter & 1.0-2,2,422.0
+micrograms/liter\tabularnewline
+Uranium & 1.75 micrograms/liter & 0-43.00
+micrograms/liter\tabularnewline
+PFAS & 29.76 ppt & 3-60.00 ppt\tabularnewline
+Trihalomethane & 10.37 micrograms/liter & 0-134.10
+micrograms/liter\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+Summary statistics for the northeastern United States indicate the the
+median household income is higher than that inn the southeast and that
+while the average water system size is similar across regions, the
+northeast has systems to serve upwards of 8 million people, as compared
+to a maxiumum size of 2 million people in the southeast (Tables 3 and
+4). Ranges and average values for water quality indicators were
+relatively similar in both regions (Tables 3 and 4).
+\end{quote}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs3-1.pdf}
+\caption{Frequency of Arsenic Concentration Data in Noutheastern
+states.}
+\end{figure}
+
+\begin{verbatim}
+## Warning: Removed 26290 rows containing non-finite values (stat_bin).
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs4-1.pdf}
+\caption{Frequency of PFAS Concentration Data in Noutheastern states.}
+\end{figure}
+
+\begin{quote}
+Results from plots here**** and talk about how very little PFAS data
+shown in these exploratory plots was the rationale behind doing this
+analysis on the side, not i the geographic groupings here beceause
+otherwise not enough data!!!!
+\end{quote}
+
+\newpage
+
+\hypertarget{case-studies-data-exploration-for-north-carolina-and-massachusetts}{%
+\subsection{Case Studies: Data Exploration for North Carolina and
+Massachusetts}\label{case-studies-data-exploration-for-north-carolina-and-massachusetts}}
+
+\begin{verbatim}
+## Warning in as_grob.default(plot): Cannot convert object of class data.frame into
+## a grob.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 2865 rows containing non-finite values (stat_smooth).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 2865 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 2810 rows containing non-finite values (stat_smooth).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 2810 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Graphs cannot be horizontally aligned unless the axis parameter is set.
+## Placing graphs unaligned.
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs5-1.pdf}
+\caption{Water contaminant concentrations over time in North Carolina.}
+\end{figure}
+
+\begin{verbatim}
+## Warning in as_grob.default(plot): Cannot convert object of class data.frame into
+## a grob.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 3509 rows containing non-finite values (stat_smooth).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 3509 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 3321 rows containing non-finite values (stat_smooth).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 3321 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Graphs cannot be horizontally aligned unless the axis parameter is set.
+## Placing graphs unaligned.
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs6-1.pdf}
+\caption{Water contaminant concentrations over time in Massachusetts.}
+\end{figure}
+
+\begin{quote}
+Write findings here!! Relatively flat trend for all three contaminants
+over 19 year period of data collection for NC, whereas uranium in MA
+over time seems to be decreasingn, trihalo is slightly increasing, and
+arsenic decreasing on average though still very high concentratiosn
+\end{quote}
 
 \newpage
 
