@@ -105,7 +105,7 @@ summary(Water.Quality.And.Income.Processed$PFAS_ppt)
 # Looking at distribution of some continuous variables
  ggplot(Water.Quality.And.Income.Processed, aes(x = MHI)) +
   geom_histogram(binwidth = 10000) + 
-  scale_x_continuous(limits = c(0, 100000))
+  scale_x_continuous(limits = c(0, 100000)) 
  
  ggplot(Water.Quality.And.Income.Processed, aes(x = Arsenic_ugL)) +
    geom_histogram(binwidth = 100) +
@@ -126,8 +126,8 @@ ggplot(Water.Quality.And.Income.Processed, aes(x = MCL_TTHM)) +
 ggplot(Water.Quality.And.Income.Processed) +
   geom_freqpoly(aes(x = Arsenic_ugL), bins = 50, color = "pink") +
   geom_freqpoly(aes(x = Uranium_ugL), bins = 50, color = "royalblue") +
-  geom_freqpoly(aes(x = PFAS_ppt), bins = 50,  lty = 2, color = "orange") +
-    geom_freqpoly(aes(x = TTHM_ugL), bins = 50,  lty = 2, color = "green") +
+  geom_freqpoly(aes(x = PFAS_ppt), bins = 50, color = "orange") +
+    geom_freqpoly(aes(x = TTHM_ugL), bins = 50, color = "green") +
   scale_x_continuous(limits = c(0, 10000)) +
    theme(legend.position = "top")
 
