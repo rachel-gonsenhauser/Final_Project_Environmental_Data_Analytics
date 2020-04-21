@@ -35,6 +35,9 @@ Water.Quality.And.Income.Processed$Arsenic_ugL <- as.numeric(Water.Quality.And.I
 Southeast.States.data <- 
   filter(Water.Quality.And.Income.Processed, State == "North Carolina" | State == "South Carolina" | State == "Florida" | State == "Georgia" | State == "Virginia" | State == "Alabama" | State == "Tennessee" | State == "West Virginia" | State == "Mississippi" | State == "Kentucky" | State == "Louisiana") 
 
+South.carolina.data <- Southeast.States.data %>%
+  filter(State == "South Carolina")
+summary(South.carolina.data$Arsenic_ugL)
 
 # ANOVA
 install.packages("nlme")
