@@ -49,9 +49,7 @@ summary(Southeast.arsenic.anova)
 
 #In southeastern states, arsenic concentration differs significantly from year to year over the period of 1999-2018 (two-way ANOVA with interaction effects, F,19=142.31, p<0.0001). Arsenic concentration also differs significantly from state to state (two-way ANOVA with interaction effects, F,5=3346.86, p<0.0001). Additionally, there is a significant interaction between year and state on arsenic concentration (two-way ANOVA with interaction effects, F,72=24.18, p<0.0001).
 
-plot(Southeast.arsenic.anova)
 TukeyHSD(Southeast.arsenic.anova)
-
 Southeast.arsenic.groupings <- HSD.test(Southeast.arsenic.anova, 
                          "State", group = TRUE)
 Southeast.arsenic.groupings
@@ -129,9 +127,8 @@ summary(Northeast.arsenic.anova)
 
 #In northeast states, arsenic concentration differs signficantly between states (two-way ANOVA with interaction effects, F,8: 676.69, p<0.0001). Arsenic concentration also differs significantly from year to year from 1999-2018 (two-way ANOVA with interaction effects, F,19: 89.72, p<0.0001). Additionally, there is a significant interaction effect between state and year onn arsenic concentration (two-way ANOVA with interaction effects, F,147: 13.83, p<0.0001).
 
-plot(Northeast.arsenic.anova)
-TukeyHSD(Northeast.arsenic.anova)
 
+TukeyHSD(Northeast.arsenic.anova)
 Northeast.arsenic.groupings <- HSD.test(Northeast.arsenic.anova, 
                          "State", group = TRUE)
 Northeast.arsenic.groupings
@@ -202,11 +199,12 @@ summary(Mass.arsenic.regression)
 ```{r, echo=FALSE,error=FALSE, message=FALSE, warning=FALSE, fig.cap="Arsenic concentration in Massachusetts by size of community water system and county"}
 
 # Preliminary plot
-
+#not enough colors in palette for all counties, so change if i include by county
 Mass.arsenic.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), 
                  aes(x = Population.Served, y = Arsenic_ugL, color = County)) +
   geom_point() +
   xlim(0, 2550000) +
+  scale_color_brewer(palette = "Paired") +
     theme(legend.position = "bottom",
        legend.text = element_text(size = 12), legend.title = element_text(size = 12))
 print(Mass.arsenic.plot)
@@ -219,12 +217,7 @@ summary(Massachusetts.data$Population.Served)
 Mass.pop.regression <- lm(data = subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), Population.Served ~ MHI + Uranium_ugL + Arsenic_ugL)
 summary(Mass.pop.regression)
 
-# Preliminary plot 
-Mass.pop.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), 
-                 aes(x = Population.Served, y = Uranium_ugL, color = County)) +
-  geom_point() +
-  xlim(0, 2550000)
-print(Mass.pop.plot)
+#plot here? think about it
 ```
 
 ## North Carolina analysis
@@ -243,22 +236,42 @@ summary(NC.arsenic.regression)
 
 ```{r, echo=FALSE,error=FALSE, message=FALSE, warning=FALSE, fig.cap="Arsenic concentration in North Carolina by size of community water system and county"}
 
-# Preliminary plot, not a great plot...maybe not worth showing...? something else
+# SHOW THIS PLOT IN FINAL
 
 NC.arsenic.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == "North Carolina"), 
-                 aes(x = Population.Served, y = Arsenic_ugL)) +
+                 aes(x = Population.Served, y = Arsenic_ugL, color = MHI)) +
   geom_point() +
   xlim(0, 818005) +
-    theme(legend.position = "bottom",
+  scale_color_continuous(type = "viridis") +
+    labs(x = "Population served", y = expression(Arsenic ~ (mu*g / L)),
+       color = "Median household income", shape = "") +
+    theme(legend.position = "right",
        legend.text = element_text(size = 12), legend.title = element_text(size = 12))
 print(NC.arsenic.plot)
 
 summary(NC.data$Population.Served)
+
+# Trying to make same plot for MAssachusetts
+
+MA.arsenic.plot <- ggplot(subset(Water.Quality.And.Income.Processed, State == "Massachusetts"), 
+                 aes(x = Population.Served, y = Arsenic_ugL, color = MHI)) +
+  geom_point() +
+  xlim(0, 818005) +
+  scale_color_continuous(type = "viridis") +
+    labs(x = "Population served", y = expression(Arsenic ~ (mu*g / L)),
+       color = "Median household income", shape = "") +
+    theme(legend.position = "right",
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
+print(MA.arsenic.plot)
+
 ```
 
 ##PFAS MLR analysis
 
 ```{r}
+PFAS.data <- filter(Water.Quality.And.Income.Processed, Year == "2014" | Year == "2013" | Year == "2015") %>%
+  select(PFAS_ppt, Population.Served, Year, State, MHI, County, CWS.Name)
+
 PFAS.data$PFAS_ppt <- as.numeric(PFAS.data$PFAS_ppt)
 PFAS.data$MHI <- as.numeric(PFAS.data$MHI)
 PFAS.data$Population.Served <- as.numeric(PFAS.data$Population.Served)
@@ -268,9 +281,14 @@ summary(PFAS.regression)
 
 #MHI and pop served by CWS are not significant predictors of PFAS for data collected (multiple linear regression: F=0.5696, DF=2 and 86, p=0.5679). Again tiny R2.
 
-PFAS.plot <- ggplot(PFAS.data, aes(x = Population.Served, y = PFAS_ppt, color = State)) +
-  geom_point() +
-  xlim(39860, 98312) 
+PFAS.plot <- ggplot(PFAS.data, aes(x = Population.Served, y = PFAS_ppt, color = MHI)) +
+ geom_point() +
+  xlim(0, 3e+06) +
+  scale_color_continuous(type = "viridis") +
+    labs(x = "Population served", y = expression("PFAS (ppt)"),
+       color = "Median household income", shape = "") +
+    theme(legend.position = "right",
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
 print(PFAS.plot)
 
 # Try ANOVA for PFAS?
@@ -281,9 +299,7 @@ summary(PFAS.anova)
 
 #PFAS does not vary significantly across states (one-way ANOVA: F=0.619, DF=17, p=0.866). Huge issue of missing data here (25,938 observations deleted due to missingness) so can't perform a robust analysis here. 
 
-plot(PFAS.anova)
 TukeyHSD(PFAS.anova)
-
 PFAS.groupings <- HSD.test(PFAS.anova, 
                          "State", group = TRUE)
 PFAS.groupings
