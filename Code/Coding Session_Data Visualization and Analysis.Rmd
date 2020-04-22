@@ -135,20 +135,6 @@ TukeyHSD(Northeast.arsenic.anova)
 Northeast.arsenic.groupings <- HSD.test(Northeast.arsenic.anova, 
                          "State", group = TRUE)
 Northeast.arsenic.groupings
-
-#Post-hoc Tukey test exhibits differences between the following states (show on plot with a, b, c written out)
-
-#might be hard to do plot across so many years and states...
-#Arsenic_ugL groups
-#New Hampshire    720.1171      a
-#Massachusetts    699.9178      a
-#Connecticut      488.6614      b
-#Rhode Island     449.5769     bc
-#Maine            411.6514      c
-#Pennsylvania     304.9685      d
-#New Jersey       259.9066      e
-#New York         230.4317      f
-#Vermont          202.3668      f
 ```
 
 ```{r}
