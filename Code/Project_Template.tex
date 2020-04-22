@@ -141,21 +141,15 @@ the underlying geology in New England and other northeastern states,
 arsenic data is used is many of the analyses performed. Due to issues of
 PFAS data limitations, discussed in more detail in the subsequent
 section, analyses using PFAS data are limited.
-\end{quote}
 
-\begin{quote}
-Specifically, the following questions are explored in this analysis: 1.
-Do arsenic concentrations vary significantly across time and from state
-to state in northeastern and southeastern states? 2. Do socioeconomic
-factors or the presence of other contaminants predict arsenic
-concentrations in northeastern and southeastern states? Do these same
-relationships hold in the case studies explored (Massachusetts and North
-Carolina)? 3. Do MHI and the presence of drinking water contaminants
-predict the population served by a CWS in northeastern and southeastern
-states? Do these same relationships hold in the case studies explored
-(Massachusetts and North Carolina)? 4. Do PFAS concentrations vary
-signficantly across time and from state to state in the United States?
-Are socioeconomic factors significant predictors of PFAS concentrations?
+Specifically, the following questions are explored in this analysis:
+Question 1: Do arsenic concentrations vary significantly from state to
+state in northeastern and southeastern states? Question 2: Do
+socioeconomic factors or the presence of other contaminants predict
+arsenic concentrations in Massachusetts and North Carolina? Question 3:
+Do PFAS concentrations vary signficantly across time and from state to
+state in the United States? Are socioeconomic factors significant
+predictors of PFAS concentrations?
 \end{quote}
 
 \newpage
@@ -538,18 +532,162 @@ arsenic decreasing on average though still very high concentratiosn
 \hypertarget{analysis}{%
 \section{Analysis}\label{analysis}}
 
-\hypertarget{question-1-insert-specific-question-here-and-add-additional-subsections-for-additional-questions-below-if-needed}{%
-\subsection{Question 1: \textless{}insert specific question here and add
-additional subsections for additional questions below, if
-needed\textgreater{}}\label{question-1-insert-specific-question-here-and-add-additional-subsections-for-additional-questions-below-if-needed}}
+\hypertarget{question-1-do-arsenic-concentrations-vary-significantly-from-state-to-state-in-northeastern-and-southeastern-states}{%
+\subsection{Question 1: Do arsenic concentrations vary significantly
+from state to state in northeastern and southeastern
+states?}\label{question-1-do-arsenic-concentrations-vary-significantly-from-state-to-state-in-northeastern-and-southeastern-states}}
 
-\hypertarget{question-2}{%
-\subsection{Question 2:}\label{question-2}}
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs7-1.pdf}
+\caption{State by state comparison of arsenic values for southeastern
+states.}
+\end{figure}
+
+\begin{quote}
+Mean annual arsenic concentrations differ significantly between states
+in the southeast (ANOVA; df=5, F=2872, p \textless{}0.0001). Mean
+arsenic concentrations in West Virginia were significantly lower than in
+other states and those in North Carolina and South Carolina were
+significantly higher than those in other states (Post-hoc Tukey test;
+Figure 7).
+\end{quote}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs8-1.pdf}
+\caption{State by state comparison of arsenic values for northeastern
+states.}
+\end{figure}
+
+\begin{quote}
+Meaan annual arsenic concentrations also differ significantly between
+states in the northeast (ANOVA; df=8, F=630.9, p\textless{}0.0001). Mean
+arsenic concentrations in New York and Vermont were significantly lower
+than in other states and those in New Hampshire and Massachusetts were
+significantly higher than those in other states (Post-hoc Tukey test;
+Figure 8).
+\end{quote}
+
+\hypertarget{question-2-do-socioeconomic-factors-or-the-presence-of-other-contaminants-predict-arsenic-concentrations-in-massachusetts-and-north-carolina}{%
+\subsection{Question 2: Do socioeconomic factors or the presence of
+other contaminants predict arsenic concentrations in Massachusetts and
+North
+Carolina?}\label{question-2-do-socioeconomic-factors-or-the-presence-of-other-contaminants-predict-arsenic-concentrations-in-massachusetts-and-north-carolina}}
+
+\begin{quote}
+For both states, uranium was explored as an explanatory variable but was
+ultimately removed from both models for improved parsimony. Final
+variables included to explain arsenic concentration included
+trihalomethane concentration, MHI, and population served by the CWS for
+both states.
+\end{quote}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs9-1.pdf}
+\caption{North Carolina Arsenic Concentrations by Population Served by
+CWS Across Income Levels.}
+\end{figure}
+
+\begin{quote}
+In North Carolina, population served by a CWS and trihalomethane
+concentrations significantly predict arsenic concentrations, whereas MHI
+is not a significant predictor of arsenic concentration (Multiple linear
+regression; df=3 and 654, F=34.74, p\textless{}0.0001). Inreasing
+arsenic concentration is associated with increasing trihalomethane
+concentration and with decreasing population size served by a CWS.
+\end{quote}
+
+\begin{verbatim}
+## Warning: Removed 18 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs10-1.pdf}
+\caption{Massachusetts Arsenic Concentrations by Population Served by
+CWS Across Income Levels.}
+\end{figure}
+
+\begin{quote}
+In Massachusetts, population served by a CWS, trihalomethane
+concentrations, and MHI do not significantly predict arsenic
+conncentrations (Multiple linear regressio; df=3 annd 242, F-1.664,
+p=0.1753). Figure 9 \ldots{}..FINISH LATER!! TALK ABOUT WHAT MCLS are
+and what they are set to!!!!!
+\end{quote}
+
+\begin{verbatim}
+## Warning: Removed 2810 rows containing non-finite values (stat_smooth).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 2810 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 3321 rows containing non-finite values (stat_smooth).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 3321 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs11-1.pdf}
+\caption{North Carolina v. Massachusetts: Arsenic Concentrations by
+Trihalomethane Concentration.}
+\end{figure}
+
+\begin{quote}
+TAKEAWAY HERE!
+\end{quote}
+
+\hypertarget{question-3.-do-pfas-concentrations-vary-signficantly-across-time-and-from-state-to-state-in-the-united-states-are-socioeconomic-factors-significant-predictors-of-pfas-concentrations}{%
+\subsection{Question 3. Do PFAS concentrations vary signficantly across
+time and from state to state in the United States? Are socioeconomic
+factors significant predictors of PFAS
+concentrations?}\label{question-3.-do-pfas-concentrations-vary-signficantly-across-time-and-from-state-to-state-in-the-united-states-are-socioeconomic-factors-significant-predictors-of-pfas-concentrations}}
+
+\begin{quote}
+Neither MHI nor population served by a CWS significantly predict PFAS
+concentrations (Multiple linear regression; F=2 and 86, F=0.5912,
+p=0.5559). An ANOVA was also run in preliminary analyses conducted for
+PFAS data, but results are not included here due to issues with
+missingness (25,938 observations were deleted when ANOVA was run).
+\end{quote}
+
+\begin{verbatim}
+## Warning: Removed 25946 rows containing non-finite values (stat_smooth).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 25946 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs12-1.pdf}
+\caption{PFAS Concentration by Population Served by CWS Across Income
+Levels.}
+\end{figure}
 
 \newpage
 
 \hypertarget{summary-and-conclusions}{%
 \section{Summary and Conclusions}\label{summary-and-conclusions}}
+
+\begin{quote}
+talk about implications of findings\ldots{} Omitted variable bias: R2s
+for all models were very low, talk about this Future: given scope of
+project, couldn't possibly look in depth at each conntamiannt, so i nthe
+future would be interested in exploring relationships for uranium and
+TTHM such as those explored here for arsenic\ldots{}it's possible that
+since arsenic is so ubiquitous inn geology that other contaminants could
+have diff relationships with income for example\ldots{}
+\end{quote}
 
 \newpage
 
