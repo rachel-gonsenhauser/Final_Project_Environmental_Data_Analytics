@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.8)  22 APR 2020 12:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.8)  22 APR 2020 22:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -724,10 +724,10 @@ File: "Project_Template_files/figure-latex/""figs-1".pdf Graphic file (type pdf
 )
 <use "Project_Template_files/figure-latex/""figs-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs-1".pdf  us
-ed on input line 373.
+ed on input line 374.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-78.
+79.
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -737,7 +737,7 @@ File: "Project_Template_files/figure-latex/""figs2-1".pdf Graphic file (type pd
 f)
 <use "Project_Template_files/figure-latex/""figs2-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs2-1".pdf  u
-sed on input line 384.
+sed on input line 385.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 [9 <./Project_Template_files/figure-latex/figs-1.pdf>]
 <"Project_Template_files/figure-latex/""figs3-1".pdf, id=163, 722.7pt x 289.08p
@@ -746,7 +746,7 @@ File: "Project_Template_files/figure-latex/""figs3-1".pdf Graphic file (type pd
 f)
 <use "Project_Template_files/figure-latex/""figs3-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs3-1".pdf  u
-sed on input line 431.
+sed on input line 432.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 <"Project_Template_files/figure-latex/""figs4-1".pdf, id=164, 722.7pt x 289.08p
 t>
@@ -754,20 +754,20 @@ File: "Project_Template_files/figure-latex/""figs4-1".pdf Graphic file (type pd
 f)
 <use "Project_Template_files/figure-latex/""figs4-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs4-1".pdf  u
-sed on input line 442.
+sed on input line 443.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 
 Overfull \vbox (149.55965pt too high) has occurred while \output is active []
 
 [10 <./Project_Template_files/figure-latex/figs2-1.pdf> <./Project_Template_fil
 es/figure-latex/figs3-1.pdf>]
-Overfull \hbox (36.76419pt too wide) in paragraph at lines 462--462
+Overfull \hbox (36.76419pt too wide) in paragraph at lines 463--463
  []\T1/lmtt/m/n/10.95 ## Warning in as_grob.default(plot): Cannot convert objec
 t of class data.frame into[] 
  []
 
 
-Overfull \hbox (36.76419pt too wide) in paragraph at lines 483--483
+Overfull \hbox (36.76419pt too wide) in paragraph at lines 484--484
  []\T1/lmtt/m/n/10.95 ## Warning: Graphs cannot be horizontally aligned unless 
 the axis parameter is set.[] 
  []
@@ -778,16 +778,16 @@ File: "Project_Template_files/figure-latex/""figs5-1".pdf Graphic file (type pd
 f)
 <use "Project_Template_files/figure-latex/""figs5-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs5-1".pdf  u
-sed on input line 487.
+sed on input line 488.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 
-Overfull \hbox (36.76419pt too wide) in paragraph at lines 494--494
+Overfull \hbox (36.76419pt too wide) in paragraph at lines 495--495
  []\T1/lmtt/m/n/10.95 ## Warning in as_grob.default(plot): Cannot convert objec
 t of class data.frame into[] 
  []
 
 
-Overfull \hbox (36.76419pt too wide) in paragraph at lines 515--515
+Overfull \hbox (36.76419pt too wide) in paragraph at lines 516--516
  []\T1/lmtt/m/n/10.95 ## Warning: Graphs cannot be horizontally aligned unless 
 the axis parameter is set.[] 
  []
@@ -798,7 +798,7 @@ File: "Project_Template_files/figure-latex/""figs6-1".pdf Graphic file (type pd
 f)
 <use "Project_Template_files/figure-latex/""figs6-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs6-1".pdf  u
-sed on input line 519.
+sed on input line 520.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 [11 <./Project_Template_files/figure-latex/figs4-1.pdf>] [12 <./Project_Templat
 e_files/figure-latex/figs5-1.pdf> <./Project_Template_files/figure-latex/figs6-
@@ -809,7 +809,7 @@ File: "Project_Template_files/figure-latex/""figs7-1".pdf Graphic file (type pd
 f)
 <use "Project_Template_files/figure-latex/""figs7-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs7-1".pdf  u
-sed on input line 542.
+sed on input line 543.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 <"Project_Template_files/figure-latex/""figs8-1".pdf, id=219, 722.7pt x 289.08p
 t>
@@ -817,7 +817,7 @@ File: "Project_Template_files/figure-latex/""figs8-1".pdf Graphic file (type pd
 f)
 <use "Project_Template_files/figure-latex/""figs8-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs8-1".pdf  u
-sed on input line 558.
+sed on input line 559.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 [13 <./Project_Template_files/figure-latex/figs7-1.pdf> <./Project_Template_fil
 es/figure-latex/figs8-1.pdf>]
@@ -827,7 +827,7 @@ File: "Project_Template_files/figure-latex/""figs9-1".pdf Graphic file (type pd
 f)
 <use "Project_Template_files/figure-latex/""figs9-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs9-1".pdf  u
-sed on input line 588.
+sed on input line 589.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 <"Project_Template_files/figure-latex/""figs10-1".pdf, id=240, 722.7pt x 289.08
 pt>
@@ -835,7 +835,7 @@ File: "Project_Template_files/figure-latex/""figs10-1".pdf Graphic file (type p
 df)
 <use "Project_Template_files/figure-latex/""figs10-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs10-1".pdf  
-used on input line 608.
+used on input line 613.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 [14 <./Project_Template_files/figure-latex/figs9-1.pdf>]
 <"Project_Template_files/figure-latex/""figs11-1".pdf, id=253, 722.7pt x 289.08
@@ -844,7 +844,7 @@ File: "Project_Template_files/figure-latex/""figs11-1".pdf Graphic file (type p
 df)
 <use "Project_Template_files/figure-latex/""figs11-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs11-1".pdf  
-used on input line 639.
+used on input line 644.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 [15 <./Project_Template_files/figure-latex/figs10-1.pdf> <./Project_Template_fi
 les/figure-latex/figs11-1.pdf>]
@@ -854,24 +854,24 @@ File: "Project_Template_files/figure-latex/""figs12-1".pdf Graphic file (type p
 df)
 <use "Project_Template_files/figure-latex/""figs12-1".pdf>
 Package pdftex.def Info: "Project_Template_files/figure-latex/""figs12-1".pdf  
-used on input line 672.
+used on input line 678.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
 [16 <./Project_Template_files/figure-latex/figs12-1.pdf>] [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 703.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 710.
 [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 703.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 710.
 (./Project_Template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 703.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 703.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 710.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 710.
 Package rerunfilecheck Info: File `Project_Template.out' has not changed.
 (rerunfilecheck)             Checksum: 3CDD966ED61B7B060BB7C814BD223F3B;4351.
  ) 
 Here is how much of TeX's memory you used:
- 12995 strings out of 493610
- 192675 string characters out of 6159294
- 301422 words of memory out of 5000000
+ 12993 strings out of 493610
+ 192653 string characters out of 6159294
+ 302422 words of memory out of 5000000
  16831 multiletter control sequences out of 15000+600000
- 56612 words of font info for 95 fonts, out of 8000000 for 9000
+ 56529 words of font info for 94 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  39i,6n,42p,1104b,463s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/l
@@ -881,7 +881,7 @@ ve/2019basic/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/201
 9basic/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2019basic
 /texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2019basic/texmf
 -dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on Project_Template.pdf (18 pages, 695152 bytes).
+Output written on Project_Template.pdf (18 pages, 695005 bytes).
 PDF statistics:
  339 PDF objects out of 1000 (max. 8388607)
  283 compressed objects within 3 object streams
