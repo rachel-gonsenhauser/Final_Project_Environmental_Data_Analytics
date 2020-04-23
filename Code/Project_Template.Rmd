@@ -99,9 +99,9 @@ To narrow the scope of this project, most analyses are targeted to southeastern 
 As arsenic is present in much of the underlying geology in many states in both the northeast and southeast, arsenic concentration data is predominant focus of most analyses performed. Given that PFAS are emerging, synthetic contaminants that have become the focus of many analyses in the scientific community, PFAS data is also explored in depth. Due to data limitations however, discussed in more detail in the subsequent section, analyses using PFAS data herein are limited.
 
 Specifically, the subsequent analysis explores the following questions:
-**Question 1:** Do arsenic concentrations vary significantly from state to state in northeastern and southeastern states?
-**Question 2:** Do socioeconomic factors or the presence of other contaminants predict arsenic concentrations in Massachusetts and North Carolina?
-**Question 3.** Are socioeconomic factors significant predictors of PFAS concentrations?
+* **Question 1:** Do arsenic concentrations vary significantly from state to state in northeastern and southeastern states?
+* **Question 2:** Do socioeconomic factors or the presence of other contaminants predict arsenic concentrations in Massachusetts and North Carolina?
+* **Question 3.** Are socioeconomic factors significant predictors of PFAS concentrations?
 
 
 \newpage
