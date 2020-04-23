@@ -36,14 +36,14 @@ library(dplyr)
 library(tidyverse)
 library(lubridate)
 library(ggplot2)
-install.packages("nlme")
-install.packages("piecewiseSEM")
+#install.packages("nlme")
+#install.packages("piecewiseSEM")
 library(nlme) 
 library(agricolae)
 library(piecewiseSEM)
-install.packages("viridis")
-install.packages("RColorBrewer")
-install.packages("colormap")
+#install.packages("viridis")
+#install.packages("RColorBrewer")
+#install.packages("colormap")
 library(viridis)
 library(RColorBrewer)
 library(colormap)
@@ -398,26 +398,41 @@ print(Northeast.ANOVA.plot)
 
 ```{r, include=FALSE, warnings=FALSE, messages=FALSE}
 #NC
-NC.AIC.model <- lm(data = NC.data, Arsenic_ugL ~ MHI + Population.Served + TTHM_ugL + Uranium_ugL)
-step(NC.AIC.model)
-
+#NC.AIC.model <- lm(data = NC.data, Arsenic_ugL ~ MHI + Population.Served + TTHM_ugL + Uranium_ugL)
+#step(NC.AIC.model)
 NC.arsenic.model <- lm(data = NC.data, Arsenic_ugL ~ MHI + Population.Served + TTHM_ugL)
 summary(NC.arsenic.model)
 
 #MA
-MA.AIC.model <- lm(data = Massachusetts.data, Arsenic_ugL ~ MHI + Population.Served + TTHM_ugL + Uranium_ugL)
-step(MA.AIC.model)
-
+#MA.AIC.model <- lm(data = Massachusetts.data, Arsenic_ugL ~ MHI + Population.Served + TTHM_ugL + Uranium_ugL)
+#step(MA.AIC.model)
 MA.arsenic.model <- lm(data = Massachusetts.data, Arsenic_ugL ~ MHI + Population.Served + TTHM_ugL)
 summary(MA.arsenic.model)
 ```
 
->For both states, uranium was explored as an explanatory variable but was ultimately removed from both models for improved parsimony. Final variables included to explain arsenic concentration included trihalomethane concentration, MHI, and population served by the CWS for both states.
+>For both North Carolina and Massachusetts, uranium was explored as an explanatory variable but was ultimately removed from both models for improved parsimony. For both states, final variables included to explain variation in arsenic concentration are trihalomethane concentration, MHI, and population served by the CWS.
 
-```{r figs9, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina Arsenic Concentrations by Population Served by CWS Across Income Levels."}
+```{r figs9, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina Arsenic Concentrations by Trihalomethane Concentration."}
+NC.contaminants.plot <- ggplot(NC.data, aes(x = TTHM_ugL, y = Arsenic_ugL)) +
+  geom_point(alpha = 0.7, color = "orange") +
+  geom_smooth(method = "lm", se = FALSE, color = "black") +
+   geom_hline(yintercept = 10, lty = 2) +
+   geom_text(x = 100, y = 100, label = "Arsenic MCL", hjust = 1) +
+   geom_vline(xintercept = 80, lty = 2) +
+   geom_text(x = 100, y = 2000, label = "Trihalomethane MCL", hjust = 1) +
+  xlim(0, 100) +
+    labs(x = expression(Trihalomethane ~ (mu*g / L)), y = expression(Arsenic ~ (mu*g / L))) +
+    theme(legend.position = "right",
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
+print(NC.contaminants.plot)
+
+```
+
+
+```{r figs10, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina Arsenic Concentrations by Population Served by CWS Across Income Levels."}
 NC.arsenic.plot <- ggplot(NC.data, aes(x = Population.Served, y = Arsenic_ugL)) +
-    geom_smooth(method = "lm", se = FALSE, color = "black") +
-   geom_hline(yintercept = 10, lty = 1) +
+    #geom_smooth(method = "lm", se = FALSE, color = "black") +
+   geom_hline(yintercept = 10, lty = 2) +
    geom_text(x = 800000, y = 100, label = "Arsenic MCL", hjust = 1) +
   geom_point(aes(color = MHI)) +
   xlim(0, 818005) +
@@ -429,13 +444,29 @@ NC.arsenic.plot <- ggplot(NC.data, aes(x = Population.Served, y = Arsenic_ugL)) 
 print(NC.arsenic.plot)
 ```
 
->In North Carolina, population served by a CWS and trihalomethane concentrations significantly predict arsenic concentrations, whereas MHI is not a significant predictor of arsenic concentration (Multiple linear regression; df=3 and 654, F=34.74, p<0.0001). Inreasing arsenic concentration is associated with increasing trihalomethane concentration and with decreasing population size served by a CWS.
+>In North Carolina, population served by a CWS and trihalomethane concentrations significantly predict arsenic concentrations, whereas MHI is not a significant predictor of arsenic concentration (Multiple linear regression; df=3 and 654, F=34.74, p<0.0001). Inreasing arsenic concentration is associated with increasing trihalomethane concentration (Figure 9) and with decreasing population size served by a CWS (Figure 10. Additionally, there is no discernible relationship between arsenic concentration and MHI (Figure 10). These results again confirm that while trihalomethane concentrations remain below the EPA's MCL threshold, arsenic levels are highly elevated in North Carolina (Figures 9 and 10).
 
-```{r figs10, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="Massachusetts Arsenic Concentrations by Population Served by CWS Across Income Levels."}
+```{r figs11, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina v. Massachusetts: Arsenic Concentrations by Trihalomethane Concentration."}
+
+MA.contaminants.plot <- ggplot(Massachusetts.data, aes(x = TTHM_ugL, y = Arsenic_ugL)) +
+  geom_point(alpha = 0.7, color = "dodgerblue") +
+  geom_smooth(method = "lm", se = FALSE, color = "black") +
+   geom_hline(yintercept = 10, lty = 2) +
+   geom_text(x = 100, y = 100, label = "Arsenic MCL", hjust = 1) +
+   geom_vline(xintercept = 80, lty = 2) +
+   geom_text(x = 100, y = 2000, label = "Trihalomethane MCL", hjust = 1) +
+  xlim(0, 100) +
+    labs(x = expression(Trihalomethane ~ (mu*g / L)), y = expression(Arsenic ~ (mu*g / L))) +
+    theme(legend.position = "right",
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
+print(MA.contaminants.plot)
+```
+
+```{r figs12, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="Massachusetts Arsenic Concentrations by Population Served by CWS Across Income Levels."}
 
 MA.arsenic.plot <- ggplot(Massachusetts.data, aes(x = Population.Served, y = Arsenic_ugL)) +
   geom_smooth(method = "lm", se = FALSE, color = "black") +
-   geom_hline(yintercept = 10, lty = 1) +
+   geom_hline(yintercept = 10, lty = 2) +
    geom_text(x = 300000, y = 100, label = "Arsenic MCL", hjust = 1) +
   geom_point(aes(color = MHI)) +
   xlim(0, 400000) +
@@ -447,45 +478,8 @@ MA.arsenic.plot <- ggplot(Massachusetts.data, aes(x = Population.Served, y = Ars
 print(MA.arsenic.plot)
 ```
 
+>In Massachusetts, neither population served by a CWS, trihalomethane concentrations, nor MHI significantly predict arsenic conncentrations (Multiple linear regression; df=3 annd 242, F=1.664, p=0.1753). While there appears to be a slightly negative relationship between trihalomethane and arsenic concentrations in Massachusetts, this relationship is not significant (Figure 11). Additionanlly, a large range of arsenic concentrations is experienced both across different population sizes served by CWSs and across MHI levels (Figure 12). Like in North Carolina, this analysis further confirms highly elevated arsenic levels in Massachusetts, far above the EPA's MCL threshold (Figures 11 and 12).
 
->In Massachusetts, population served by a CWS, trihalomethane concentrations, and MHI do not significantly predict arsenic conncentrations (Multiple linear regressio; df=3 annd 242, F-1.664, p=0.1753).
->Figure 9 .....FINISH LATER!! TALK ABOUT WHAT MCLS are and what they are set to!!!!!
-
-```{r, include=FALSE, warnings=FALSE, messages=FALSE}
-NC.contaminants.plot <- ggplot(NC.data, aes(x = TTHM_ugL, y = Arsenic_ugL)) +
-  geom_point(alpha = 0.7, color = "orange") +
-  geom_smooth(method = "lm", se = FALSE, color = "black") +
-   geom_hline(yintercept = 10, lty = 1) +
-   geom_text(x = 100, y = 100, label = "Arsenic MCL", hjust = 1) +
-   geom_vline(xintercept = 80, lty = 2) +
-   geom_text(x = 100, y = 2000, label = "Trihalomethane MCL", hjust = 1) +
-  xlim(0, 100) +
-    labs(x = expression(Trihalomethane ~ (mu*g / L)), y = expression(Arsenic ~ (mu*g / L))) +
-    theme(legend.position = "right",
-       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
-print(NC.contaminants.plot)
-
-MA.contaminants.plot <- ggplot(Massachusetts.data, aes(x = TTHM_ugL, y = Arsenic_ugL)) +
-  geom_point(alpha = 0.7, color = "dodgerblue") +
-  geom_smooth(method = "lm", se = FALSE, color = "black") +
-   geom_hline(yintercept = 10, lty = 1) +
-   geom_text(x = 100, y = 100, label = "Arsenic MCL", hjust = 1) +
-   geom_vline(xintercept = 80, lty = 2) +
-   geom_text(x = 100, y = 2000, label = "Trihalomethane MCL", hjust = 1) +
-  xlim(0, 100) +
-    labs(x = expression(Trihalomethane ~ (mu*g / L)), y = expression(Arsenic ~ (mu*g / L))) +
-    theme(legend.position = "right",
-       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
-print(MA.contaminants.plot)
-
-```
-
-```{r figs11, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina v. Massachusetts: Arsenic Concentrations by Trihalomethane Concentration."}
-
-plot_grid(NC.contaminants.plot, MA.contaminants.plot, ncol = 2, align = 'h', rel_heights = c(1, 1), labels = c('North Carolina', 'Massachusetts'))
-```
-
->TAKEAWAY HERE!
 
 ##  Question 3. Do PFAS concentrations vary signficantly across time and from state to state in the United States? Are socioeconomic factors significant predictors of PFAS concentrations?
 
@@ -506,23 +500,24 @@ PFAS.regression <- lm(data = PFAS.data, PFAS_ppt ~ MHI + Population.Served)
 summary(PFAS.regression)
 ```
 
->Neither MHI nor population served by a CWS significantly predict PFAS concentrations (Multiple linear regression; F=2 and 86, F=0.5912, p=0.5559).
->An ANOVA was also run in preliminary analyses conducted for PFAS data, but results are not included here due to issues with missingness (25,938 observations were deleted when ANOVA was run). 
->TAKEAWAYS!
 
-```{r figs12, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="PFAS Concentration by Population Served by CWS Across Income Levels."}
+```{r figs13, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="PFAS Concentration by Population Served by CWS Across Income Levels."}
 
 PFAS.plot <- ggplot(PFAS.data, aes(x = Population.Served, y = PFAS_ppt)) +
   geom_point(aes(color = MHI)) +
    geom_smooth(method = "lm", se = FALSE, color = "black") +
   xlim(0, 300000) +
   scale_color_continuous(type = "viridis") +
-    labs(x = "Population served", y = expression(Arsenic ~ (mu*g / L)),
+    labs(x = "Population served", y = expression("PFAS (ppt)"),
        color = "Median household income", shape = "") +
     theme(legend.position = "right",
-       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12)) 
 print(PFAS.plot)
 ```
+
+>Neither MHI nor population served by a CWS significantly predict PFAS concentrations (Multiple linear regression; F=2 and 86, F=0.5912, p=0.5559). PFAS concentrations vary widely across the size of the population served by CWSs and across MHI levels (Figure 13). As the EPA does not currently regulate PFAS, there is not MCL guideline by which to compare occurrence data. 
+
+>An ANOVA was also run in preliminary analyses conducted for PFAS data, but results are not included herein due to issues of missingness (25,938 observations were deleted when ANOVA was run). 
 
 \newpage
 

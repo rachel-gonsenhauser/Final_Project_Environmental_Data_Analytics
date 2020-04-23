@@ -135,7 +135,7 @@ differs across time and between states are explored.
 \begin{quote}
 To narrow the scope of this project, most analyses are targeted to
 southeastern region states and northeastern region states. These regions
-were chosen given their differences in geology and socioeconmic makeup.
+were chosen given their differences in geology and socioeconomic makeup.
 Additionally, individual case studies of Massachusetts and North
 Carolina are explored in further depth. As arsenic is present in much of
 the underlying geology in New England and other northeastern states,
@@ -151,6 +151,11 @@ arsenic concentrations in Massachusetts and North Carolina? Question 3:
 Do PFAS concentrations vary signficantly across time and from state to
 state in the United States? Are socioeconomic factors significant
 predictors of PFAS concentrations?
+\end{quote}
+
+\begin{quote}
+***EDIT THIS LATER TO PUUT EMPHASIS ON ARSENIC AND PFAS AND EXPLAIN
+WHY!!!!
 \end{quote}
 
 \newpage
@@ -339,6 +344,14 @@ for continuous variables.
 \hypertarget{exploratory-analysis}{%
 \section{Exploratory Analysis}\label{exploratory-analysis}}
 
+\begin{quote}
+While the distributions of all variables in the dataset were explored
+during data wrangling and exploration, this section highlights key
+results from the data exploration process. As research questions focus
+on arsenic and PFAS concentrations, this exploratory analysis will
+primarly explore data for these two variables.
+\end{quote}
+
 \hypertarget{data-exploration-for-southeastern-states}{%
 \subsection{Data Exploration for Southeastern
 States}\label{data-exploration-for-southeastern-states}}
@@ -398,9 +411,9 @@ variables might predict arsenic concentrations.
 \end{figure}
 
 \begin{quote}
-As compared to arsenic data, PFAS concentration data is far more limited
-in southeastern states (Figure 2). The largest frequency of counts
-occurs in Florida at around 45 ppt with only two counts available. This
+Compared to arsenic data, PFAS concentration data is far more limited in
+southeastern states (Figure 2). The largest frequency of counts occurs
+in Florida at around 45 ppt with only two counts available. This
 limitation of data on PFAS concentrations justifies a separate analysis
 of PFAS data at a nationwide scale as examining PFAS data regionally
 severely limits the availability of data.
@@ -434,7 +447,7 @@ micrograms/liter\tabularnewline
 
 \begin{quote}
 Summary statistics for the northeastern United States indicate the the
-median household income is higher than that inn the southeast and that
+median household income is higher than that in the southeast and that
 while the average water system size is similar across regions, the
 northeast has systems to serve upwards of 8 million people, as compared
 to a maxiumum size of 2 million people in the southeast (Tables 3 and
@@ -450,6 +463,17 @@ states.}
 \end{figure}
 
 \begin{quote}
+All northeastn states appear to have relatively high counts of arsenic
+observations at low concentration levels, with New York and Pennsylvania
+maintaining the highest counts (Figure 3). Additionally, Massachusetts,
+New York, and Connecticut, among other states also have many
+observations at elevated arsenic concentrations (around 1,000
+micrograms/liter). Similarly to southeastern states, the exploration of
+arenic data in northeastern states justifies a comparison of arsenic
+concentrations across northeastern states. Additionally, understanding
+which explanatory variables predict arsenic concentrations, particularly
+in states with elevated levels, will be explored in the subsequent
+analysis performed.
 \end{quote}
 
 \begin{verbatim}
@@ -463,10 +487,12 @@ states.}
 \end{figure}
 
 \begin{quote}
-Results from plots here**** and talk about how very little PFAS data
-shown in these exploratory plots was the rationale behind doing this
-analysis on the side, not i the geographic groupings here beceause
-otherwise not enough data!!!!
+Much like in southeastern states, PFAS concentration data in
+northeastern states is very limited (Figure 4). The largest frequency of
+counts occurs in New Jersey at around 38 ppt with only two counts
+available. Again, this data limitation provides rationale for examining
+PFAS data on a nationwide scale, rather than regionally, which will be
+conducted in the subsequent analysis.
 \end{quote}
 
 \newpage
@@ -474,6 +500,15 @@ otherwise not enough data!!!!
 \hypertarget{case-studies-data-exploration-for-north-carolina-and-massachusetts}{%
 \subsection{Case Studies: Data Exploration for North Carolina and
 Massachusetts}\label{case-studies-data-exploration-for-north-carolina-and-massachusetts}}
+
+\begin{quote}
+North Carolina and Massachusetts were selected as individual case
+studies due to the prevalence of arsenic data at high concentrations
+revealed earlier in the exploratory analysis. To gain insight into how
+arsenic concentrations vary with respect to the variation of other
+contaminants, arsenic, uranium, and trihalomethane data are provided
+below across the data collection time span (1999-2018).
+\end{quote}
 
 \begin{verbatim}
 ## Warning in as_grob.default(plot): Cannot convert object of class data.frame into
@@ -506,6 +541,18 @@ Massachusetts}\label{case-studies-data-exploration-for-north-carolina-and-massac
 \includegraphics{Project_Template_files/figure-latex/figs5-1.pdf}
 \caption{Water contaminant concentrations over time in North Carolina.}
 \end{figure}
+
+\begin{quote}
+Over the period of 1999-2018 examined, North Carolina experiences
+consistent levels of arsenic, uranium, and trihalomethane (Figure 5).
+The maximum cotaminant levels (MCL) for these three contaminants, set by
+the US EPA, are 10 micrograms/liter, 30 micograms/liter, and 80
+micrograms/liter respectively. As such, uranium and trihalomethane
+concenntratinos in North Carolina over this period of time remain safely
+below the MCL standard. Arsenic concentrationns, on the other hand,
+appear to occur well above the MCL for the entire period of time
+examined.
+\end{quote}
 
 \begin{verbatim}
 ## Warning in as_grob.default(plot): Cannot convert object of class data.frame into
@@ -540,16 +587,35 @@ Massachusetts}\label{case-studies-data-exploration-for-north-carolina-and-massac
 \end{figure}
 
 \begin{quote}
-Write findings here!! Relatively flat trend for all three contaminants
-over 19 year period of data collection for NC, whereas uranium in MA
-over time seems to be decreasingn, trihalo is slightly increasing, and
-arsenic decreasing on average though still very high concentratiosn
+Over the same period of time, Massachusetts experiences slightly
+declining arsenic concentrations, substantially declining uranium
+concentrations, and relatively constant trihalomethaen concentrations
+(Figure 6). Trihalomethane concentrations are safely below the MCL
+standard, as are uranium concentrations from about 2010-2018.
+Conversely, arsenic concentrations remain high over the entire 19-year
+time span examined.
+\end{quote}
+
+\begin{quote}
+This exploratory analysis has highlighted that arsenic concentrations
+likely vary among states in the southeast and northeast and that
+elevated arsenic levels occur in both North Carolina and Massachusetts.
+As such, the subsequent analysis will focus primarily on examining
+arsenic concentrations. Additionally, limited PFAS data highlighted
+during this data exploration process motivates a separate analysis of
+PFAS data during the analysis phase.
 \end{quote}
 
 \newpage
 
 \hypertarget{analysis}{%
 \section{Analysis}\label{analysis}}
+
+\begin{quote}
+The following analysis seeks to answer the three questions stated at the
+onset of this report. Key results of statistical analyses performed will
+be provided below.
+\end{quote}
 
 \hypertarget{question-1-do-arsenic-concentrations-vary-significantly-from-state-to-state-in-northeastern-and-southeastern-states}{%
 \subsection{Question 1: Do arsenic concentrations vary significantly
@@ -595,11 +661,11 @@ North
 Carolina?}\label{question-2-do-socioeconomic-factors-or-the-presence-of-other-contaminants-predict-arsenic-concentrations-in-massachusetts-and-north-carolina}}
 
 \begin{quote}
-For both states, uranium was explored as an explanatory variable but was
-ultimately removed from both models for improved parsimony. Final
-variables included to explain arsenic concentration included
-trihalomethane concentration, MHI, and population served by the CWS for
-both states.
+For both North Carolina and Massachusetts, uranium was explored as an
+explanatory variable but was ultimately removed from both models for
+improved parsimony. For both states, final variables included to explain
+variation in arsenic concentration are trihalomethane concentration,
+MHI, and population served by the CWS.
 \end{quote}
 
 \begin{figure}
@@ -616,7 +682,24 @@ is not a significant predictor of arsenic concentration (Multiple linear
 regression; df=3 and 654, F=34.74, p\textless{}0.0001). Inreasing
 arsenic concentration is associated with increasing trihalomethane
 concentration and with decreasing population size served by a CWS.
+Additionally, there is no discernible relationship between arsenic
+concentration and MHI (Figure 9).
 \end{quote}
+
+\begin{verbatim}
+## Warning: Removed 2810 rows containing non-finite values (stat_smooth).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 2810 rows containing missing values (geom_point).
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{Project_Template_files/figure-latex/figs10-1.pdf}
+\caption{North Carolina Arsenic Concentrations by Trihalomethane
+Concentration.}
+\end{figure}
 
 \begin{verbatim}
 ## Warning: Removed 18 rows containing non-finite values (stat_smooth).
@@ -628,26 +711,18 @@ concentration and with decreasing population size served by a CWS.
 
 \begin{figure}
 \centering
-\includegraphics{Project_Template_files/figure-latex/figs10-1.pdf}
+\includegraphics{Project_Template_files/figure-latex/figs11-1.pdf}
 \caption{Massachusetts Arsenic Concentrations by Population Served by
 CWS Across Income Levels.}
 \end{figure}
 
 \begin{quote}
-In Massachusetts, population served by a CWS, trihalomethane
-concentrations, and MHI do not significantly predict arsenic
-conncentrations (Multiple linear regressio; df=3 annd 242, F-1.664,
-p=0.1753). Figure 9 \ldots{}..FINISH LATER!! TALK ABOUT WHAT MCLS are
-and what they are set to!!!!!
+In Massachusetts, neither population served by a CWS, trihalomethane
+concentrations, nor MHI significantly predict arsenic conncentrations
+(Multiple linear regression; df=3 annd 242, F=1.664, p=0.1753). A large
+range of arsenic cooncentratinos is experienced both across different
+population sizes served by CWSs annd across MHI levels (Figure 10).
 \end{quote}
-
-\begin{verbatim}
-## Warning: Removed 2810 rows containing non-finite values (stat_smooth).
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: Removed 2810 rows containing missing values (geom_point).
-\end{verbatim}
 
 \begin{verbatim}
 ## Warning: Removed 3321 rows containing non-finite values (stat_smooth).
@@ -659,13 +734,15 @@ and what they are set to!!!!!
 
 \begin{figure}
 \centering
-\includegraphics{Project_Template_files/figure-latex/figs11-1.pdf}
+\includegraphics{Project_Template_files/figure-latex/figs12-1.pdf}
 \caption{North Carolina v. Massachusetts: Arsenic Concentrations by
 Trihalomethane Concentration.}
 \end{figure}
 
 \begin{quote}
-TAKEAWAY HERE!
+Multiple linear regression results discussed previously indicated that
+trihalomethane concentrations significantly predict arsenic
+concentrations in North Carolina but not in Massachusetts (Figure 11).
 \end{quote}
 
 \hypertarget{question-3.-do-pfas-concentrations-vary-signficantly-across-time-and-from-state-to-state-in-the-united-states-are-socioeconomic-factors-significant-predictors-of-pfas-concentrations}{%
@@ -693,7 +770,7 @@ TAKEAWAYS!
 
 \begin{figure}
 \centering
-\includegraphics{Project_Template_files/figure-latex/figs12-1.pdf}
+\includegraphics{Project_Template_files/figure-latex/figs13-1.pdf}
 \caption{PFAS Concentration by Population Served by CWS Across Income
 Levels.}
 \end{figure}
