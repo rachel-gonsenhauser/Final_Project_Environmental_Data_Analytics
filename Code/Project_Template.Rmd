@@ -1,6 +1,5 @@
 ---
-title: Analysis of drinking water water contaminant occurrence in the northeastern and
-  southeastern United States
+title: Analysis of arsenic and PFAS occurrence in United States community water systems
 author: "Rachel Gonsenhauser"
 geometry: margin=2.54cm
 output:
@@ -16,7 +15,7 @@ fontsize: 12pt
 \newpage
 \abstract
 
->add text here once finnndinngs clear!!!!
+>While the Safe Drinking Water Act seeks to establish standards for many drinking water contaminants, many water systems still experience elevated concentrations of contaminants. This analysis compares arsenic concentrations in southeastern and northeastern states, explores whether the occurrence of other water contaminants and choosen socioeconomic factors predict arsenic concentrations in North Carolina and Massachusetts, and examines whether socioeconomic factors explain variation in PFAS concentrations in the United States. Results indicate that North Carolina and South Carolina experience elevated arsenic concentrations compared to other southeastern states, as do Massachusetts and Maine as compared to other northeastern states. Arsenic concentrations are significantly predicted by trihaloomethane concentrationos and by size of the population served by a Community Water System (CWS) in North Carolina but not in Massachusetts. Finally, socioeconomic variables examined do not siginficanntly explain variation inn PFAS concentrations.
 
 \newpage
 \tableofcontents 
@@ -26,7 +25,7 @@ fontsize: 12pt
 \listoffigures 
 \newpage
 
-```{r setup, include=FALSE, warnings=FALSE, messages=FALSE}
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
 # Set your working directory
 setwd("/Users/rachelgonsenhauser/Documents/Final_Project_Environmental_Data_Analytics/Code")
 getwd()
@@ -50,7 +49,7 @@ library(colormap)
 library(cowplot)
 
 # Set your ggplot theme
-mytheme <- theme_classic(base_size = 12) +
+mytheme <- theme_classic(base_size = 14) +
  theme(axis.text = element_text(color = "black"), 
         legend.position = "right")
 theme_set(mytheme)
@@ -91,18 +90,18 @@ options(scipen = 10)
 
 # Rationale and Research Questions
 
->While the EPA establishes standards for 90 drinking water contaminants by means of the federal Safe Drinking Water Act (SDWA) and its regulations, public water systems still often struggle to remain in compliance with such policies (USEPA, 2020). This issue of compliance with the SDWA can stem from myriad causes, for instance financial capacity of the water system. This is especially concerning in areas where geologic conditions and/or anthropogenic activities frequently introduce contaminants into drinking water supplies. Additionally, some known contaminants still have yet to be regulated by the EPA, such as poly- and perfluoroaklyl substances (PFAS), which introduces even more complexity to the issue of water quality monitoring of drinking water sources. 
+>While the EPA establishes standards for 90 drinking water contaminants by means of the federal Safe Drinking Water Act (SDWA) and its regulations, public water systems still often struggle to remain in compliance with such policies ("Safe Drinking Water Act (SDWA)", 2020). This issue of compliance with the SDWA can stem from myriad causes, for instance financial capacity of the water system. This is especially concerning in areas where geologic conditions and/or anthropogenic activities frequently introduce contaminants into drinking water supplies. Additionally, some known contaminants still have yet to be regulated by the EPA, such as poly- and perfluoroaklyl substances (PFAS), which introduces even more complexity to the issue of water quality monitoring of drinking water sources. 
 
->This analysis seeks to investigate the co-occurrence of water quality indicators including arsenic, trihalomethane, uranium, and PFAS, which originate from both geogenic and anthropogenic sources. Additionally, given pervasive questions related to environmental justice and how socioeconomic factors may be related to water quality indicators, this analysis seeks to examine relationships between water quality indicators and county-level median household income (MHI) and size of the population served by a given community water system (CWS), which is often a proxy for how rural an area is and the financial capacity of a CWS. Additionally, questions regarding how contaminant occurrence differs across time and between states are explored. 
+>This analysis seeks to investigate the co-occurrence of water quality indicators including arsenic, trihalomethane, uranium, and PFAS, which originate from both geogenic and anthropogenic sources. Additionally, given pervasive questions about how socioeconomic factors may be related to water quality indicators, this analysis seeks to examine relationships between water quality indicators and county-level median household income (MHI) and size of the population served by a given community water system (CWS). Additionally, questions regarding how contaminant occurrences differ between states are explored. 
 
->To narrow the scope of this project, most analyses are targeted to southeastern region states and northeastern region states. These regions were chosen given their differences in geology and socioeconomic makeup. Additionally, individual case studies of Massachusetts and North Carolina are explored in further depth. As arsenic is present in much of the underlying geology in New England and other northeastern states, arsenic data is used is many of the analyses performed. Due to issues of PFAS data limitations, discussed in more detail in the subsequent section, analyses using PFAS data are limited.
+>To narrow the scope of this project, most analyses are targeted to southeastern region states and northeastern region states. These regions were chosen given their differences in climate, geology, and demographic makeup. Additionally, individual case studies of Massachusetts and North Carolina, selected following the data exploration phase, are explored in further depth. 
+
+>As arsenic is present in much of the underlying geology in many states in both the northeast and southeast, arsenic concentration data is predominant focus of most analyses performed. Given that PFAS are emerging, synthetic contaminants that have become the focus of many analyses in the scientific community, PFAS data is also explored in depth. Due to data limitations however, discussed in more detail in the subsequent section, analyses using PFAS data herein are limited.
 >
->Specifically, the following questions are explored in this analysis:
-Question 1: Do arsenic concentrations vary significantly from state to state in northeastern and southeastern states? 
->Question 2: Do socioeconomic factors or the presence of other contaminants predict arsenic concentrations in Massachusetts and North Carolina?
->Question 3: Do PFAS concentrations vary signficantly across time and from state to state in the United States? Are socioeconomic factors significant predictors of PFAS concentrations?
-
->***EDIT THIS LATER TO PUUT EMPHASIS ON ARSENIC AND PFAS AND EXPLAIN WHY!!!!
+>Specifically, the subsequent analysis explores the following questions:
+>1: Do arsenic concentrations vary significantly from state to state in northeastern and southeastern states?
+>2: Do socioeconomic factors or the presence of other contaminants predict arsenic concentrations in Massachusetts and North Carolina?
+>3. Are socioeconomic factors significant predictors of PFAS concentrations?
 
 
 \newpage
@@ -146,7 +145,7 @@ MCL_Uranium                 | whether MCL for uranium is exceeded               
 MCL_Arsenic                 | whether MCL for arsenic is exceeded                       |  N/A
 
 
->Figure 1 provides a high level summary of the data provided in the processed dataset. It should be noted that PFAS data was only available for 2013-2015. For ease of analysis, this date range was changed to 2014 during the raw dataset wrangling process to create a common annual unit of analysis for all variables. Figure 2 provides descriptions of all variables included in the processed dataset with data ranges provided for continuous variables. 
+>Table 1 provides a high level summary of the data provided in the processed dataset. It should be noted that PFAS data was only available for 2013-2015. For ease of analysis, this date range was changed to 2014 during the raw dataset wrangling process to create a common annual unit of analysis for all variables. Table 2 provides descriptions of all variables included in the processed dataset with data ranges provided for continuous variables. 
 
 \newpage
 
@@ -156,7 +155,7 @@ MCL_Arsenic                 | whether MCL for arsenic is exceeded               
 
 ## Data Exploration for Southeastern States
 
-```{r, include=FALSE, warnings=FALSE, messages=FALSE}
+```{r, include=FALSE, warning=FALSE, message=FALSE}
 Southeast.States.data <- 
   filter(Water.Quality.And.Income.Processed, State == "North Carolina" | State == "South Carolina" | State == "Florida" | State == "Georgia" | State == "Virginia" | State == "Alabama" | State == "Tennessee" | State == "West Virginia" | State == "Mississippi" | State == "Kentucky" | State == "Louisiana") 
 
@@ -181,7 +180,7 @@ Trihalomethane               | 17.47 micrograms/liter   | 0-80.00 micrograms/lit
 
 >Southeastern states examined include counties with a large range of income levels and water system sizes; additionally, arsenic concentrations vary more than any other contaminant examined (Table 3).
 
-```{r figs, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="Frequency of Arsenic Concentration Data in Southeastern states."}
+```{r figs, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="Frequency of Arsenic Concentration Data in Southeastern states."}
 Southeast.arsenic.freqpoly <- 
 ggplot(Southeast.States.data) +
   geom_freqpoly(aes(x = Arsenic_ugL, color = State), bins = 50) +
@@ -194,7 +193,7 @@ print(Southeast.arsenic.freqpoly)
 
 >West Virginia, Florida, Louisiana, and Kentucky all have relatively high counts of arsenic observations at low concentration levels (Figure 1). At the same time, North Carolina, South Carolina, and Florida have relatively high counts of arsenic observations at higher concentrations (around 1,000 micrograms/liter). This exploration of arsenic data in southeastern states justifies an examination of how arsenic concentrations vary among southeastern states and which explanatory variables might predict arsenic concentrations.
 
-```{r figs2, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="Frequency of PFAS Concentration Data in Southeastern states."}
+```{r figs2, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="Frequency of PFAS Concentration Data in Southeastern states."}
 Southeast.PFAS.freqpoly <- 
 ggplot(Southeast.States.data) +
   geom_freqpoly(aes(x = PFAS_ppt, color = State), bins = 50) +
@@ -211,7 +210,7 @@ print(Southeast.PFAS.freqpoly)
 
 ## Data Exploration for Northeastern States
 
-```{r, include=FALSE, warnings=FALSE, messages=FALSE}
+```{r, include=FALSE, warning=FALSE, message=FALSE}
 Northeast.States.data <- 
   filter(Water.Quality.And.Income.Processed, State == "Massachusetts" | State == "Rhode Island" | State == "New York" | State == "Connecticut" | State == "Delaware" | State == "Maine" | State == "Vermont" | State == "New Hampshire" | State == "New Jersey" | State == "Pennsylvania") 
 
@@ -237,27 +236,27 @@ Trihalomethane               | 10.37 micrograms/liter   | 0-134.10 micrograms/li
 
 > Summary statistics for the northeastern United States indicate the the median household income is higher than that in the southeast and that while the average water system size is similar across regions, the northeast has systems to serve upwards of 8 million people, as compared to a maxiumum size of 2 million people in the southeast (Tables 3 and 4). Ranges and average values for water quality indicators were relatively similar in both regions (Tables 3 and 4).
 
-```{r figs3, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="Frequency of Arsenic Concentration Data in Noutheastern states."}
+```{r figs3, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="Frequency of Arsenic Concentration Data in Noutheastern states."}
 Northeast.arsenic.freqpoly <- 
 ggplot(Northeast.States.data) +
   geom_freqpoly(aes(x = Arsenic_ugL, color = State), bins = 50) +
   scale_color_brewer(palette = "Paired") +
      labs(x = expression(Arsenic ~ (mu*g / L)), y = "Count") +
   theme(legend.position = "right",
-       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
 print(Northeast.arsenic.freqpoly)
 ```
 
 >All northeastn states appear to have relatively high counts of arsenic observations at low concentration levels, with New York and Pennsylvania maintaining the highest counts (Figure 3). Additionally, Massachusetts, New York, and Connecticut, among other states also have many observations at elevated arsenic concentrations (around 1,000 micrograms/liter). Similarly to southeastern states, the exploration of arenic data in northeastern states justifies a comparison of arsenic concentrations across northeastern states. Additionally, understanding which explanatory variables predict arsenic concentrations, particularly in states with elevated levels, will be explored in the subsequent analysis performed.
 
-```{r figs4, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="Frequency of PFAS Concentration Data in Noutheastern states."}
+```{r figs4, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="Frequency of PFAS Concentration Data in Noutheastern states."}
 Northeast.PFAS.freqpoly <- 
 ggplot(Northeast.States.data) +
   geom_freqpoly(aes(x = PFAS_ppt, color = State), bins = 50) +
   scale_color_brewer(palette = "Paired") +
      labs(x = "PFAS (ppt)", y = "Count") +
   theme(legend.position = "right",
-       legend.text = element_text(size = 10), legend.title = element_text(size = 10))
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))
 print(Northeast.PFAS.freqpoly)
 ```
 
@@ -269,7 +268,7 @@ print(Northeast.PFAS.freqpoly)
 
 > North Carolina and Massachusetts were selected as individual case studies due to the prevalence of arsenic data at high concentrations revealed earlier in the exploratory analysis. To gain insight into how arsenic concentrations vary with respect to the variation of other contaminants, arsenic, uranium, and trihalomethane data are provided below across the data collection time span (1999-2018).
 
-```{r, include=FALSE, warnings=FALSE, messages=FALSE}
+```{r, include=FALSE, warning=FALSE, message=FALSE}
 NC.data <- filter(Water.Quality.And.Income.Processed, State == "North Carolina") 
 
 NC.Arsenic.compare.plot <-
@@ -278,7 +277,7 @@ NC.Arsenic.compare.plot <-
     geom_smooth(method = "lm", se = FALSE, color = "black") +
    labs(x = expression("Year"), y = expression(Arsenic ~ (mu*g / L))) +
     theme(legend.position = "bottom",
-       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12)) 
 print(NC.Arsenic.compare.plot)
 
  NC.Uranium.compare.plot <-
@@ -287,7 +286,7 @@ print(NC.Arsenic.compare.plot)
       geom_smooth(method = "lm", se = FALSE, color = "black") +
    labs(x = expression("Year"), y = expression(Uranium ~ (mu*g / L))) + 
     theme(legend.position = "bottom",
-       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12)) 
 print(NC.Uranium.compare.plot)
 
  NC.TTHM.compare.plot <-
@@ -296,17 +295,17 @@ print(NC.Uranium.compare.plot)
     geom_smooth(method = "lm", se = FALSE, color = "black") +
    labs(x = expression("Year"), y = expression(Trihalomethane ~ (mu*g / L))) + 
     theme(legend.position = "bottom",
-       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12)) 
 print(NC.TTHM.compare.plot)
 ```
 
-```{r figs5, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="Water contaminant concentrations over time in North Carolina."}
+```{r figs5, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="Water contaminant concentrations over time in North Carolina."}
 plot_grid(NC.data, NC.Arsenic.compare.plot, NC.Uranium.compare.plot, NC.TTHM.compare.plot, ncol = 2, align = 'h', rel_heights = c(1, 1))
 ```
 
->Over the period of 1999-2018 examined, North Carolina experiences consistent levels of arsenic, uranium, and trihalomethane (Figure 5). The maximum cotaminant levels (MCL) for these three contaminants, set by the US EPA, are 10 micrograms/liter, 30 micograms/liter, and 80 micrograms/liter respectively. As such, uranium and trihalomethane concenntratinos in North Carolina over this period of time remain safely below the MCL standard. Arsenic concentrationns, on the other hand, appear to occur well above the MCL for the entire period of time examined. 
+>Over the period of 1999-2018 examined, North Carolina experiences consistent levels of arsenic, uranium, and trihalomethane (Figure 5). The maximum cotaminant levels (MCL) for these three contaminants, set by the US EPA, are 10 micrograms/liter, 30 micograms/liter, and 80 micrograms/liter respectively. As such, uranium and trihalomethane concentrations in North Carolina over this period of time remain safely below the MCL standard. Arsenic concentrations, on the other hand, appear to occur well above the MCL for the entire period of time examined. 
 
-```{r, include=FALSE, warnings=FALSE, messages=FALSE}
+```{r, include=FALSE, warning=FALSE, message=FALSE}
 Massachusetts.data <- filter(Water.Quality.And.Income.Processed, State == "Massachusetts") 
 
 MA.Arsenic.compare.plot <-
@@ -315,7 +314,7 @@ MA.Arsenic.compare.plot <-
     geom_smooth(method = "lm", se = FALSE, color = "black") +
    labs(x = expression("Year"), y = expression(Arsenic ~ (mu*g / L))) +
     theme(legend.position = "bottom",
-       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12)) 
 print(MA.Arsenic.compare.plot)
 
  MA.Uranium.compare.plot <-
@@ -324,7 +323,7 @@ print(MA.Arsenic.compare.plot)
       geom_smooth(method = "lm", se = FALSE, color = "black") +
    labs(x = expression("Year"), y = expression(Uranium ~ (mu*g / L))) + 
     theme(legend.position = "bottom",
-       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12)) 
 print(MA.Uranium.compare.plot)
 
  MA.TTHM.compare.plot <-
@@ -333,11 +332,11 @@ print(MA.Uranium.compare.plot)
     geom_smooth(method = "lm", se = FALSE, color = "black") +
    labs(x = expression("Year"), y = expression(Trihalomethane ~ (mu*g / L))) + 
     theme(legend.position = "bottom",
-       legend.text = element_text(size = 10), legend.title = element_text(size = 10)) 
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12)) 
 print(MA.TTHM.compare.plot)
 ```
 
-```{r figs6, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="Water contaminant concentrations over time in Massachusetts."}
+```{r figs6, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="Water contaminant concentrations over time in Massachusetts."}
 plot_grid(Massachusetts.data, MA.Arsenic.compare.plot, MA.Uranium.compare.plot, MA.TTHM.compare.plot, ncol = 2, align = 'h', rel_heights = c(1, 1))
 ```
 
@@ -354,7 +353,7 @@ plot_grid(Massachusetts.data, MA.Arsenic.compare.plot, MA.Uranium.compare.plot, 
 ## Question 1: Do arsenic concentrations vary significantly from state to state in northeastern and southeastern states? 
 
 
-```{r, include=FALSE, warnings=FALSE, messages=FALSE}
+```{r, include=FALSE, warning=FALSE, message=FALSE}
 # Southeast ANOVA
 Southeast.arsenic.anova <- 
   aov(data = Southeast.States.data, Arsenic_ugL ~ State)
@@ -366,7 +365,7 @@ Southeast.arsenic.groupings <- HSD.test(Southeast.arsenic.anova,
 Southeast.arsenic.groupings
 ```
 
-```{r figs7, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="State by state comparison of arsenic values for southeastern states."}
+```{r figs7, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="State by state comparison of arsenic values for southeastern states."}
 
 Southeast.ANOVA.plot <- ggplot(Southeast.States.data, aes(y = Arsenic_ugL, x = State, color = State)) +
   geom_boxplot() +
@@ -374,13 +373,17 @@ Southeast.ANOVA.plot <- ggplot(Southeast.States.data, aes(y = Arsenic_ugL, x = S
     scale_color_brewer(palette = "Paired") +
   labs(x = "State", y = expression(Arsenic ~ (mu*g / L))) +
   stat_summary(geom = "text", fun.y = max, vjust = -1, size = 3.5, position = position_dodge(0.75),
-              label = c("b", "c", "b", "a", "a", "d")) 
+              label = c("b", "c", "b", "a", "a", "d")) +
+   ylim(0, 3000) 
 print(Southeast.ANOVA.plot)
 ```
 
 >Mean annual arsenic concentrations differ significantly between states in the southeast (ANOVA; df=5, F=2872, p <0.0001). Mean arsenic concentrations in West Virginia were significantly lower than in other states and those in North Carolina and South Carolina were significantly higher than those in other states (Post-hoc Tukey test; Figure 7).
 
-```{r figs8, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="State by state comparison of arsenic values for northeastern states."}
+\newpage
+
+
+```{r figs8, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="State by state comparison of arsenic values for northeastern states."}
 
 Northeast.ANOVA.plot <- ggplot(Northeast.States.data, aes(y = Arsenic_ugL, x = State, color = State)) +
   geom_boxplot() +
@@ -388,15 +391,18 @@ Northeast.ANOVA.plot <- ggplot(Northeast.States.data, aes(y = Arsenic_ugL, x = S
   scale_color_brewer(palette = "Paired") +
 labs(x = "State", y = expression(Arsenic ~ (mu*g / L))) +
   stat_summary(geom = "text", fun.y = max, vjust = -1, size = 3.5, position = position_dodge(0.75),
-              label = c("b", "c", "a", "a", "e", "f", "d", "bc", "f"))
+              label = c("b", "c", "a", "a", "e", "f", "d", "bc", "f")) +
+   ylim(0, 3000) 
 print(Northeast.ANOVA.plot)
 ```
 
 >Meaan annual arsenic concentrations also differ significantly between states in the northeast (ANOVA; df=8, F=630.9, p<0.0001). Mean arsenic concentrations in New York and Vermont were significantly lower than in other states and those in New Hampshire and Massachusetts were significantly higher than those in other states (Post-hoc Tukey test; Figure 8).
 
+\newpage
+
 ## Question 2: Do socioeconomic factors or the presence of other contaminants predict arsenic concentrations in Massachusetts and North Carolina?
 
-```{r, include=FALSE, warnings=FALSE, messages=FALSE}
+```{r, include=FALSE, warning=FALSE, message=FALSE}
 #NC
 #NC.AIC.model <- lm(data = NC.data, Arsenic_ugL ~ MHI + Population.Served + TTHM_ugL + Uranium_ugL)
 #step(NC.AIC.model)
@@ -412,7 +418,7 @@ summary(MA.arsenic.model)
 
 >For both North Carolina and Massachusetts, uranium was explored as an explanatory variable but was ultimately removed from both models for improved parsimony. For both states, final variables included to explain variation in arsenic concentration are trihalomethane concentration, MHI, and population served by the CWS.
 
-```{r figs9, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina Arsenic Concentrations by Trihalomethane Concentration."}
+```{r figs9, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina Arsenic Concentrations by Trihalomethane Concentration."}
 NC.contaminants.plot <- ggplot(NC.data, aes(x = TTHM_ugL, y = Arsenic_ugL)) +
   geom_point(alpha = 0.7, color = "orange") +
   geom_smooth(method = "lm", se = FALSE, color = "black") +
@@ -429,7 +435,7 @@ print(NC.contaminants.plot)
 ```
 
 
-```{r figs10, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina Arsenic Concentrations by Population Served by CWS Across Income Levels."}
+```{r figs10, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina Arsenic Concentrations by Population Served by CWS Across Income Levels."}
 NC.arsenic.plot <- ggplot(NC.data, aes(x = Population.Served, y = Arsenic_ugL)) +
     #geom_smooth(method = "lm", se = FALSE, color = "black") +
    geom_hline(yintercept = 10, lty = 2) +
@@ -446,7 +452,9 @@ print(NC.arsenic.plot)
 
 >In North Carolina, population served by a CWS and trihalomethane concentrations significantly predict arsenic concentrations, whereas MHI is not a significant predictor of arsenic concentration (Multiple linear regression; df=3 and 654, F=34.74, p<0.0001). Inreasing arsenic concentration is associated with increasing trihalomethane concentration (Figure 9) and with decreasing population size served by a CWS (Figure 10. Additionally, there is no discernible relationship between arsenic concentration and MHI (Figure 10). These results again confirm that while trihalomethane concentrations remain below the EPA's MCL threshold, arsenic levels are highly elevated in North Carolina (Figures 9 and 10).
 
-```{r figs11, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="North Carolina v. Massachusetts: Arsenic Concentrations by Trihalomethane Concentration."}
+\newpage
+
+```{r figs11, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="Massachusetts Arsenic Concentrations by Trihalomethane Concentration."}
 
 MA.contaminants.plot <- ggplot(Massachusetts.data, aes(x = TTHM_ugL, y = Arsenic_ugL)) +
   geom_point(alpha = 0.7, color = "dodgerblue") +
@@ -462,7 +470,7 @@ MA.contaminants.plot <- ggplot(Massachusetts.data, aes(x = TTHM_ugL, y = Arsenic
 print(MA.contaminants.plot)
 ```
 
-```{r figs12, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="Massachusetts Arsenic Concentrations by Population Served by CWS Across Income Levels."}
+```{r figs12, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="Massachusetts Arsenic Concentrations by Population Served by CWS Across Income Levels."}
 
 MA.arsenic.plot <- ggplot(Massachusetts.data, aes(x = Population.Served, y = Arsenic_ugL)) +
   geom_smooth(method = "lm", se = FALSE, color = "black") +
@@ -480,10 +488,11 @@ print(MA.arsenic.plot)
 
 >In Massachusetts, neither population served by a CWS, trihalomethane concentrations, nor MHI significantly predict arsenic conncentrations (Multiple linear regression; df=3 annd 242, F=1.664, p=0.1753). While there appears to be a slightly negative relationship between trihalomethane and arsenic concentrations in Massachusetts, this relationship is not significant (Figure 11). Additionanlly, a large range of arsenic concentrations is experienced both across different population sizes served by CWSs and across MHI levels (Figure 12). Like in North Carolina, this analysis further confirms highly elevated arsenic levels in Massachusetts, far above the EPA's MCL threshold (Figures 11 and 12).
 
+\newpage
 
-##  Question 3. Do PFAS concentrations vary signficantly across time and from state to state in the United States? Are socioeconomic factors significant predictors of PFAS concentrations?
+##  Question 3. Are socioeconomic factors significant predictors of PFAS concentrations?
 
-```{r, include=FALSE, warnings=FALSE, messages=FALSE}
+```{r, include=FALSE, warning=FALSE, message=FALSE}
 
 PFAS.data <- filter(Water.Quality.And.Income.Processed, Year == "2014" | Year == "2013" | Year == "2015") %>%
   select(PFAS_ppt, Population.Served, Year, State, MHI, County, CWS.Name)
@@ -501,7 +510,7 @@ summary(PFAS.regression)
 ```
 
 
-```{r figs13, echo = FALSE, warnings=FALSE, messages=FALSE, fig.height = 4, fig.width = 10, fig.cap="PFAS Concentration by Population Served by CWS Across Income Levels."}
+```{r figs13, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="PFAS Concentration by Population Served by CWS Across Income Levels."}
 
 PFAS.plot <- ggplot(PFAS.data, aes(x = Population.Served, y = PFAS_ppt)) +
   geom_point(aes(color = MHI)) +
@@ -511,7 +520,7 @@ PFAS.plot <- ggplot(PFAS.data, aes(x = Population.Served, y = PFAS_ppt)) +
     labs(x = "Population served", y = expression("PFAS (ppt)"),
        color = "Median household income", shape = "") +
     theme(legend.position = "right",
-       legend.text = element_text(size = 12), legend.title = element_text(size = 12)) 
+       legend.text = element_text(size = 12), legend.title = element_text(size = 12))  
 print(PFAS.plot)
 ```
 
@@ -523,11 +532,19 @@ print(PFAS.plot)
 
 # Summary and Conclusions
 
->talk about conclusions and implications of findings...and supposition as to why these relationships exist
->Omitted variable bias: R2s for all models were very low, talk about this
->Future: given scope of project, couldn't possibly look in depth at each conntamiannt, so i nthe future would be interested in exploring relationships for uranium and TTHM such as those explored here for arsenic...it's possible that since arsenic is so ubiquitous inn geology that other contaminants could have diff relationships with income for example...
+>This analysis reveals that among southeastern states, North Carolina and South Carolina have significantly higher arsenic values than other states in the region. In the northeast, Maine and Massachusetts have significantly higher arsenic concentrations than other states in the regionn. These findings are likely due to the underlying geology in these states, as there are major arsenic hot spots running through all four of these states (Figure 14).
+
+![Arsenic Occurrence in the United States, Source: Avner Vengosh's lab, Duke University](../Data/Processed/ArsenicFigure.png)
+
+>Whereas in Massachusetts no explanatory variables significantly predicted arsenic concentrations, in North Carolina, trihalomethane concentrations and the size of the population served by the CWS significantly predicted arsenic concentrations. As trihalomethane is often formed as a byproduct when treating water, it is logical that arsenic and trihalomethane concentrations appear to co-occur in North Carolina, as higher arsenic levels in drinking water likely trigger higher rates of water treatment by water systems.  
+> It is likely that arsenic concentrations rise with smaller population served by a CWS as smaller water systems often are located in more rural areas and typically have less financial resources at their disposal, typically corresponnding with higher incidence of SDWA violations. Additionally, it is possible that some of these smaller water systems are not regulated under the SDWA, as only public water systems with 15 service connections or that serve 25 people per day for 60 days ofo the year fall under SDWA jurisdiction and thus must bring arsenic levels under the EPA'S MCL ("Understanding the Safe Drinking Water Act", 2004).
+>While MHI was predicted to be correlated with arsenic concentrations, it is possible that the lack of significat relatioship between these variables is due to arsenic being linked to the underlying geology where high occurrences are noted, which may not necessarily be tied to a county's MHI. In future analyses, the relationship between MHI and other water contaminants that typically originate from anthropogenic sources rather than geogenic sources should be explored. 
+>Likely due to the limited data available, no explanatory variables signinficantly predicted PFAS concentrations. In February 2020, the EPA issued a preliminary determination to regulate PFAS, particularly PFOA and FPOS ("EPA  Announced Proposed Decision to Regulate PFOA and PFOS in Drinnking Water", 2020). The commencement of rulemaking efforts by the EPA will likely increase the availability of PFAS data available as, once a regulatory requirement is in place, data collection associated with testing and mitigation will likely pick up. Once more data becomes available, future analyses could focus on looking at similar relationships explored here, or relationships between the occurrence of PFAS and other contaminants.
+>Aside from the data limitation mentioned previously, another limitation of this analysis stems from omitted variable bias, or the omission of explanatory variables from models examined that may help to explain variation in chosen response variables. Adjusted R-squared values for all models geenrated were quite low (the highest of which was approximately 0.13 for the model explainning arsenic concentrations in North Carolina). This suggests that very little of the variation in arsenic concentrations in drinking water is explained by the model. For instance, a major omitted variable likely includes arsenic concentrations in bedrock, and future analyses are necessary to further understand which variables best explain this variation. 
 
 \newpage
 
 # References
->United States Environmental Protection Agency (USEPA). 2020. Safe Drinking Water Act (SDWA). Retrieved from: https://www.epa.gov/sdwa.
+>1. United States Environmental Protection Agency (USEPA). 2020. Safe Drinking Water Act (SDWA). Retrieved from: https://www.epa.gov/sdwa.
+>2. United States Environmental Protection Agency (USEPA). 2004. Understanding the Safe Drinking Water Act. Retrieved from: https://www.epa.gov/sites/production/files/2015-04/documents/epa816f04030.pdf.
+>3. United States Environmental Protection Agency (USEPA). 2020. EPA Announces Proposed Decision to Regulate PFOA and PFOS in Drinking Water. Retrieved from: https://www.epa.gov/newsreleases/epa-announces-proposed-decision-regulate-pfoa-and-pfos-drinking-water.
