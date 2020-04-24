@@ -127,8 +127,7 @@ anthropogenic activities frequently introduce contaminants into drinking
 water supplies. Additionally, some known contaminants still have yet to
 be regulated by the EPA, such as poly- and perfluoroaklyl substances
 (PFAS), which introduces even more complexity to the issue of water
-quality monitoring of drinking water sources.
-
+quality monitoring of drinking water sources.\\
 This analysis seeks to investigate the co-occurrence of water quality
 indicators including arsenic, trihalomethane, uranium, and PFAS, which
 originate from both geogenic and anthropogenic sources. Additionally,
@@ -137,15 +136,13 @@ to water quality indicators, this analysis seeks to examine
 relationships between water quality indicators and county-level median
 household income (MHI) and size of the population served by a given
 community water system (CWS). Additionally, questions regarding how
-contaminant occurrences differ between states are explored.
-
+contaminant occurrences differ between states are explored.\\
 To narrow the scope of this project, most analyses are targeted to
 southeastern region states and northeastern region states. These regions
 were chosen given their differences in climate, geology, and demographic
 makeup. Additionally, individual case studies of Massachusetts and North
 Carolina, selected following the data exploration phase, are explored in
-further depth.
-
+further depth.\\
 As arsenic is present in much of the underlying geology in many states
 in both the northeast and southeast, arsenic concentration data is
 predominant focus of most analyses performed. Given that PFAS are
@@ -154,13 +151,15 @@ analyses in the scientific community, PFAS data is also explored in
 depth. Due to data limitations however, discussed in more detail in the
 subsequent section, analyses using PFAS data herein are limited.
 
-Specifically, the subsequent analysis explores the following questions:
--\textbf{Question 1:} Do arsenic concentrations vary significantly from
-state to state in northeastern and southeastern states?
--\textbf{Question 2:} Do socioeconomic factors or the presence of other
+Specifically, the subsequent analysis explores the following
+questions:\\
+\textbf{Question 1:} Do arsenic concentrations vary significantly from
+state to state in northeastern and southeastern states?\\
+\textbf{Question 2:} Do socioeconomic factors or the presence of other
 contaminants predict arsenic concentrations in Massachusetts and North
-Carolina? -\textbf{Question 3.} Are socioeconomic factors significant
-predictors of PFAS concentrations?
+Carolina?\\
+\textbf{Question 3.} Are socioeconomic factors significant predictors of
+PFAS concentrations?
 
 \newpage
 
@@ -174,8 +173,7 @@ National Environmental Public Health Tracking Network
 \url{https://ephtracking.cdc.gov/DataExplorer/\#/}. Output from this
 online tool containing geographic and CWS data associated with
 individual variables was combined into the final processed dataset used
-for this analysis.
-
+for this analysis.\\
 The wrangling process entailed taking individual datasets containing
 data for arsenic, PFAS, uranium, trihalomethane, and MHI and joining
 them into the final processed dataset. Each of these variables had
@@ -185,7 +183,7 @@ Information Processing Standards (FIPS) codes were standard across all
 individual datasets, this variable was used to join datasets into the
 final processed dataset.
 
-Figure 1: Summary information for processed dataset
+Table 1: Summary information for processed dataset
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -201,7 +199,7 @@ Data collection time span & 1999-2018\tabularnewline
 \bottomrule
 \end{longtable}
 
-Figure 2: Description of Variables Used in Analyses
+Table 2: Description of Variables Used in Analyses
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
@@ -516,8 +514,7 @@ concentrations, and relatively constant trihalomethaen concentrations
 (Figure 6). Trihalomethane concentrations are safely below the MCL
 standard, as are uranium concentrations from about 2010-2018.
 Conversely, arsenic concentrations remain high over the entire 19-year
-time span examined.
-
+time span examined.\\
 This exploratory analysis has highlighted that arsenic concentrations
 likely vary among states in the southeast and northeast and that
 elevated arsenic levels occur in both North Carolina and Massachusetts.
@@ -657,8 +654,7 @@ concentrations (Multiple linear regression; F=2 and 86, F=0.5912,
 p=0.5559). PFAS concentrations vary widely across the size of the
 population served by CWSs and across MHI levels (Figure 13). As the EPA
 does not currently regulate PFAS, there is not MCL guideline by which to
-compare occurrence data.
-
+compare occurrence data.\\
 An ANOVA was also run in preliminary analyses conducted for PFAS data,
 but results are not included herein due to issues of missingness (25,938
 observations were deleted when ANOVA was run).
@@ -670,9 +666,9 @@ observations were deleted when ANOVA was run).
 
 This analysis reveals that among southeastern states, North Carolina and
 South Carolina have significantly higher arsenic values than other
-states in the region. In the northeast, Maine and Massachusetts have
-significantly higher arsenic concentrations than other states in the
-regionn. These findings are likely due to the underlying geology in
+states in the region. In the northeast, New Hampshire and Massachusetts
+have significantly higher arsenic concentrations than other states in
+the regionn. These findings are likely due to the underlying geology in
 these states, as there are major arsenic hot spots running through all
 four of these states (Figure 14).
 
@@ -690,8 +686,7 @@ significantly predicted arsenic concentrations. As trihalomethane is
 often formed as a byproduct when treating water, it is logical that
 arsenic and trihalomethane concentrations appear to co-occur in North
 Carolina, as higher arsenic levels in drinking water likely trigger
-higher rates of water treatment by water systems.
-
+higher rates of water treatment by water systems.\\
 It is likely that arsenic concentrations rise with smaller population
 served by a CWS as smaller water systems often are located in more rural
 areas and typically have less financial resources at their disposal,
@@ -701,16 +696,14 @@ are not regulated under the SDWA, as only public water systems with 15
 service connections or that serve 25 people per day for 60 days ofo the
 year fall under SDWA jurisdiction and thus must bring arsenic levels
 under the EPA'S MCL (``Understanding the Safe Drinking Water Act'',
-2004).
-
+2004).\\
 While MHI was predicted to be correlated with arsenic concentrations, it
 is possible that the lack of significat relatioship between these
 variables is due to arsenic being linked to the underlying geology where
 high occurrences are noted, which may not necessarily be tied to a
 county's MHI. In future analyses, the relationship between MHI and other
 water contaminants that typically originate from anthropogenic sources
-rather than geogenic sources should be explored.
-
+rather than geogenic sources should be explored.\\
 Likely due to the limited data available, no explanatory variables
 signinficantly predicted PFAS concentrations. In February 2020, the EPA
 issued a preliminary determination to regulate PFAS, particularly PFOA
@@ -721,8 +714,7 @@ once a regulatory requirement is in place, data collection associated
 with testing and mitigation will likely pick up. Once more data becomes
 available, future analyses could focus on looking at similar
 relationships explored here, or relationships between the occurrence of
-PFAS and other contaminants.
-
+PFAS and other contaminants.\\
 Aside from the data limitation mentioned previously, another limitation
 of this analysis stems from omitted variable bias, or the omission of
 explanatory variables from models examined that may help to explain
