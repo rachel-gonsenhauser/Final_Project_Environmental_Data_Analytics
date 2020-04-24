@@ -1,0 +1,17 @@
+﻿Column Heading,Variable Description,Data Range
+stateFIPS,Federal Information Processing Standard state code ,N/A
+State,state measurement was taken in  ,N/A
+countyFIPS,Federal Information Processing Standard county code,N/A
+County,county measurement was taken in ,N/A
+Year,year measurement was taken in,N/A
+Arsenic_ugL,mean arsenic concentration (micrograms per liter) ,"1-2,422 micrograms/liter"
+PWS.ID,Public Water System Identification Number ,N/A
+CWS.Name,Community Water System Name ,N/A
+Population.Served,number of people served by CWS,"0-8,271,000 people"
+MHI,median household income ($) ,"$16,435-$113,336"
+PFAS_ppt,PFAS conncentration (parts per trillion),1-60 ppt
+TTHM_ugL,mean trihalomethane concentration (micrograms per liter),0-219.20 micrograms/liter
+Uranium_ugL,mean uranium concentration (micrograms per liter),0-379.10 micrograms/liter
+MCL_TTHM,whether MCL for trihalomethanes is exceeded  ,N/A
+MCL_Uranium,whether MCL for uranium is exceeded,N/A
+MCL_Arsenic,whether MCL for arsenic is exceeded ,N/A
