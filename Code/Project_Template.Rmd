@@ -106,7 +106,7 @@ To narrow the scope of this project, most analyses are targeted to southeastern 
 
 Specifically, the subsequent analyses explore the following questions:  
 **Question 1:** Do arsenic concentrations vary significantly from state to state in southeastern and northeastern states?  
-**Question 2:** Do socioeconomic factors or the presence of other contaminants predict arsenic concentrations in North Carolina and Massachusetts?  
+**Question 2:** Do socioeconomic factors or the occurrence of other contaminants predict arsenic concentrations in North Carolina and Massachusetts?  
 **Question 3.** Are socioeconomic factors significant predictors of PFAS concentrations?   
 
 
@@ -382,7 +382,7 @@ Arsenic concentrations also differ significantly between states in the northeast
 
 \newpage
 
-## Question 2: Do socioeconomic factors or the presence of other contaminants predict arsenic concentrations in North Carolina and Massachusetts?
+## Question 2: Do socioeconomic factors or the occurrence of other contaminants predict arsenic concentrations in North Carolina and Massachusetts?
 
 ```{r, include=FALSE, warning=FALSE, message=FALSE}
 #NC
