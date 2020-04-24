@@ -12,10 +12,6 @@ mainfont: Times New Roman
 subtitle: https://github.com/rachel-gonsenhauser/Final_Project_Environmental_Data_Analytics
 fontsize: 12pt
 ---
-\newpage
-\abstract
-
-While the Safe Drinking Water Act seeks to establish standards for many drinking water contaminants, many water systems continue to exceed these standards. This analysis compares arsenic concentrations in southeastern and northeastern states, explores which factors predict arsenic concentrations in North Carolina and Massachusetts, and examines whether socioeconomic factors explain variation in PFAS concentrations nationwide. Results indicate that North Carolina and South Carolina experience elevated arsenic concentrations compared to other southeastern states, as do Massachusetts and New Hampshire when compared to other northeastern states. Arsenic concentrations are significantly predicted by trihalomethane concentrations and by size of the population served by a community water system in North Carolina, but not in Massachusetts. Finally, socioeconomic variables examined do not significantly explain variation in PFAS concentrations.
 
 \newpage
 \tableofcontents 
@@ -228,7 +224,6 @@ print(Northeast.arsenic.freqpoly)
 
 All northeastern states appear to have relatively high counts of arsenic observations at low concentration levels, with New York and Pennsylvania maintaining the greatest counts (Figure 3). Additionally, Massachusetts, New York, and Connecticut, among other states also have many observations at elevated arsenic concentrations (around 1,000 micrograms/liter). Similarly to southeastern states, this exploration of arsenic data justifies a comparison of arsenic concentrations across northeastern states. Additionally, understanding which explanatory variables predict arsenic concentrations, particularly in states with elevated levels, will be explored in the subsequent analysis performed.
 
-\newpage
 
 ```{r figs4, echo = FALSE, warning=FALSE, message=FALSE, fig.height = 4, fig.width = 10, fig.cap="Frequency of PFAS Concentration Data in Northeastern States."}
 Northeast.PFAS.freqpoly <- 

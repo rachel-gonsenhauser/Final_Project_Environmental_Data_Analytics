@@ -85,24 +85,6 @@ the United States}
 \maketitle
 
 \newpage
-\abstract
-
-While the Safe Drinking Water Act seeks to establish standards for many
-drinking water contaminants, many water systems continue to exceed these
-standards. This analysis compares arsenic concentrations in southeastern
-and northeastern states, explores which factors predict arsenic
-concentrations in North Carolina and Massachusetts, and examines whether
-socioeconomic factors explain variation in PFAS concentrations
-nationwide. Results indicate that North Carolina and South Carolina
-experience elevated arsenic concentrations compared to other
-southeastern states, as do Massachusetts and New Hampshire when compared
-to other northeastern states. Arsenic concentrations are significantly
-predicted by trihalomethane concentrations and by size of the population
-served by a community water system in North Carolina, but not in
-Massachusetts. Finally, socioeconomic variables examined do not
-significantly explain variation in PFAS concentrations.
-
-\newpage
 \tableofcontents 
 \newpage
 \listoftables
@@ -203,11 +185,11 @@ Data collection time span & 1999-2018\tabularnewline
 \begin{longtable}[]{@{}lll@{}}
 \caption{Description of Variables Used in Analyses.}\tabularnewline
 \toprule
-Column.Heading & Variable.Description & Data.Range\tabularnewline
+Variable & Description & Range\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-Column.Heading & Variable.Description & Data.Range\tabularnewline
+Variable & Description & Range\tabularnewline
 \midrule
 \endhead
 stateFIPS & Federal Information Processing Standard state code &
@@ -217,19 +199,19 @@ countyFIPS & Federal Information Processing Standard county code &
 N/A\tabularnewline
 County & county measurement was taken in & N/A\tabularnewline
 Year & year measurement was taken in & N/A\tabularnewline
-Arsenic\_ugL & mean arsenic concentration (micrograms per liter) &
-1-2,422 micrograms/liter\tabularnewline
+Arsenic\_ugL & mean arsenic concentration (micrograms/liter) &
+1-2,422\tabularnewline
 PWS.ID & Public Water System Identification Number & N/A\tabularnewline
 CWS.Name & Community Water System Name & N/A\tabularnewline
-Population.Served & number of people served by CWS & 0-8,271,000
-people\tabularnewline
+Population.Served & number of people served by CWS &
+0-8,271,000\tabularnewline
 MHI & median household income (\$) & \$16,435-\$113,336\tabularnewline
-PFAS\_ppt & PFAS conncentration (parts per trillion) & 1-60
-ppt\tabularnewline
-TTHM\_ugL & mean trihalomethane concentration (micrograms per liter) &
-0-219.20 micrograms/liter\tabularnewline
-Uranium\_ugL & mean uranium concentration (micrograms per liter) &
-0-379.10 micrograms/liter\tabularnewline
+PFAS\_ppt & PFAS conncentration (parts per trillion) &
+1-60\tabularnewline
+TTHM\_ugL & mean trihalomethane concentration (micrograms/liter) &
+0-219.20\tabularnewline
+Uranium\_ugL & mean uranium concentration (micrograms/liter) &
+0-379.10\tabularnewline
 MCL\_TTHM & whether MCL for trihalomethanes is exceeded &
 N/A\tabularnewline
 MCL\_Uranium & whether MCL for uranium is exceeded & N/A\tabularnewline
@@ -264,11 +246,11 @@ States}\label{data-exploration-for-southeastern-states}}
 \caption{Summary Statistics for Southeastern State
 Variables.}\tabularnewline
 \toprule
-Parameter & Mean & Data.Range\tabularnewline
+Parameter & Mean & Range\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-Parameter & Mean & Data.Range\tabularnewline
+Parameter & Mean & Range\tabularnewline
 \midrule
 \endhead
 MHI & \$40,848 & \$16,435-\$92,097\tabularnewline
@@ -330,11 +312,11 @@ States}\label{data-exploration-for-northeastern-states}}
 \caption{Summary Statistics for Northeastern State
 Variables.}\tabularnewline
 \toprule
-Parameter & Mean & Data.Range\tabularnewline
+Parameter & Mean & Range\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-Parameter & Mean & Data.Range\tabularnewline
+Parameter & Mean & Range\tabularnewline
 \midrule
 \endhead
 MHI & \$54,513 & \$26,323-\$113,336\tabularnewline
@@ -378,8 +360,6 @@ arsenic data justifies a comparison of arsenic concentrations across
 northeastern states. Additionally, understanding which explanatory
 variables predict arsenic concentrations, particularly in states with
 elevated levels, will be explored in the subsequent analysis performed.
-
-\newpage
 
 \begin{figure}
 \centering
