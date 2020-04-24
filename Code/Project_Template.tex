@@ -30,7 +30,7 @@
 }
 \usepackage{hyperref}
 \hypersetup{
-            pdftitle={Analysis of arsenic and PFAS occurrence in United States community water systems},
+            pdftitle={Analysis of arsenic and PFAS occurrence in community water systems in the United States},
             pdfauthor={Rachel Gonsenhauser},
             pdfborder={0 0 0},
             breaklinks=true}
@@ -74,8 +74,8 @@
 }
 \makeatother
 
-\title{Analysis of arsenic and PFAS occurrence in United States community water
-systems}
+\title{Analysis of arsenic and PFAS occurrence in community water systems in
+the United States}
 \providecommand{\subtitle}[1]{}
 \subtitle{\url{https://github.com/rachel-gonsenhauser/Final_Project_Environmental_Data_Analytics}}
 \author{Rachel Gonsenhauser}
@@ -88,21 +88,19 @@ systems}
 \abstract
 
 While the Safe Drinking Water Act seeks to establish standards for many
-drinking water contaminants, many water systems continue to experience
-elevated concentrations of given contaminants. This analysis compares
-arsenic concentrations in southeastern and northeastern states, explores
-whether socioeconomic factors or the occurrence of other water
-contaminants predict arsenic concentrations in North Carolina and
-Massachusetts, and examines whether socioeconomic factors explain
-variation in PFAS concentrations nationwide. Results indicate that North
-Carolina and South Carolina experience elevated arsenic concentrations
-compared to other southeastern states, as do Massachusetts and New
-Hampshire when compared to other northeastern states. Arsenic
-concentrations are significantly predicted by trihaloomethane
-concentrationos and by size of the population served by a community
-water system in North Carolina, but not in Massachusetts. Finally,
-socioeconomic variables examined do not significantly explain variation
-inn PFAS concentrations.
+drinking water contaminants, many water systems continue to exceed these
+standards. This analysis compares arsenic concentrations in southeastern
+and northeastern states, explores which factors predict arsenic
+concentrations in North Carolina and Massachusetts, and examines whether
+socioeconomic factors explain variation in PFAS concentrations
+nationwide. Results indicate that North Carolina and South Carolina
+experience elevated arsenic concentrations compared to other
+southeastern states, as do Massachusetts and New Hampshire when compared
+to other northeastern states. Arsenic concentrations are significantly
+predicted by trihalomethane concentrations and by size of the population
+served by a community water system in North Carolina, but not in
+Massachusetts. Finally, socioeconomic variables examined do not
+significantly explain variation in PFAS concentrations.
 
 \newpage
 \tableofcontents 
@@ -147,11 +145,9 @@ in many states in both regions, arsenic concentration data is the
 predominant focus of analyses performed. Given that PFAS are emerging,
 synthetic contaminants that have become the focus of many analyses in
 the scientific community, PFAS data is also explored herein. Due to data
-limitations, however, discussed in more detail in the subsequent
-section, analyses using PFAS data are limited.
+limitations, however, analyses using PFAS data are limited.
 
-Specifically, the subsequent analysis explores the following
-questions:\\
+Specifically, the subsequent analyses explore the following questions:\\
 \textbf{Question 1:} Do arsenic concentrations vary significantly from
 state to state in southeastern and northeastern states?\\
 \textbf{Question 2:} Do socioeconomic factors or the presence of other
@@ -291,9 +287,9 @@ micrograms/liter\tabularnewline
 \begin{quote}
 \end{quote}
 
-Southeastern states examined include counties with a large range of
-income levels and water system sizes; additionally, arsenic
-concentrations vary more than any other contaminant examined (Table 3).
+Southeastern states examined experience a large range of income levels
+and water system sizes; additionally, arsenic concentrations vary more
+than any other contaminant examined (Table 3).
 
 \begin{figure}
 \centering
@@ -318,7 +314,7 @@ variables might predict arsenic concentrations.
 \end{figure}
 
 Compared to arsenic data, PFAS concentration data are far more limited
-in southeastern states (Figure 2). The largest frequency of counts
+in southeastern states (Figure 2). The greatest frequency of counts
 occurs in Florida at around 45 ppt with only two counts available. This
 limitation of PFAS concentration data justifies a separate analysis of
 PFAS data at a nationwide scale, as examining PFAS data regionally
@@ -357,13 +353,13 @@ micrograms/liter\tabularnewline
 \begin{quote}
 \end{quote}
 
-Summary statistics for the northeastern United States indicate the the
-median household income is higher than that in the southeast (Table 4).
-Additionally, while the average water system size is similar across
-regions, the northeast has systems that serve upwards of 8 million
-people, as compared to a maxiumum size of 2 million people in the
-southeast (Tables 3 and 4). Ranges and average values for water quality
-indicators were relatively similar in both regions (Tables 3 and 4).
+Summary statistics for the northeastern United States indicate that the
+mean MHI is higher than that in the southeast (Table 4). Additionally,
+while the average water system size is similar across regions, the
+northeast has systems that serve upwards of 8 million people, as
+compared to a maximum size of 2 million people in the southeast (Tables
+3 and 4). Ranges and average values for water quality indicators are
+relatively similar in both regions (Tables 3 and 4).
 
 \begin{figure}
 \centering
@@ -374,11 +370,11 @@ States.}
 
 All northeastern states appear to have relatively high counts of arsenic
 observations at low concentration levels, with New York and Pennsylvania
-maintaining the highest counts (Figure 3). Additionally, Massachusetts,
+maintaining the greatest counts (Figure 3). Additionally, Massachusetts,
 New York, and Connecticut, among other states also have many
 observations at elevated arsenic concentrations (around 1,000
 micrograms/liter). Similarly to southeastern states, this exploration of
-arenic data justifies a comparison of arsenic concentrations across
+arsenic data justifies a comparison of arsenic concentrations across
 northeastern states. Additionally, understanding which explanatory
 variables predict arsenic concentrations, particularly in states with
 elevated levels, will be explored in the subsequent analysis performed.
@@ -407,8 +403,8 @@ North Carolina and Massachusetts were selected as individual case
 studies due to the prevalence of arsenic data at high concentrations
 revealed earlier in the exploratory analysis. To gain insight into how
 arsenic concentrations vary with respect to the variation of other
-contaminants, arsenic, uranium, and trihalomethane data are provided
-below across the data collection time span (1999-2018).
+contaminants, arsenic, uranium, and trihalomethane data are provided for
+both states across the data collection period (1999-2018).
 
 \begin{figure}
 \centering
@@ -472,9 +468,9 @@ States.}
 Mean annual arsenic concentrations differ significantly between states
 in the southeast (ANOVA; df=5, F=2872, p \textless{}0.0001). Arsenic
 concentrations in West Virginia water systems were significantly lower
-than in other states and those in North Carolina and South Carolina were
-significantly higher than those in other states (Post-hoc Tukey test;
-Figure 7).
+than those in other states and arsenic concentrations in North Carolina
+and South Carolina were significantly higher than those in other states
+(Post-hoc Tukey test; Figure 7).
 
 \newpage
 
@@ -488,9 +484,9 @@ States.}
 Arsenic concentrations also differ significantly between states in the
 northeast (ANOVA; df=8, F=630.9, p\textless{}0.0001). Arsenic
 concentrations in New York and Vermont water systems were significantly
-lower than in other states and those in New Hampshire and Massachusetts
-were significantly higher than those in other states (Post-hoc Tukey
-test; Figure 8).
+lower than those in other states while concentrations in New Hampshire
+and Massachusetts were significantly higher than those in other states
+(Post-hoc Tukey test; Figure 8).
 
 \newpage
 
@@ -557,7 +553,8 @@ in North Carolina, this analysis further confirms highly elevated
 arsenic levels in Massachusetts, far above the EPA's MCL threshold of 10
 micrograms/liter (Figures 11 and 12).
 
-\newpage
+\begin{quote}
+\end{quote}
 
 \hypertarget{question-3.-are-socioeconomic-factors-significant-predictors-of-pfas-concentrations}{%
 \subsection{Question 3. Are socioeconomic factors significant predictors
@@ -575,8 +572,8 @@ Neither MHI nor population served by a CWS significantly predict PFAS
 concentrations (Multiple linear regression; F=2 and 86, F=0.5912,
 p=0.5559). PFAS concentrations vary widely across the size of the
 population served by CWSs and across MHI levels (Figure 13). As the EPA
-does not currently regulate PFAS, there is not MCL guideline by which to
-compare occurrence data.\\
+does not currently regulate PFAS, there is not an MCL guideline by which
+to compare occurrence data.\\
 An ANOVA was also run in preliminary analyses conducted for PFAS data,
 but results are not included herein due to issues of missingness (25,938
 observations were deleted upon running ANOVA).
@@ -585,6 +582,9 @@ observations were deleted upon running ANOVA).
 
 \hypertarget{summary-and-conclusions}{%
 \section{Summary and Conclusions}\label{summary-and-conclusions}}
+
+\hypertarget{arsenic-conclusions}{%
+\subsection{Arsenic Conclusions}\label{arsenic-conclusions}}
 
 This analysis reveals that among southeastern states, North Carolina and
 South Carolina have significantly higher arsenic values than other
@@ -621,12 +621,16 @@ bring arsenic levels under the EPA'S MCL threshold (``Understanding the
 Safe Drinking Water Act'', 2004).\\
 While MHI was hypothesized to correlate with arsenic concentration, it
 is possible that the lack of a significant relationship between these
-variables is due to pervasive occurrence of arsenic in the underlying
-geology where high occurrences are noted. As such, arsenic
+variables is due to the pervasive occurrence of arsenic in the
+underlying geology where high occurrences are noted. As such, arsenic
 concentrations in drinking water would not necessarily be tied to a
 county's MHI. In future analyses, the relationship between MHI and other
 water contaminants that typically originate from anthropogenic sources,
-rather than geogenic sources, should be explored.\\
+rather than geogenic sources, should be explored.
+
+\hypertarget{pfas-conclusions}{%
+\subsection{PFAS Conclusions}\label{pfas-conclusions}}
+
 Likely due to the limited data available, no explanatory variables
 significantly predicted PFAS concentration. In February 2020, the EPA
 issued a preliminary determination to regulate PFAS, particularly PFOA
@@ -637,7 +641,11 @@ once a regulatory requirement is in place, data collection associated
 with testing and mitigation will likely pick up. Once more data becomes
 available, future analyses could focus on looking at similar
 relationships explored here, or relationships between the occurrence of
-PFAS and other contaminants.\\
+PFAS and that of other contaminants.
+
+\hypertarget{limitations-of-analysis}{%
+\subsection{Limitations of Analysis}\label{limitations-of-analysis}}
+
 Aside from the data limitation mentioned previously, another limitation
 of this analysis stems from omitted variable bias, or the omission of
 explanatory variables from models examined that may help to explain
@@ -647,7 +655,7 @@ approximately 0.13 for the model explaining arsenic concentrations in
 North Carolina). This suggests that very little of the variation in
 arsenic concentrations in drinking water is explained by the model. For
 instance, a major omitted variable likely includes arsenic
-concentrations in bedrock, and future analyses are necessary to further
+concentrations in bedrock. Future analyses are necessary to further
 understand which other variables may best explain this variation.
 
 \newpage
